@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Menu du jour</title>
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiTWVudSBkdSBqb3VyIiwic2hvcnRfbmFtZSI6Ik1lbnUgZHUgam91ciIsImRlc2NyaXB0aW9uIjoiTWVudSBxdW90aWRpZW4sIGxpc3RlIGRlIGNvdXJzZXMgZXQgcHJpeCBlc3RpbcOpcyIsInN0YXJ0X3VybCI6Ii4iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMkIyRTI4IiwidGhlbWVfY29sb3IiOiIjMkIyRTI4IiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmclMjB4bWxucyUzRCUyMmh0dHAlM0ElMkYlMkZ3d3cudzMub3JnJTJGMjAwMCUyRnN2ZyUyMiUyMHZpZXdCb3glM0QlMjIwJTIwMCUyMDEwMCUyMDEwMCUyMiUzRSUzQ3JlY3QlMjB3aWR0aCUzRCUyMjEwMCUyMiUyMGhlaWdodCUzRCUyMjEwMCUyMiUyMHJ4JTNEJTIyMjAlMjIlMjBmaWxsJTNEJTIyJTIzMkIyRTI4JTIyJTJGJTNFJTNDdGV4dCUyMHglM0QlMjI1MCUyMiUyMHklM0QlMjI2MiUyMiUyMGZvbnQtc2l6ZSUzRCUyMjU1JTIyJTIwdGV4dC1hbmNob3IlM0QlMjJtaWRkbGUlMjIlM0UlRjAlOUYlOEQlQkQlRUYlQjglOEYlM0MlMkZ0ZXh0JTNFJTNDJTJGc3ZnJTNFIiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifSx7InNyYyI6ImRhdGE6aW1hZ2Uvc3ZnK3htbCwlM0NzdmclMjB4bWxucyUzRCUyMmh0dHAlM0ElMkYlMkZ3d3cudzMub3JnJTJGMjAwMCUyRnN2ZyUyMiUyMHZpZXdCb3glM0QlMjIwJTIwMCUyMDEwMCUyMDEwMCUyMiUzRSUzQ3JlY3QlMjB3aWR0aCUzRCUyMjEwMCUyMiUyMGhlaWdodCUzRCUyMjEwMCUyMiUyMHJ4JTNEJTIyMjAlMjIlMjBmaWxsJTNEJTIyJTIzMkIyRTI4JTIyJTJGJTNFJTNDdGV4dCUyMHglM0QlMjI1MCUyMiUyMHklM0QlMjI2MiUyMiUyMGZvbnQtc2l6ZSUzRCUyMjU1JTIyJTIwdGV4dC1hbmNob3IlM0QlMjJtaWRkbGUlMjIlM0UlRjAlOUYlOEQlQkQlRUYlQjglOEYlM0MlMkZ0ZXh0JTNFJTNDJTJGc3ZnJTNFIiwic2l6ZXMiOiI1MTJ4NTEyIiwidHlwZSI6ImltYWdlL3N2Zyt4bWwifV19">
+<meta name="theme-color" content="#2B2E28">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Menu du jour">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2220%22%20fill%3D%22%232B2E28%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2262%22%20font-size%3D%2255%22%20text-anchor%3D%22middle%22%3E%F0%9F%8D%BD%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --chalk-bg:#2B2E28;
+    --chalk-bg-2:#333730;
+    --chalk-text:#F5F3EE;
+    --chalk-line:rgba(245,243,238,0.22);
+    --kraft-bg:#E8DCC4;
+    --kraft-bg-2:#DED0B2;
+    --kraft-text:#3A2E22;
+    --kraft-line:rgba(58,46,34,0.25);
+    --tomate:#C1502E;
+    --miel:#D8A93B;
+    --courgette:#7C8C5A;
+    --aubergine:#6B4066;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Work Sans',sans-serif;
+    background:var(--chalk-bg);
+    color:var(--chalk-text);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .app{max-width:480px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;}
+
+  header.top{
+    padding:22px 20px 14px;
+    border-bottom:1px dashed var(--chalk-line);
+  }
+  header.top .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--miel);
+    margin:0 0 4px;
+  }
+  header.top h1{
+    font-family:'Caveat',cursive;
+    font-weight:700;
+    font-size:34px;
+    margin:0;
+    line-height:1;
+  }
+  header.top .date{
+    font-size:13px;
+    color:rgba(245,243,238,0.6);
+    margin-top:4px;
+    text-transform:capitalize;
+  }
+
+  .top-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+  .header-actions{display:flex;align-items:center;gap:8px;flex:none;}
+  .lang-toggle{display:flex;border:1px solid var(--chalk-line);border-radius:20px;overflow:hidden;}
+  .lang-toggle button{
+    padding:8px 11px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;
+    background:transparent;border:none;color:rgba(245,243,238,0.55);cursor:pointer;
+  }
+  .lang-toggle button.active{background:var(--tomate);color:#fff;}
+  .settings-btn{
+    flex:none;
+    width:36px;height:36px;border-radius:50%;
+    background:rgba(245,243,238,0.08);
+    border:1px solid var(--chalk-line);
+    color:var(--chalk-text);
+    font-size:15px;cursor:pointer;
+    margin-top:2px;
+  }
+  .settings-panel{
+    margin-top:14px;
+    padding:14px;
+    background:rgba(245,243,238,0.06);
+    border:1px solid var(--chalk-line);
+    border-radius:12px;
+  }
+  .settings-text{font-size:12.5px;color:rgba(245,243,238,0.75);margin:0 0 8px;line-height:1.5;}
+  .settings-link{font-size:12px;color:var(--miel);text-decoration:underline;display:inline-block;margin-bottom:10px;}
+  .settings-row{display:flex;gap:8px;}
+  .settings-row input{
+    flex:1;padding:9px 10px;border-radius:8px;
+    border:1px solid var(--chalk-line);
+    background:rgba(245,243,238,0.05);
+    color:var(--chalk-text);
+    font-family:'IBM Plex Mono',monospace;font-size:12px;
+  }
+  .settings-row input::placeholder{color:rgba(245,243,238,0.35);}
+  .settings-row button{
+    padding:9px 14px;border-radius:8px;border:none;
+    background:var(--tomate);color:#fff;font-weight:600;font-size:13px;
+    cursor:pointer;
+  }
+  .settings-status{font-size:11.5px;color:var(--courgette);margin:8px 0 0;min-height:14px;}
+  .preview-toggle{
+    margin-top:10px;width:100%;
+    padding:8px;border-radius:8px;
+    background:none;border:1px dashed var(--chalk-line);
+    color:rgba(245,243,238,0.6);font-size:11.5px;
+    cursor:pointer;
+  }
+
+  nav.tabs{
+    display:flex;
+    gap:6px;
+    padding:14px 20px 0;
+  }
+  nav.tabs button{
+    flex:1;
+    font-family:'Work Sans',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    padding:10px 8px;
+    border:none;
+    border-radius:10px 10px 0 0;
+    background:transparent;
+    color:rgba(245,243,238,0.55);
+    cursor:pointer;
+    border-bottom:2px solid transparent;
+  }
+  nav.tabs button.active{
+    color:var(--chalk-text);
+    border-bottom:2px solid var(--tomate);
+  }
+
+  main{flex:1;padding:18px 20px 40px;}
+  .hidden{display:none !important;}
+
+  /* --- Menu du jour (chalkboard) --- */
+  .meal-card{
+    background:var(--chalk-bg-2);
+    border:1px solid var(--chalk-line);
+    border-radius:var(--radius);
+    padding:16px 16px 14px;
+    margin-bottom:16px;
+  }
+  .meal-card .tag{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:4px 9px;
+    border-radius:20px;
+    margin-bottom:10px;
+  }
+  .tag.matin{background:rgba(216,169,59,0.18);color:var(--miel);}
+  .tag.midi{background:rgba(124,140,90,0.2);color:#A9BC85;}
+  .tag.soir{background:rgba(107,64,102,0.25);color:#C79DC4;}
+
+  .meal-card h2{
+    font-family:'Caveat',cursive;
+    font-weight:700;
+    font-size:26px;
+    margin:0 0 4px;
+    line-height:1.15;
+  }
+  .meal-card .meta{
+    font-size:12px;
+    color:rgba(245,243,238,0.5);
+    margin-bottom:10px;
+  }
+  .meal-card .expand{
+    margin-top:8px;
+    border-top:1px dashed var(--chalk-line);
+    padding-top:10px;
+  }
+  .meal-card .expand h3{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--miel);
+    margin:0 0 6px;
+  }
+  .meal-card ul.ingredients{
+    list-style:none;padding:0;margin:0 0 12px;
+    font-size:13.5px;
+    color:rgba(245,243,238,0.85);
+    display:grid;
+    gap:4px;
+  }
+  .meal-card ol.steps{
+    padding-left:18px;
+    margin:0;
+    font-size:13.5px;
+    line-height:1.55;
+    color:rgba(245,243,238,0.85);
+  }
+  .meal-card ol.steps li{margin-bottom:6px;}
+  .toggle-btn{
+    background:none;border:1px solid var(--chalk-line);
+    color:var(--chalk-text);
+    font-family:'Work Sans',sans-serif;
+    font-size:12.5px;font-weight:600;
+    padding:7px 12px;border-radius:20px;
+    cursor:pointer;
+  }
+  .toggle-btn:active{background:rgba(245,243,238,0.08);}
+
+  .day-actions{
+    display:flex;justify-content:space-between;align-items:center;
+    margin-top:6px; margin-bottom:14px;
+  }
+  .regen{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:rgba(245,243,238,0.5);
+    background:none;border:none;
+    text-decoration:underline;
+    cursor:pointer;
+    padding:4px;
+  }
+
+  /* --- Liste de courses (receipt) --- */
+  .receipt-wrap{
+    background:var(--kraft-bg);
+    color:var(--kraft-text);
+    border-radius:var(--radius);
+    padding:20px 18px 24px;
+    position:relative;
+    background-image:
+      radial-gradient(circle at 6px 6px, var(--chalk-bg) 3px, transparent 3.5px);
+    background-size: 16px 100%;
+    background-position: 0 -8px;
+  }
+  .receipt-inner{
+    background:var(--kraft-bg-2);
+    border-radius:8px;
+    padding:16px 14px;
+  }
+  .receipt-title{
+    font-family:'IBM Plex Mono',monospace;
+    text-align:center;
+    font-size:13px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    border-bottom:1px dashed var(--kraft-line);
+    padding-bottom:10px;
+    margin-bottom:10px;
+  }
+  .rayon-block{margin-bottom:14px;}
+  .rayon-block h3{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--tomate);
+    margin:0 0 6px;
+  }
+  .rayon-item{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13.5px;
+    padding:5px 0;
+    border-bottom:1px dotted var(--kraft-line);
+    cursor:pointer;
+  }
+  .rayon-item .chk{
+    width:15px;height:15px;flex:none;
+    border:1.5px solid var(--kraft-text);
+    border-radius:3px;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-size:10px;
+  }
+  .rayon-item.checked{opacity:0.4;text-decoration:line-through;}
+  .rayon-item.checked .chk{background:var(--tomate);border-color:var(--tomate);color:#fff;}
+  .rayon-item .name{flex:1;}
+  .rayon-item .qty{color:rgba(58,46,34,0.65);}
+  .rayon-item .price{color:var(--tomate);font-weight:600;min-width:44px;text-align:right;}
+  .price-disclaimer{font-size:9.5px;color:rgba(58,46,34,0.45);letter-spacing:0.02em;text-transform:none;font-family:'Work Sans',sans-serif;}
+
+  .receipt-footer{
+    text-align:center;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:rgba(58,46,34,0.55);
+    margin-top:6px;
+    letter-spacing:0.05em;
+  }
+
+  footer.disclaimer{
+    padding:16px 20px 28px;
+    font-size:11.5px;
+    color:rgba(245,243,238,0.35);
+    text-align:center;
+    line-height:1.5;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .meal-card, .receipt-wrap{animation:fadeIn 0.35s ease-out;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+  }
+
+  /* --- Servings stepper --- */
+  .servings-row{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-top:12px;
+    padding:10px 12px;
+    background:rgba(245,243,238,0.05);
+    border:1px solid var(--chalk-line);
+    border-radius:10px;
+  }
+  .servings-row .label{font-size:12.5px;color:rgba(245,243,238,0.75);}
+  .servings-row .label small{display:block;color:rgba(245,243,238,0.4);font-size:10.5px;margin-top:1px;}
+  .stepper{display:flex;align-items:center;gap:10px;}
+  .stepper button{
+    width:26px;height:26px;border-radius:50%;
+    border:1px solid var(--chalk-line);background:transparent;color:var(--chalk-text);
+    font-size:15px;line-height:1;cursor:pointer;
+  }
+  .stepper button:active{background:rgba(245,243,238,0.1);}
+  .stepper .count{font-family:'IBM Plex Mono',monospace;font-size:14px;min-width:16px;text-align:center;}
+
+  /* --- Photo tiles --- */
+  .photo-tile{
+    position:relative;
+    width:100%;height:118px;
+    border-radius:14px;
+    margin-bottom:10px;
+    display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+    background: linear-gradient(145deg, var(--tile-a,#D8A93B), var(--tile-b,#C1502E));
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.18);
+  }
+  .photo-tile::before{
+    content:"";
+    position:absolute;top:-20%;left:-10%;
+    width:70%;height:70%;
+    background:radial-gradient(circle, rgba(255,255,255,0.22), transparent 70%);
+    pointer-events:none;
+  }
+  .photo-tile .plate{
+    position:relative;
+    width:72px;height:72px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fffdf8, #EDE4D0 75%);
+    box-shadow:0 6px 16px rgba(0,0,0,0.28), inset 0 -4px 8px rgba(0,0,0,0.09);
+    display:flex;align-items:center;justify-content:center;
+    font-size:34px;
+  }
+  .photo-tile.small{height:54px;margin-bottom:8px;border-radius:10px;}
+  .photo-tile.small .plate{width:38px;height:38px;font-size:18px;box-shadow:0 3px 8px rgba(0,0,0,0.25);}
+  .photo-tile img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* --- Week table --- */
+  .week-table{
+    display:flex;flex-direction:column;gap:10px;
+  }
+  .week-day{
+    background:var(--chalk-bg-2);
+    border:1px solid var(--chalk-line);
+    border-radius:12px;
+    padding:12px 14px;
+  }
+  .week-day .wd-label{
+    font-family:'Caveat',cursive;font-weight:700;font-size:20px;
+    margin:0 0 8px;text-transform:capitalize;
+  }
+  .week-day.is-today .wd-label{color:var(--miel);}
+  .week-row{
+    display:grid;grid-template-columns:26px 1fr;gap:8px;
+    align-items:center;
+    padding:4px 0;
+    font-size:13px;
+  }
+  .week-row .ico{font-size:16px;text-align:center;}
+  .week-row .lbl{color:rgba(245,243,238,0.85);}
+  .week-row .lbl .tagname{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10px;text-transform:uppercase;
+    color:rgba(245,243,238,0.4);
+    margin-right:6px;
+  }
+
+  .scope-toggle{
+    display:flex;gap:6px;margin-bottom:12px;
+  }
+  .scope-toggle button{
+    flex:1;padding:10px 8px;border-radius:20px;
+    font-family:'Work Sans',sans-serif;font-size:13px;font-weight:600;
+    letter-spacing:0.01em;
+    border:1px solid rgba(245,243,238,0.3);
+    background:rgba(245,243,238,0.07);
+    color:var(--chalk-text);
+    cursor:pointer;
+  }
+  .scope-toggle button.active{
+    background:var(--tomate);color:#fff;border-color:var(--tomate);
+  }
+
+  /* --- Paywall --- */
+  .paywall-gate{
+    text-align:center;
+    padding:36px 22px;
+    background:var(--chalk-bg-2);
+    border:1px solid var(--chalk-line);
+    border-radius:16px;
+  }
+  .paywall-icon{font-size:36px;margin-bottom:10px;}
+  .paywall-gate h3{
+    font-family:'Caveat',cursive;font-weight:700;font-size:24px;
+    margin:0 0 8px;
+  }
+  .paywall-text{
+    font-size:13px;color:rgba(245,243,238,0.7);
+    max-width:320px;margin:0 auto 20px;line-height:1.5;
+  }
+  #auth-form{display:flex;flex-direction:column;gap:10px;max-width:280px;margin:0 auto;}
+  #auth-form input{
+    padding:11px 12px;border-radius:8px;
+    border:1px solid var(--chalk-line);
+    background:rgba(245,243,238,0.06);
+    color:var(--chalk-text);
+    font-family:'Work Sans',sans-serif;font-size:14px;
+    text-align:center;
+  }
+  #auth-form input::placeholder{color:rgba(245,243,238,0.35);}
+  #auth-send-btn{
+    padding:11px;border-radius:8px;border:none;
+    background:rgba(245,243,238,0.12);color:var(--chalk-text);
+    font-weight:600;font-size:13.5px;cursor:pointer;
+  }
+  .subscribe-btn{
+    padding:13px 24px;border-radius:24px;border:none;
+    background:var(--tomate);color:#fff;
+    font-weight:700;font-size:15px;cursor:pointer;
+    margin:4px auto;display:block;
+  }
+  .paywall-status{
+    font-size:12.5px;color:var(--miel);margin:14px 0 0;min-height:16px;
+  }
+  .logout-link{
+    margin:14px auto 0;display:block;
+    background:none;border:none;
+    color:rgba(245,243,238,0.4);font-size:12px;
+    text-decoration:underline;cursor:pointer;
+  }
+
+  /* --- Clickable week/month rows --- */
+  .week-row{cursor:pointer;}
+  .week-row:active{opacity:0.7;}
+  .week-expand{
+    margin:2px 0 8px 34px;
+    padding:10px 12px;
+    background:rgba(245,243,238,0.05);
+    border:1px solid var(--chalk-line);
+    border-radius:8px;
+    font-size:12.5px;
+  }
+  .week-expand h4{
+    font-size:10.5px;text-transform:uppercase;letter-spacing:0.06em;
+    color:var(--miel);margin:0 0 5px;
+  }
+  .week-expand ul{list-style:none;padding:0;margin:0 0 10px;color:rgba(245,243,238,0.85);display:grid;gap:3px;}
+  .week-expand ol{padding-left:16px;margin:0;color:rgba(245,243,238,0.85);line-height:1.5;}
+  .week-expand ol li{margin-bottom:5px;}
+  .week-expand .exp-meta{color:rgba(245,243,238,0.45);font-size:11px;margin-bottom:8px;}
+
+  .week-table.month-view .week-day{padding:10px 12px;}
+  .week-table.month-view .wd-label{font-size:17px;margin-bottom:5px;}
+  .week-table.month-view .week-row{font-size:12px;padding:3px 0;}
+
+  .replace-btn{
+    margin-top:4px;
+    background:none;
+    border:1px solid var(--chalk-line);
+    color:var(--miel);
+    font-family:'Work Sans',sans-serif;
+    font-size:11.5px;font-weight:600;
+    padding:6px 10px;border-radius:20px;
+    cursor:pointer;
+  }
+  .replace-btn:active{background:rgba(216,169,59,0.12);}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="top-row">
+      <div>
+        <p class="eyebrow" id="eyebrow-text">Aujourd'hui, tu manges</p>
+        <h1 id="title-text">Le menu du jour</h1>
+        <p class="date" id="today-date"></p>
+      </div>
+      <div class="header-actions">
+        <div class="lang-toggle" id="lang-toggle">
+          <button class="active" data-lang="fr">FR</button>
+          <button data-lang="en">EN</button>
+        </div>
+        <button class="settings-btn hidden" id="settings-btn" aria-label="Réglages photos">🔑</button>
+      </div>
+    </div>
+    <div class="settings-panel hidden" id="settings-panel">
+      <p class="settings-text" id="settings-text">Pour afficher de vraies photos des plats, colle une clé API gratuite Pexels (2 min, sans carte bancaire).</p>
+      <a class="settings-link" id="settings-link" href="https://www.pexels.com/api/" target="_blank" rel="noopener">→ Obtenir une clé sur pexels.com/api</a>
+      <div class="settings-row">
+        <input type="text" id="pexels-key-input" placeholder="Colle ta clé Pexels ici">
+        <button id="save-key-btn">OK</button>
+      </div>
+      <p class="settings-status" id="settings-status"></p>
+      <button class="preview-toggle" id="preview-paywall-btn">👁️ Aperçu du paywall (test visuel)</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="active" data-tab="menu">Aujourd'hui</button>
+    <button data-tab="semaine">Semaine</button>
+    <button data-tab="mois">Mois</button>
+    <button data-tab="courses">Courses</button>
+  </nav>
+
+  <main>
+    <section id="tab-menu">
+      <div id="meal-cards"></div>
+      <div class="servings-row">
+        <span class="label" id="servings-label-text">Nombre de personnes<small id="servings-sub-text">quantités recalculées automatiquement</small></span>
+        <div class="stepper">
+          <button id="servings-minus">−</button>
+          <span class="count" id="servings-count">4</span>
+          <button id="servings-plus">+</button>
+        </div>
+      </div>
+      <div class="day-actions">
+        <button class="regen" id="regen-btn">↻ régénérer le menu du jour</button>
+      </div>
+    </section>
+
+    <section id="tab-semaine" class="hidden">
+      <div class="week-table" id="week-table"></div>
+    </section>
+
+    <section id="tab-mois" class="hidden">
+      <div class="week-table month-view" id="month-table"></div>
+    </section>
+
+    <section id="tab-courses" class="hidden">
+      <div id="paywall-gate" class="paywall-gate hidden">
+        <div class="paywall-icon">🔒</div>
+        <h3 id="paywall-title">Liste de courses réservée aux abonnés</h3>
+        <p class="paywall-text" id="paywall-text">Débloque la liste de courses automatique (jour, semaine, mois) et les prix estimés pour 9,99 €/mois.</p>
+
+        <div id="auth-form">
+          <input type="email" id="auth-email-input" placeholder="ton@email.fr" autocomplete="email">
+          <button id="auth-send-btn">Recevoir un lien de connexion</button>
+        </div>
+
+        <button id="subscribe-btn" class="subscribe-btn hidden">S'abonner — 9,99 €/mois</button>
+        <p class="paywall-status" id="paywall-status"></p>
+        <button id="logout-btn" class="logout-link hidden">Se déconnecter</button>
+      </div>
+
+      <div id="courses-content" class="hidden">
+        <div class="scope-toggle">
+          <button class="active" data-scope="today">Aujourd'hui</button>
+          <button data-scope="week">Semaine</button>
+          <button data-scope="month">Mois</button>
+        </div>
+        <div class="receipt-wrap">
+          <div class="receipt-inner">
+            <div class="receipt-title" id="receipt-title">Liste de courses — aujourd'hui — 2 pers.</div>
+            <div id="rayon-blocks"></div>
+            <div class="receipt-footer" id="receipt-footer"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="disclaimer" id="footer-text">
+    Prototype fonctionnel — les données sont stockées uniquement pour ton compte, dans cet artifact.
+  </footer>
+</div>
+
+<script>
+/* ---------------------------------------------------------------
+   BASE DE RECETTES — 54 recettes (18 matin / 18 midi / 18 soir)
+   Accent volontaire sur tomates, courgettes, aubergines (potager)
+--------------------------------------------------------------- */
+const RECIPES = [
+{id:"m1",meal:"matin",name:"Tartines avocat & œuf poché",temps:"10 min",photo:"🥑",
+ ingredients:[{n:"Pain de campagne",q:2,u:"slice",r:"bakery"},{n:"Avocat",q:1,u:"piece",r:"produce"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Citron",q:0.5,u:"piece",r:"produce"},{n:"Sel & poivre",q:1,u:"totaste",r:"other"}],
+ steps:["Faire toaster le pain 2-3 min jusqu'à ce qu'il soit doré et croustillant.","Couper l'avocat en deux, écraser la chair à la fourchette avec le jus de citron, saler et poivrer.","Faire frémir une casserole d'eau avec 1 cs de vinaigre, casser chaque œuf dans une tasse puis le glisser doucement dans l'eau.","Pocher 3 min pour un jaune coulant, puis égoutter sur du papier absorbant.","Étaler l'avocat sur les tartines, déposer l'œuf poché dessus, poivrer et servir immédiatement."]},
+{id:"m2",meal:"matin",name:"Porridge flocons d'avoine & banane",temps:"8 min",photo:"🥣",
+ ingredients:[{n:"Flocons d'avoine",q:60,u:"g",r:"pantry"},{n:"Lait",q:250,u:"ml",r:"dairy_eggs"},{n:"Banane",q:1,u:"piece",r:"produce"},{n:"Miel",q:1,u:"tbsp",r:"pantry"},{n:"Cannelle",q:1,u:"pinch",r:"pantry"}],
+ steps:["Verser le lait dans une casserole et porter à frémissement à feu moyen.","Ajouter les flocons d'avoine, baisser le feu.","Cuire 5 min à feu doux en remuant régulièrement jusqu'à consistance crémeuse.","Verser dans un bol, écraser la moitié de la banane et l'incorporer, couper le reste en rondelles.","Napper de miel et saupoudrer de cannelle avant de servir chaud."]},
+{id:"m3",meal:"matin",name:"Pancakes moelleux",temps:"20 min",photo:"🥞",
+ ingredients:[{n:"Farine",q:200,u:"g",r:"pantry"},{n:"Lait",q:250,u:"ml",r:"dairy_eggs"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Sucre",q:2,u:"tbsp",r:"pantry"},{n:"Levure chimique",q:1,u:"packet",r:"pantry"},{n:"Beurre",q:20,u:"g",r:"dairy_eggs"}],
+ steps:["Mélanger la farine, le sucre et la levure dans un grand bol.","Creuser un puits, ajouter les œufs et une partie du lait, fouetter en incorporant la farine petit à petit.","Ajouter le reste du lait jusqu'à obtenir une pâte lisse. Laisser reposer 5 min.","Faire fondre un peu de beurre dans une poêle à feu moyen, verser une petite louche de pâte.","Cuire 2 min jusqu'à ce que des bulles apparaissent, retourner et cuire 1-2 min de plus.","Répéter avec le reste de pâte, empiler et servir tiède."]},
+{id:"m4",meal:"matin",name:"Œufs brouillés au fromage",temps:"8 min",photo:"🍳",
+ ingredients:[{n:"Œufs",q:3,u:"piece",r:"dairy_eggs"},{n:"Emmental râpé",q:30,u:"g",r:"dairy_eggs"},{n:"Beurre",q:10,u:"g",r:"dairy_eggs"},{n:"Pain",q:2,u:"slice",r:"bakery"}],
+ steps:["Casser les œufs dans un bol, saler légèrement et battre à la fourchette sans trop insister.","Faire fondre le beurre dans une poêle antiadhésive à feu doux.","Verser les œufs et remuer sans cesse en formant de petits tas crémeux.","Retirer du feu juste avant qu'ils soient totalement cuits.","Incorporer le fromage râpé hors du feu, mélanger et servir avec le pain grillé."]},
+{id:"m5",meal:"matin",name:"Bol yaourt grec, granola & fruits rouges",temps:"5 min",photo:"🫐",
+ ingredients:[{n:"Yaourt grec",q:200,u:"g",r:"dairy_eggs"},{n:"Granola",q:40,u:"g",r:"pantry"},{n:"Fruits rouges",q:80,u:"g",r:"frozen"},{n:"Miel",q:1,u:"tsp",r:"pantry"}],
+ steps:["Laisser les fruits rouges décongeler 5 min à température ambiante.","Verser le yaourt grec dans un bol, lisser la surface.","Répartir le granola sur un côté pour qu'il reste croustillant.","Ajouter les fruits rouges de l'autre côté.","Terminer par un filet de miel juste avant de servir."]},
+{id:"m6",meal:"matin",name:"Tartines beurre-confiture & fruit frais",temps:"5 min",photo:"🍞",
+ ingredients:[{n:"Pain",q:2,u:"slice",r:"bakery"},{n:"Beurre",q:20,u:"g",r:"dairy_eggs"},{n:"Confiture",q:2,u:"tbsp",r:"pantry"},{n:"Pomme",q:1,u:"piece",r:"produce"}],
+ steps:["Faire toaster légèrement le pain.","Sortir le beurre quelques minutes avant pour qu'il soit tartinable.","Étaler une couche de beurre, puis la confiture par-dessus.","Laver et couper la pomme en quartiers fins.","Servir les tartines avec les quartiers de pomme."]},
+{id:"m7",meal:"matin",name:"Smoothie bowl banane-épinard",temps:"7 min",photo:"🥤",
+ ingredients:[{n:"Banane",q:2,u:"piece",r:"produce"},{n:"Épinards frais",q:30,u:"g",r:"produce"},{n:"Lait",q:100,u:"ml",r:"dairy_eggs"},{n:"Graines de chia",q:1,u:"tbsp",r:"pantry"}],
+ steps:["Éplucher les bananes et les couper en morceaux.","Placer bananes, épinards et lait dans un blender.","Mixer 1 min jusqu'à obtenir une texture lisse, sans morceaux d'épinard visibles.","Verser dans un bol, la texture doit être assez épaisse pour tenir à la cuillère.","Parsemer de graines de chia et déguster aussitôt."]},
+{id:"m8",meal:"matin",name:"Œufs au plat & toast avocat",temps:"10 min",photo:"🍳",
+ ingredients:[{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Avocat",q:1,u:"piece",r:"produce"},{n:"Pain",q:2,u:"slice",r:"bakery"},{n:"Piment doux",q:1,u:"pinch",r:"pantry"}],
+ steps:["Faire toaster le pain.","Écraser l'avocat à la fourchette avec un peu de sel.","Chauffer un filet d'huile à feu moyen-doux, casser les œufs directement dans la poêle.","Cuire 3 min sans y toucher pour un blanc pris et un jaune coulant, saler légèrement.","Étaler l'avocat sur le pain, déposer un œuf sur chaque tartine, saupoudrer de piment doux."]},
+{id:"m9",meal:"matin",name:"Crêpes maison sucrées",temps:"25 min",photo:"🥞",
+ ingredients:[{n:"Farine",q:250,u:"g",r:"pantry"},{n:"Œufs",q:3,u:"piece",r:"dairy_eggs"},{n:"Lait",q:500,u:"ml",r:"dairy_eggs"},{n:"Sucre",q:1,u:"tbsp",r:"pantry"}],
+ steps:["Verser la farine et le sucre dans un bol, creuser un puits au centre.","Casser les œufs dans le puits et commencer à mélanger au fouet.","Ajouter le lait petit à petit en fouettant, jusqu'à obtenir une pâte fluide sans grumeaux.","Laisser reposer la pâte 15 min à température ambiante.","Chauffer une poêle légèrement huilée à feu moyen-vif, verser une louche en inclinant la poêle.","Cuire 1-2 min jusqu'à ce que les bords se détachent, retourner et cuire 1 min de plus."]},
+{id:"m10",meal:"matin",name:"Muesli maison au lait",temps:"3 min",photo:"🥣",
+ ingredients:[{n:"Flocons d'avoine",q:50,u:"g",r:"pantry"},{n:"Fruits secs",q:20,u:"g",r:"pantry"},{n:"Lait",q:200,u:"ml",r:"dairy_eggs"},{n:"Pomme",q:0.5,u:"piece",r:"produce"}],
+ steps:["Verser les flocons d'avoine dans un bol.","Ajouter les fruits secs.","Verser le lait froid et laisser reposer 2 min pour attendrir les flocons.","Râper la demi-pomme directement au-dessus du bol juste avant de servir."]},
+{id:"m11",meal:"matin",name:"Tartine de ricotta & miel",temps:"5 min",photo:"🍯",
+ ingredients:[{n:"Pain aux céréales",q:2,u:"slice",r:"bakery"},{n:"Ricotta",q:80,u:"g",r:"dairy_eggs"},{n:"Miel",q:1,u:"tbsp",r:"pantry"},{n:"Noix",q:20,u:"g",r:"pantry"}],
+ steps:["Faire toaster le pain jusqu'à ce qu'il soit croustillant.","Concasser grossièrement les noix.","Étaler généreusement la ricotta sur les tartines encore tièdes.","Napper de miel en filet et parsemer de noix concassées."]},
+{id:"m12",meal:"matin",name:"Omelette aux herbes",temps:"8 min",photo:"🍳",
+ ingredients:[{n:"Œufs",q:3,u:"piece",r:"dairy_eggs"},{n:"Persil",q:1,u:"bunch",r:"produce"},{n:"Ciboulette",q:1,u:"bunch",r:"produce"},{n:"Beurre",q:10,u:"g",r:"dairy_eggs"}],
+ steps:["Laver et ciseler finement le persil et la ciboulette.","Battre les œufs avec les herbes ciselées, saler et poivrer.","Faire fondre le beurre dans une poêle à feu moyen jusqu'à ce qu'il mousse.","Verser les œufs, laisser prendre sur les bords puis ramener la préparation vers le centre.","Quand le centre est encore légèrement baveux, plier l'omelette en deux et servir."]},
+{id:"m13",meal:"matin",name:"Pain perdu à la cannelle",temps:"12 min",photo:"🍞",
+ ingredients:[{n:"Pain rassis",q:4,u:"slice",r:"bakery"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Lait",q:150,u:"ml",r:"dairy_eggs"},{n:"Cannelle",q:1,u:"pinch",r:"pantry"},{n:"Sucre",q:1,u:"tbsp",r:"pantry"}],
+ steps:["Battre les œufs avec le lait, le sucre et la cannelle dans un plat large.","Tremper chaque tranche de pain 20-30 secondes par face pour bien l'imbiber.","Faire chauffer une noix de beurre dans une poêle à feu moyen.","Dorer les tranches 2 min par face jusqu'à ce qu'elles soient caramélisées.","Servir chaud, éventuellement avec un filet de miel."]},
+{id:"m14",meal:"matin",name:"Bol fromage blanc, fruits secs & miel",temps:"4 min",photo:"🥣",
+ ingredients:[{n:"Fromage blanc",q:200,u:"g",r:"dairy_eggs"},{n:"Amandes",q:20,u:"g",r:"pantry"},{n:"Miel",q:1,u:"tbsp",r:"pantry"}],
+ steps:["Concasser grossièrement les amandes.","Verser le fromage blanc dans un bol, lisser la surface.","Parsemer les amandes concassées sur le dessus.","Napper de miel en filet juste avant de servir."]},
+{id:"m15",meal:"matin",name:"Toast banane & beurre de cacahuète",temps:"5 min",photo:"🍌",
+ ingredients:[{n:"Pain",q:2,u:"slice",r:"bakery"},{n:"Beurre de cacahuète",q:2,u:"tbsp",r:"pantry"},{n:"Banane",q:1,u:"piece",r:"produce"}],
+ steps:["Faire toaster le pain jusqu'à ce qu'il soit doré.","Tartiner généreusement de beurre de cacahuète pendant que le pain est encore chaud.","Couper la banane en rondelles fines.","Disposer les rondelles sur les tartines et servir."]},
+{id:"m16",meal:"matin",name:"Œufs brouillés au saumon fumé",temps:"8 min",photo:"🐟",
+ ingredients:[{n:"Œufs",q:3,u:"piece",r:"dairy_eggs"},{n:"Saumon fumé",q:50,u:"g",r:"meat_fish"},{n:"Ciboulette",q:1,u:"bunch",r:"produce"},{n:"Pain",q:2,u:"slice",r:"bakery"}],
+ steps:["Couper le saumon fumé en lanières et ciseler la ciboulette.","Battre les œufs avec un peu de poivre.","Cuire à feu doux dans une poêle beurrée, en remuant sans cesse jusqu'à consistance crémeuse.","Retirer du feu, incorporer le saumon qui va légèrement cuire à la chaleur résiduelle.","Parsemer de ciboulette et servir avec le pain grillé."]},
+{id:"m17",meal:"matin",name:"Porridge à la compote de pommes",temps:"8 min",photo:"🥣",
+ ingredients:[{n:"Flocons d'avoine",q:60,u:"g",r:"pantry"},{n:"Lait",q:200,u:"ml",r:"dairy_eggs"},{n:"Compote de pommes",q:60,u:"g",r:"pantry"},{n:"Cannelle",q:1,u:"pinch",r:"pantry"}],
+ steps:["Porter le lait à frémissement dans une casserole.","Ajouter les flocons d'avoine et cuire 5 min à feu doux en remuant.","Verser dans un bol et laisser tiédir 1 min.","Incorporer la compote de pommes en surface et saupoudrer de cannelle."]},
+{id:"m18",meal:"matin",name:"Tartines chèvre & miel",temps:"6 min",photo:"🍯",
+ ingredients:[{n:"Pain de campagne",q:2,u:"slice",r:"bakery"},{n:"Fromage de chèvre",q:60,u:"g",r:"dairy_eggs"},{n:"Miel",q:1,u:"tbsp",r:"pantry"},{n:"Noix",q:15,u:"g",r:"pantry"}],
+ steps:["Faire toaster légèrement le pain, il doit rester un peu souple au centre.","Étaler le fromage de chèvre sur le pain encore tiède.","Passer 2 min sous le gril du four si vous aimez le chèvre fondu (facultatif).","Napper de miel et parsemer de noix concassées avant de servir."]},
+{id:"d1",meal:"midi",name:"Salade de pâtes au thon & tomates",temps:"15 min",photo:"🍝",
+ ingredients:[{n:"Pâtes",q:150,u:"g",r:"pantry"},{n:"Thon en boîte",q:1,u:"can",r:"pantry"},{n:"Tomates",q:2,u:"piece",r:"produce"},{n:"Olives",q:30,u:"g",r:"pantry"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"}],
+ steps:["Cuire les pâtes dans l'eau bouillante salée selon le temps indiqué sur le paquet.","Égoutter et passer sous l'eau froide pour stopper la cuisson et éviter qu'elles collent.","Couper les tomates en dés, égoutter le thon en émiettant légèrement à la fourchette.","Mélanger pâtes, tomates, thon et olives dans un grand bol.","Arroser d'huile d'olive, saler, poivrer et mélanger avant de servir tiède ou froid."]},
+{id:"d2",meal:"midi",name:"Wrap poulet crudités",temps:"12 min",photo:"🌯",
+ ingredients:[{n:"Galette de blé",q:2,u:"piece",r:"bakery"},{n:"Blanc de poulet cuit",q:150,u:"g",r:"meat_fish"},{n:"Salade",q:1,u:"piece",r:"produce"},{n:"Tomates",q:1,u:"piece",r:"produce"},{n:"Sauce fromagère",q:2,u:"tbsp",r:"dairy_eggs"}],
+ steps:["Émincer le poulet cuit en lanières.","Laver et émincer la salade, couper la tomate en petits dés.","Réchauffer légèrement la galette 20 sec à la poêle sèche pour l'assouplir.","Étaler la sauce au centre de la galette, ajouter salade, tomate puis poulet.","Rouler fermement en repliant les côtés, puis couper en deux en biais."]},
+{id:"d3",meal:"midi",name:"Quiche lorraine maison",temps:"45 min",photo:"🥧",
+ ingredients:[{n:"Pâte brisée",q:1,u:"piece",r:"bakery"},{n:"Lardons",q:150,u:"g",r:"meat_fish"},{n:"Œufs",q:3,u:"piece",r:"dairy_eggs"},{n:"Crème fraîche",q:200,u:"ml",r:"dairy_eggs"},{n:"Emmental râpé",q:50,u:"g",r:"dairy_eggs"}],
+ steps:["Préchauffer le four à 180°C.","Étaler la pâte dans un moule à tarte, piquer le fond à la fourchette.","Faire revenir les lardons 5 min dans une poêle sans matière grasse jusqu'à légère coloration.","Battre les œufs avec la crème fraîche, saler légèrement, poivrer, ajouter le fromage râpé.","Répartir les lardons sur le fond de pâte, verser l'appareil œufs-crème par-dessus.","Cuire 35 min à 180°C jusqu'à ce que le dessus soit doré et légèrement gonflé."]},
+{id:"d4",meal:"midi",name:"Salade César simplifiée",temps:"15 min",photo:"🥗",
+ ingredients:[{n:"Salade romaine",q:1,u:"piece",r:"produce"},{n:"Blanc de poulet",q:150,u:"g",r:"meat_fish"},{n:"Parmesan",q:30,u:"g",r:"dairy_eggs"},{n:"Croûtons",q:50,u:"g",r:"pantry"},{n:"Sauce César",q:2,u:"tbsp",r:"pantry"}],
+ steps:["Assaisonner le poulet de sel et poivre, le griller 4-5 min par face dans une poêle chaude jusqu'à ce qu'il soit bien cuit.","Laisser reposer 2 min puis trancher en aiguillettes.","Laver, essorer et couper la salade romaine en morceaux.","Mélanger la salade avec la sauce César dans un grand bol.","Ajouter le poulet tranché, les croûtons, et râper le parmesan par-dessus."]},
+{id:"d5",meal:"midi",name:"Riz sauté aux légumes & œuf",temps:"18 min",photo:"🍚",
+ ingredients:[{n:"Riz cuit",q:250,u:"g",r:"pantry"},{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Carotte",q:1,u:"piece",r:"produce"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Sauce soja",q:2,u:"tbsp",r:"pantry"}],
+ steps:["Couper la courgette et la carotte en petits dés réguliers.","Chauffer un filet d'huile dans une grande poêle ou un wok à feu vif.","Faire sauter les légumes 5 min jusqu'à ce qu'ils soient tendres mais encore croquants.","Ajouter le riz cuit (idéalement froid de la veille), l'écraser un peu pour bien le disperser, faire revenir 5 min.","Pousser le riz sur un côté, casser les œufs dans l'espace libre, brouiller rapidement puis mélanger au riz.","Assaisonner de sauce soja, bien mélanger et servir chaud."]},
+{id:"d6",meal:"midi",name:"Soupe de légumes & croûtons",temps:"25 min",photo:"🍲",
+ ingredients:[{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Carotte",q:2,u:"piece",r:"produce"},{n:"Pomme de terre",q:1,u:"piece",r:"produce"},{n:"Bouillon de légumes",q:1,u:"cube",r:"pantry"},{n:"Croûtons",q:40,u:"g",r:"pantry"}],
+ steps:["Éplucher et couper tous les légumes en morceaux réguliers.","Les placer dans une casserole, couvrir d'eau, ajouter le cube de bouillon.","Porter à ébullition puis laisser mijoter 20 min à couvert jusqu'à ce que les légumes soient bien tendres.","Mixer directement dans la casserole avec un mixeur plongeant jusqu'à texture lisse.","Rectifier l'assaisonnement si besoin, servir chaud avec les croûtons par-dessus."]},
+{id:"d7",meal:"midi",name:"Salade de lentilles, feta & tomates",temps:"15 min",photo:"🥗",
+ ingredients:[{n:"Lentilles cuites",q:250,u:"g",r:"pantry"},{n:"Feta",q:80,u:"g",r:"dairy_eggs"},{n:"Tomates",q:2,u:"piece",r:"produce"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"},{n:"Oignon rouge",q:0.5,u:"piece",r:"produce"}],
+ steps:["Rincer les lentilles cuites sous l'eau froide et bien égoutter.","Couper les tomates en dés et émincer finement l'oignon rouge.","Mélanger lentilles, tomates et oignon dans un bol.","Émietter la feta grossièrement par-dessus.","Arroser d'huile d'olive, saler légèrement (la feta est déjà salée) et poivrer."]},
+{id:"d8",meal:"midi",name:"Croque-monsieur jambon fromage",temps:"12 min",photo:"🥪",
+ ingredients:[{n:"Pain de mie",q:4,u:"slice",r:"bakery"},{n:"Jambon",q:2,u:"slice",r:"meat_fish"},{n:"Emmental râpé",q:60,u:"g",r:"dairy_eggs"},{n:"Beurre",q:15,u:"g",r:"dairy_eggs"}],
+ steps:["Garnir deux tranches de pain avec le jambon et la moitié du fromage.","Recouvrir avec les deux autres tranches de pain.","Beurrer légèrement l'extérieur des deux faces.","Cuire à la poêle à feu moyen 3-4 min par face jusqu'à ce que le pain soit doré et croustillant, ou au four 8 min à 200°C.","Parsemer du reste de fromage sur le dessus juste avant la fin de cuisson pour qu'il gratine."]},
+{id:"d9",meal:"midi",name:"Bowl quinoa, pois chiches & légumes rôtis",temps:"30 min",photo:"🥗",
+ ingredients:[{n:"Quinoa",q:100,u:"g",r:"pantry"},{n:"Pois chiches",q:1,u:"can",r:"pantry"},{n:"Aubergine",q:1,u:"piece",r:"produce"},{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"}],
+ steps:["Préchauffer le four à 200°C.","Rincer le quinoa, le cuire dans deux fois son volume d'eau bouillante salée 12-15 min, puis égoutter.","Couper aubergine et courgette en dés d'environ 1,5 cm, les répartir sur une plaque avec l'huile d'olive, sel et poivre.","Enfourner 20 min en remuant à mi-cuisson, jusqu'à ce qu'ils soient tendres et légèrement caramélisés.","Égoutter et rincer les pois chiches.","Dans un bol, assembler quinoa, légumes rôtis et pois chiches, arroser d'un filet d'huile d'olive."]},
+{id:"d10",meal:"midi",name:"Salade grecque au feta",temps:"12 min",photo:"🥗",
+ ingredients:[{n:"Tomates",q:2,u:"piece",r:"produce"},{n:"Concombre",q:1,u:"piece",r:"produce"},{n:"Feta",q:100,u:"g",r:"dairy_eggs"},{n:"Olives noires",q:40,u:"g",r:"pantry"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"}],
+ steps:["Couper les tomates en gros quartiers et le concombre en demi-rondelles épaisses.","Disposer tomates et concombre dans un plat.","Ajouter les olives noires entières.","Déposer la feta en un bloc ou en gros cubes sur le dessus (à la grecque, on ne l'émiette pas toujours).","Arroser généreusement d'huile d'olive et d'un peu d'origan si disponible."]},
+{id:"d11",meal:"midi",name:"Tartare de saumon & avocat",temps:"15 min",photo:"🐟",
+ ingredients:[{n:"Saumon frais",q:200,u:"g",r:"meat_fish"},{n:"Avocat",q:1,u:"piece",r:"produce"},{n:"Citron",q:1,u:"piece",r:"produce"},{n:"Ciboulette",q:1,u:"bunch",r:"produce"},{n:"Sauce soja",q:1,u:"tbsp",r:"pantry"}],
+ steps:["S'assurer que le saumon est bien frais (qualité tartare/sushi), le couper au couteau bien aiguisé en petits dés réguliers.","Couper l'avocat en dés de la même taille.","Ciseler finement la ciboulette.","Mélanger délicatement saumon et avocat avec le jus de citron, la sauce soja et la ciboulette.","Réserver au réfrigérateur 10 min avant de servir pour que les saveurs se mêlent."]},
+{id:"d12",meal:"midi",name:"Galette de sarrasin jambon-fromage",temps:"15 min",photo:"🥞",
+ ingredients:[{n:"Galettes de sarrasin",q:2,u:"piece",r:"bakery"},{n:"Jambon",q:2,u:"slice",r:"meat_fish"},{n:"Emmental râpé",q:60,u:"g",r:"dairy_eggs"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"}],
+ steps:["Chauffer une poêle ou une crêpière à feu moyen, y déposer la galette.","Casser un œuf directement au centre de la galette.","Parsemer de fromage râpé tout autour de l'œuf, déposer le jambon sur les côtés.","Replier les quatre bords de la galette vers le centre pour former un carré.","Cuire jusqu'à ce que le blanc de l'œuf soit pris (environ 4-5 min), servir bien chaud."]},
+{id:"d13",meal:"midi",name:"Salade de riz au thon & maïs",temps:"15 min",photo:"🍚",
+ ingredients:[{n:"Riz cuit",q:200,u:"g",r:"pantry"},{n:"Thon en boîte",q:1,u:"can",r:"pantry"},{n:"Maïs",q:100,u:"g",r:"pantry"},{n:"Poivron",q:1,u:"piece",r:"produce"},{n:"Vinaigrette",q:2,u:"tbsp",r:"pantry"}],
+ steps:["Laisser le riz cuit refroidir s'il vient d'être préparé, ou utiliser du riz froid de la veille.","Couper le poivron en petits dés.","Égoutter le thon et le maïs.","Mélanger riz, thon émietté, maïs et poivron dans un grand bol.","Assaisonner de vinaigrette, mélanger et réserver au frais 5 min avant de servir."]},
+{id:"d14",meal:"midi",name:"Sandwich club poulet",temps:"12 min",photo:"🥪",
+ ingredients:[{n:"Pain de mie",q:3,u:"slice",r:"bakery"},{n:"Blanc de poulet cuit",q:120,u:"g",r:"meat_fish"},{n:"Bacon",q:2,u:"slice",r:"meat_fish"},{n:"Salade",q:2,u:"leaf",r:"produce"},{n:"Tomates",q:1,u:"piece",r:"produce"}],
+ steps:["Faire griller les 3 tranches de pain de mie.","Cuire le bacon à la poêle 3-4 min jusqu'à ce qu'il soit croustillant.","Trancher le poulet finement et couper la tomate en rondelles.","Étager sur la première tranche : salade, tomate, poulet, puis couvrir avec la deuxième tranche.","Ajouter le bacon et un peu de salade, couvrir avec la troisième tranche, presser légèrement et couper en triangles."]},
+{id:"d15",meal:"midi",name:"Poêlée de légumes & œuf au plat",temps:"18 min",photo:"🍳",
+ ingredients:[{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Poivron",q:1,u:"piece",r:"produce"},{n:"Oignon",q:1,u:"piece",r:"produce"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"}],
+ steps:["Couper la courgette, le poivron et l'oignon en lamelles fines.","Chauffer l'huile d'olive dans une poêle à feu moyen-vif.","Faire revenir l'oignon 2 min, puis ajouter poivron et courgette, cuire 8-10 min en remuant régulièrement jusqu'à ce qu'ils soient tendres.","Assaisonner de sel et poivre, réserver les légumes dans une assiette au chaud.","Dans la même poêle, cuire les œufs au plat 3 min, puis les déposer sur les légumes pour servir."]},
+{id:"d16",meal:"midi",name:"Soupe miso & nouilles",temps:"15 min",photo:"🍜",
+ ingredients:[{n:"Pâte miso",q:2,u:"tbsp",r:"pantry"},{n:"Nouilles udon",q:150,u:"g",r:"pantry"},{n:"Champignons",q:80,u:"g",r:"produce"},{n:"Tofu",q:100,u:"g",r:"pantry"},{n:"Ciboulette",q:1,u:"bunch",r:"produce"}],
+ steps:["Cuire les nouilles udon dans l'eau bouillante selon le temps indiqué sur le paquet, égoutter.","Émincer les champignons et couper le tofu en cubes.","Chauffer de l'eau ou un bouillon léger, ajouter champignons et tofu, cuire 3-4 min.","Retirer du feu et diluer la pâte miso directement dans le bouillon chaud (ne pas la faire bouillir pour préserver ses arômes).","Verser le bouillon sur les nouilles dans un bol, parsemer de ciboulette ciselée."]},
+{id:"d17",meal:"midi",name:"Salade caprese & jambon cru",temps:"10 min",photo:"🍅",
+ ingredients:[{n:"Tomates",q:3,u:"piece",r:"produce"},{n:"Mozzarella",q:125,u:"g",r:"dairy_eggs"},{n:"Jambon cru",q:4,u:"slice",r:"meat_fish"},{n:"Basilic",q:1,u:"bunch",r:"produce"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"}],
+ steps:["Trancher les tomates en rondelles régulières d'environ 1 cm.","Trancher la mozzarella de la même épaisseur.","Alterner sur une assiette les tranches de tomate et de mozzarella.","Disposer le jambon cru en plis harmonieux entre les tranches et ajouter les feuilles de basilic frais.","Arroser d'huile d'olive et d'un tour de poivre juste avant de servir."]},
+{id:"d18",meal:"midi",name:"Taboulé oriental",temps:"20 min",photo:"🥗",
+ ingredients:[{n:"Semoule fine",q:150,u:"g",r:"pantry"},{n:"Tomates",q:2,u:"piece",r:"produce"},{n:"Concombre",q:1,u:"piece",r:"produce"},{n:"Persil",q:1,u:"bunch",r:"produce"},{n:"Citron",q:1,u:"piece",r:"produce"}],
+ steps:["Verser la semoule dans un grand bol, couvrir d'eau chaude à niveau égal, couvrir et laisser gonfler 10 min.","Égrainer la semoule à la fourchette une fois qu'elle a absorbé l'eau.","Couper les tomates et le concombre en petits dés, ciseler finement le persil.","Ajouter les légumes et le persil à la semoule.","Arroser du jus de citron et d'un filet d'huile d'olive, mélanger et réserver au frais avant de servir."]},
+{id:"s1",meal:"soir",name:"Poulet rôti & pommes de terre",temps:"1h10",photo:"🍗",
+ ingredients:[{n:"Poulet entier",q:1,u:"piece",r:"meat_fish"},{n:"Pommes de terre",q:800,u:"g",r:"produce"},{n:"Ail",q:3,u:"clove",r:"produce"},{n:"Thym",q:1,u:"sprig",r:"produce"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"}],
+ steps:["Préchauffer le four à 200°C.","Frotter le poulet avec l'huile d'olive, l'ail écrasé, le thym, du sel et du poivre, y compris à l'intérieur.","Placer le poulet dans un plat, disposer les pommes de terre coupées en gros morceaux tout autour.","Enfourner 1h en arrosant le poulet de son jus toutes les 20 min pour qu'il reste moelleux.","Vérifier la cuisson en piquant la cuisse : le jus qui s'écoule doit être clair, pas rosé.","Laisser reposer 5 min hors du four avant de découper."]},
+{id:"s2",meal:"soir",name:"Pâtes à la carbonara",temps:"20 min",photo:"🍝",
+ ingredients:[{n:"Pâtes",q:200,u:"g",r:"pantry"},{n:"Lardons",q:150,u:"g",r:"meat_fish"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Parmesan",q:40,u:"g",r:"dairy_eggs"},{n:"Poivre",q:1,u:"totaste",r:"other"}],
+ steps:["Cuire les pâtes dans l'eau bouillante salée selon le temps du paquet, en réservant un peu d'eau de cuisson avant d'égoutter.","Pendant ce temps, faire revenir les lardons à sec dans une poêle jusqu'à ce qu'ils soient bien dorés.","Battre les œufs avec le parmesan râpé et beaucoup de poivre dans un bol.","Égoutter les pâtes encore très chaudes, les remettre dans la casserole hors du feu.","Ajouter immédiatement les lardons puis le mélange œuf-parmesan, remuer vivement : la chaleur des pâtes cuit les œufs sans les figer en omelette.","Ajouter un peu d'eau de cuisson réservée si la sauce est trop épaisse, servir tout de suite."]},
+{id:"s3",meal:"soir",name:"Gratin de courgettes",temps:"40 min",photo:"🥘",
+ ingredients:[{n:"Courgettes",q:3,u:"piece",r:"produce"},{n:"Crème fraîche",q:200,u:"ml",r:"dairy_eggs"},{n:"Emmental râpé",q:80,u:"g",r:"dairy_eggs"},{n:"Ail",q:1,u:"clove",r:"produce"}],
+ steps:["Préchauffer le four à 200°C.","Laver les courgettes et les couper en rondelles d'environ 5 mm.","Les faire revenir 8-10 min dans une poêle avec l'ail émincé, jusqu'à ce qu'elles perdent un peu d'eau et commencent à dorer.","Disposer les courgettes dans un plat à gratin, saler et poivrer.","Napper de crème fraîche en l'étalant bien, puis couvrir uniformément de fromage râpé.","Cuire 25 min à 200°C jusqu'à ce que le dessus soit doré et gratiné."]},
+{id:"s4",meal:"soir",name:"Curry de légumes au lait de coco",temps:"30 min",photo:"🍛",
+ ingredients:[{n:"Aubergine",q:1,u:"piece",r:"produce"},{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Lait de coco",q:400,u:"ml",r:"pantry"},{n:"Pâte de curry",q:2,u:"tbsp",r:"pantry"},{n:"Riz",q:150,u:"g",r:"pantry"}],
+ steps:["Couper l'aubergine et la courgette en cubes d'environ 2 cm.","Chauffer un peu d'huile dans une grande poêle ou un wok, ajouter la pâte de curry et la faire revenir 1 min pour libérer les arômes.","Ajouter les légumes, bien les enrober de pâte de curry, cuire 5 min en remuant.","Verser le lait de coco, mélanger et laisser mijoter à couvert 15-20 min jusqu'à ce que les légumes soient bien tendres.","Pendant ce temps, cuire le riz selon les instructions du paquet.","Rectifier l'assaisonnement du curry en sel si besoin, servir chaud sur le riz."]},
+{id:"s5",meal:"soir",name:"Saumon en papillote & riz",temps:"25 min",photo:"🐟",
+ ingredients:[{n:"Pavés de saumon",q:2,u:"piece",r:"meat_fish"},{n:"Citron",q:1,u:"piece",r:"produce"},{n:"Aneth",q:1,u:"bunch",r:"produce"},{n:"Riz",q:150,u:"g",r:"pantry"}],
+ steps:["Préchauffer le four à 200°C.","Découper deux grands carrés de papier cuisson, déposer un pavé de saumon au centre de chacun.","Saler, poivrer, ajouter 2-3 rondelles de citron et quelques brins d'aneth sur chaque pavé.","Refermer hermétiquement les papillotes en repliant bien les bords.","Enfourner 15-18 min selon l'épaisseur du poisson.","Pendant ce temps, cuire le riz à la vapeur ou à l'eau, servir le saumon dès l'ouverture de la papillote pour profiter de la vapeur parfumée."]},
+{id:"s6",meal:"soir",name:"Chili con carne",temps:"35 min",photo:"🌶️",
+ ingredients:[{n:"Bœuf haché",q:400,u:"g",r:"meat_fish"},{n:"Haricots rouges",q:1,u:"can",r:"pantry"},{n:"Tomates concassées",q:400,u:"g",r:"pantry"},{n:"Oignon",q:1,u:"piece",r:"produce"},{n:"Piment",q:1,u:"tsp",r:"pantry"}],
+ steps:["Émincer finement l'oignon.","Chauffer un peu d'huile dans une cocotte, faire revenir l'oignon 3 min jusqu'à ce qu'il devienne translucide.","Ajouter le bœuf haché, faire revenir en émiettant à la fourchette jusqu'à ce qu'il soit bien coloré.","Ajouter les tomates concassées et le piment, saler, poivrer, mélanger.","Égoutter et rincer les haricots rouges, les incorporer.","Laisser mijoter à couvert 25 min à feu doux en remuant de temps en temps, jusqu'à ce que la sauce ait légèrement épaissi."]},
+{id:"s7",meal:"soir",name:"Blanquette de veau",temps:"1h30",photo:"🍲",
+ ingredients:[{n:"Veau à blanquette",q:600,u:"g",r:"meat_fish"},{n:"Carottes",q:2,u:"piece",r:"produce"},{n:"Champignons",q:150,u:"g",r:"produce"},{n:"Crème fraîche",q:200,u:"ml",r:"dairy_eggs"},{n:"Riz",q:150,u:"g",r:"pantry"}],
+ steps:["Placer les morceaux de veau dans une cocotte, couvrir d'eau froide, porter à ébullition puis écumer.","Ajouter les carottes coupées en rondelles, saler légèrement, couvrir et laisser mijoter 1h à feu doux.","Ajouter les champignons émincés 15 min avant la fin de cuisson.","Retirer la viande et les légumes, réserver au chaud. Faire réduire le bouillon quelques minutes si besoin.","Hors du feu, incorporer la crème fraîche au bouillon en fouettant pour lier la sauce.","Remettre viande et légumes dans la sauce, réchauffer doucement sans bouillir, servir avec le riz."]},
+{id:"s8",meal:"soir",name:"Lasagnes maison",temps:"1h",photo:"🍝",
+ ingredients:[{n:"Feuilles de lasagne",q:12,u:"piece",r:"pantry"},{n:"Bœuf haché",q:400,u:"g",r:"meat_fish"},{n:"Sauce tomate",q:500,u:"ml",r:"pantry"},{n:"Béchamel",q:400,u:"ml",r:"dairy_eggs"},{n:"Emmental râpé",q:100,u:"g",r:"dairy_eggs"}],
+ steps:["Préchauffer le four à 190°C.","Faire revenir le bœuf haché dans une poêle jusqu'à ce qu'il soit bien coloré, ajouter la sauce tomate, saler, poivrer, laisser mijoter 10 min.","Dans un plat à gratin, verser un peu de sauce viande au fond pour éviter que les premières feuilles collent.","Alterner les couches : feuilles de lasagne, sauce viande, béchamel, en répétant l'opération 3 à 4 fois.","Terminer par une couche de béchamel, couvrir généreusement de fromage râpé.","Cuire 40 min à 190°C jusqu'à ce que le dessus soit bien doré et que les lasagnes soient fondantes. Laisser reposer 5 min avant de découper."]},
+{id:"s9",meal:"soir",name:"Poêlée de crevettes à l'ail",temps:"15 min",photo:"🍤",
+ ingredients:[{n:"Crevettes",q:300,u:"g",r:"meat_fish"},{n:"Ail",q:3,u:"clove",r:"produce"},{n:"Persil",q:1,u:"bunch",r:"produce"},{n:"Riz",q:150,u:"g",r:"pantry"}],
+ steps:["Décortiquer les crevettes si besoin, éponger avec du papier absorbant.","Émincer finement l'ail et ciseler le persil.","Chauffer un filet d'huile d'olive dans une poêle à feu vif, ajouter l'ail et le faire revenir 30 sec sans le laisser brûler.","Ajouter les crevettes, cuire 2-3 min par côté jusqu'à ce qu'elles deviennent roses et opaques.","Saler, poivrer, parsemer de persil hors du feu.","Servir immédiatement, bien chaud, avec le riz cuit à la vapeur."]},
+{id:"s10",meal:"soir",name:"Ratatouille & riz",temps:"45 min",photo:"🍆",
+ ingredients:[{n:"Aubergine",q:1,u:"piece",r:"produce"},{n:"Courgette",q:2,u:"piece",r:"produce"},{n:"Tomates",q:3,u:"piece",r:"produce"},{n:"Poivron",q:1,u:"piece",r:"produce"},{n:"Riz",q:150,u:"g",r:"pantry"}],
+ steps:["Couper tous les légumes en dés d'environ 2 cm, en gardant chaque légume séparé.","Chauffer un fond d'huile d'olive dans une cocotte, faire revenir l'aubergine seule 5 min car elle absorbe plus d'huile.","Ajouter le poivron et la courgette, faire revenir 5 min de plus.","Ajouter les tomates coupées en dés, saler, poivrer, ajouter un peu d'herbes de Provence si disponibles.","Couvrir et laisser mijoter à feu doux 30 min en remuant de temps en temps, jusqu'à ce que les légumes soient fondants.","Cuire le riz pendant ce temps et servir la ratatouille chaude ou tiède par-dessus."]},
+{id:"s11",meal:"soir",name:"Steak, frites maison & salade",temps:"30 min",photo:"🥩",
+ ingredients:[{n:"Steaks de bœuf",q:2,u:"piece",r:"meat_fish"},{n:"Pommes de terre",q:500,u:"g",r:"produce"},{n:"Salade",q:1,u:"piece",r:"produce"},{n:"Huile",q:2,u:"tbsp",r:"pantry"}],
+ steps:["Préchauffer le four à 200°C.","Couper les pommes de terre en bâtonnets réguliers, les sécher avec un torchon.","Les disposer sur une plaque avec l'huile, sel et poivre, enfourner 25 min en les retournant à mi-cuisson.","Sortir les steaks du réfrigérateur 10 min avant cuisson pour qu'ils soient à température ambiante.","Saisir les steaks dans une poêle très chaude 2-3 min par face selon l'épaisseur et la cuisson désirée, laisser reposer 3 min avant de servir.","Laver et assaisonner la salade, servir l'ensemble ensemble."]},
+{id:"s12",meal:"soir",name:"Risotto aux champignons",temps:"30 min",photo:"🍚",
+ ingredients:[{n:"Riz à risotto",q:200,u:"g",r:"pantry"},{n:"Champignons",q:200,u:"g",r:"produce"},{n:"Bouillon de légumes",q:1,u:"liter",r:"pantry"},{n:"Parmesan",q:40,u:"g",r:"dairy_eggs"}],
+ steps:["Faire chauffer le bouillon dans une casserole et le garder à frémissement tout au long de la préparation.","Émincer les champignons, les faire revenir dans une cocotte avec un peu d'huile 5 min, réserver.","Dans la même cocotte, verser le riz à risotto et le faire nacrer 2 min à feu moyen en remuant, sans le laisser colorer.","Ajouter le bouillon chaud louche par louche, en attendant que chaque louche soit absorbée avant d'ajouter la suivante, en remuant régulièrement (environ 18-20 min).","Réincorporer les champignons dans les 5 dernières minutes de cuisson.","Retirer du feu, ajouter le parmesan râpé, mélanger vivement pour obtenir un risotto crémeux (l'onctuosité vient de ce mouvement), servir immédiatement."]},
+{id:"s13",meal:"soir",name:"Tajine de poulet aux abricots",temps:"45 min",photo:"🍗",
+ ingredients:[{n:"Cuisses de poulet",q:4,u:"piece",r:"meat_fish"},{n:"Abricots secs",q:100,u:"g",r:"pantry"},{n:"Oignon",q:1,u:"piece",r:"produce"},{n:"Épices tajine",q:1,u:"tbsp",r:"pantry"},{n:"Semoule",q:150,u:"g",r:"pantry"}],
+ steps:["Émincer l'oignon.","Chauffer un peu d'huile dans une cocotte ou un tajine, faire dorer les cuisses de poulet 5 min sur toutes les faces, réserver.","Faire revenir l'oignon dans la même cocotte, ajouter les épices à tajine, laisser torréfier 1 min.","Remettre le poulet, ajouter les abricots secs et un verre d'eau, couvrir.","Laisser mijoter à feu doux 35 min en retournant le poulet à mi-cuisson, jusqu'à ce qu'il soit bien tendre.","Préparer la semoule selon le paquet et servir le tajine par-dessus avec un peu de sauce."]},
+{id:"s14",meal:"soir",name:"Gratin dauphinois & salade verte",temps:"1h",photo:"🥘",
+ ingredients:[{n:"Pommes de terre",q:800,u:"g",r:"produce"},{n:"Crème fraîche",q:300,u:"ml",r:"dairy_eggs"},{n:"Ail",q:1,u:"clove",r:"produce"},{n:"Salade",q:1,u:"piece",r:"produce"}],
+ steps:["Préchauffer le four à 180°C.","Éplucher les pommes de terre et les couper en fines rondelles régulières (environ 2-3 mm), à la mandoline si possible.","Frotter un plat à gratin avec la gousse d'ail coupée en deux.","Disposer les rondelles de pommes de terre en couches successives, en salant et poivrant légèrement chaque couche.","Verser la crème fraîche sur le dessus en veillant à ce qu'elle s'infiltre entre les couches.","Cuire 50 min à 180°C jusqu'à ce que les pommes de terre soient tendres et le dessus doré. Servir avec la salade verte assaisonnée."]},
+{id:"s15",meal:"soir",name:"Filet de poisson, purée maison",temps:"30 min",photo:"🐟",
+ ingredients:[{n:"Filets de poisson blanc",q:2,u:"piece",r:"meat_fish"},{n:"Pommes de terre",q:600,u:"g",r:"produce"},{n:"Beurre",q:30,u:"g",r:"dairy_eggs"},{n:"Lait",q:100,u:"ml",r:"dairy_eggs"}],
+ steps:["Éplucher et couper les pommes de terre en morceaux, les cuire à l'eau bouillante salée 20 min jusqu'à ce qu'elles soient bien tendres.","Égoutter et écraser au presse-purée, incorporer le beurre puis le lait chaud petit à petit jusqu'à consistance lisse et crémeuse. Saler.","Saler et poivrer les filets de poisson.","Chauffer un peu de beurre ou d'huile dans une poêle à feu moyen-vif.","Cuire les filets 4 min sur la première face sans les bouger, puis 3-4 min sur l'autre face selon l'épaisseur, jusqu'à ce que la chair soit opaque et se détache facilement.","Servir immédiatement le poisson sur la purée bien chaude."]},
+{id:"s16",meal:"soir",name:"Chili végétarien aux haricots rouges",temps:"30 min",photo:"🌶️",
+ ingredients:[{n:"Haricots rouges",q:1,u:"can",r:"pantry"},{n:"Tomates concassées",q:400,u:"g",r:"pantry"},{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Oignon",q:1,u:"piece",r:"produce"},{n:"Piment",q:1,u:"tsp",r:"pantry"}],
+ steps:["Émincer l'oignon et couper la courgette en dés.","Chauffer un peu d'huile dans une cocotte, faire revenir l'oignon 3 min jusqu'à ce qu'il devienne translucide.","Ajouter la courgette, cuire 5 min en remuant.","Ajouter les tomates concassées et le piment, saler, poivrer.","Égoutter et rincer les haricots rouges, les incorporer à la préparation.","Laisser mijoter à couvert 20 min à feu doux jusqu'à ce que la sauce ait épaissi et que la courgette soit bien tendre."]},
+{id:"s17",meal:"soir",name:"Poulet basquaise",temps:"45 min",photo:"🍗",
+ ingredients:[{n:"Cuisses de poulet",q:4,u:"piece",r:"meat_fish"},{n:"Poivrons",q:2,u:"piece",r:"produce"},{n:"Tomates",q:3,u:"piece",r:"produce"},{n:"Oignon",q:1,u:"piece",r:"produce"},{n:"Riz",q:150,u:"g",r:"pantry"}],
+ steps:["Couper les poivrons en lanières, les tomates en quartiers et émincer l'oignon.","Chauffer un peu d'huile dans une cocotte, faire dorer les cuisses de poulet 5-6 min sur toutes les faces, réserver.","Faire revenir l'oignon et les poivrons dans la même cocotte 5 min.","Ajouter les tomates, saler, poivrer, mélanger et laisser rendre leur jus 5 min.","Remettre le poulet dans la cocotte, couvrir et laisser mijoter à feu doux 30 min jusqu'à ce que le poulet soit bien cuit et fondant.","Cuire le riz pendant ce temps et servir le poulet basquaise avec sa sauce par-dessus."]},
+{id:"s18",meal:"soir",name:"Couscous poulet-légumes",temps:"40 min",photo:"🍛",
+ ingredients:[{n:"Cuisses de poulet",q:4,u:"piece",r:"meat_fish"},{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Carotte",q:2,u:"piece",r:"produce"},{n:"Pois chiches",q:1,u:"can",r:"pantry"},{n:"Semoule à couscous",q:200,u:"g",r:"pantry"}],
+ steps:["Couper la courgette et les carottes en gros tronçons.","Dans une grande cocotte, faire dorer les cuisses de poulet 5 min sur toutes les faces.","Couvrir d'eau ou de bouillon, ajouter les carottes, saler, poivrer, ajouter éventuellement des épices à couscous.","Laisser mijoter 20 min, puis ajouter la courgette et les pois chiches égouttés, poursuivre la cuisson 10 min.","Préparer la semoule à couscous en versant de l'eau chaude (ou du bouillon chaud) à niveau égal, couvrir 5 min puis égrainer à la fourchette avec un peu d'huile.","Servir la semoule surmontée du poulet, des légumes et arrosée d'un peu de bouillon."]},
+];
+
+const RAYON_ORDER = ["produce","meat_fish","dairy_eggs","bakery","pantry","frozen","other"];
+const RAYON_LABELS = {
+  produce:{fr:"Fruits & Légumes",en:"Fruits & Vegetables"},
+  meat_fish:{fr:"Boucherie & Poissonnerie",en:"Meat & Fish"},
+  dairy_eggs:{fr:"Crémerie & Œufs",en:"Dairy & Eggs"},
+  bakery:{fr:"Boulangerie",en:"Bakery"},
+  pantry:{fr:"Épicerie",en:"Pantry"},
+  frozen:{fr:"Surgelés",en:"Frozen"},
+  other:{fr:"Autres",en:"Other"},
+};
+const MEAL_LABEL = {
+  matin:{fr:"Petit-déjeuner",en:"Breakfast"},
+  midi:{fr:"Déjeuner",en:"Lunch"},
+  soir:{fr:"Dîner",en:"Dinner"},
+};
+
+const UNIT_LABELS = {
+  g:{fr:{s:"g",p:"g"}, en:{s:"g",p:"g"}},
+  ml:{fr:{s:"ml",p:"ml"}, en:{s:"ml",p:"ml"}},
+  liter:{fr:{s:"l",p:"l"}, en:{s:"l",p:"l"}},
+  piece:{fr:{s:"",p:""}, en:{s:"",p:""}},
+  slice:{fr:{s:"tranche",p:"tranches"}, en:{s:"slice",p:"slices"}},
+  clove:{fr:{s:"gousse",p:"gousses"}, en:{s:"clove",p:"cloves"}},
+  bunch:{fr:{s:"botte",p:"bottes"}, en:{s:"bunch",p:"bunches"}},
+  can:{fr:{s:"boîte",p:"boîtes"}, en:{s:"can",p:"cans"}},
+  packet:{fr:{s:"sachet",p:"sachets"}, en:{s:"packet",p:"packets"}},
+  cube:{fr:{s:"cube",p:"cubes"}, en:{s:"cube",p:"cubes"}},
+  sprig:{fr:{s:"branche",p:"branches"}, en:{s:"sprig",p:"sprigs"}},
+  leaf:{fr:{s:"feuille",p:"feuilles"}, en:{s:"leaf",p:"leaves"}},
+  tbsp:{fr:{s:"cs",p:"cs"}, en:{s:"tbsp",p:"tbsp"}},
+  tsp:{fr:{s:"cc",p:"cc"}, en:{s:"tsp",p:"tsp"}},
+  pinch:{fr:{s:"pincée",p:"pincées"}, en:{s:"pinch",p:"pinches"}},
+  totaste:{fr:{s:"au goût",p:"au goût"}, en:{s:"to taste",p:"to taste"}},
+};
+function unitLabel(canonicalUnit, qty){
+  const entry = UNIT_LABELS[canonicalUnit];
+  if(!entry) return "";
+  const form = entry[lang];
+  return (qty === 1 || canonicalUnit==="totaste") ? form.s : form.p;
+}
+
+/* ---------------- Interface bilingue ---------------- */
+let lang = "fr";
+const UI = {
+  eyebrow:{fr:"Aujourd'hui, tu manges",en:"Today you're eating"},
+  title:{fr:"Le menu du jour",en:"The daily menu"},
+  tabToday:{fr:"Aujourd'hui",en:"Today"},
+  tabWeek:{fr:"Semaine",en:"Week"},
+  tabMonth:{fr:"Mois",en:"Month"},
+  tabCourses:{fr:"Courses",en:"Shopping"},
+  servingsLabel:{fr:"Nombre de personnes",en:"Number of servings"},
+  servingsSub:{fr:"quantités recalculées automatiquement",en:"quantities recalculated automatically"},
+  regen:{fr:"↻ régénérer le menu du jour",en:"↻ regenerate today's menu"},
+  seeRecipe:{fr:"Voir la recette",en:"See recipe"},
+  hideRecipe:{fr:"Masquer la recette",en:"Hide recipe"},
+  ingredients:{fr:"Ingrédients",en:"Ingredients"},
+  preparation:{fr:"Préparation",en:"Preparation"},
+  replace:{fr:"↻ Remplacer cette recette",en:"↻ Replace this recipe"},
+  forServings:{fr:"pour",en:"for"},
+  person:{fr:"personne",en:"serving"},
+  persons:{fr:"personnes",en:"servings"},
+  scopeToday:{fr:"Aujourd'hui",en:"Today"},
+  scopeWeek:{fr:"Semaine",en:"Week"},
+  scopeMonth:{fr:"Mois",en:"Month"},
+  receiptTitle:{fr:"Liste de courses",en:"Shopping list"},
+  scopeTodayLbl:{fr:"aujourd'hui",en:"today"},
+  scopeWeekLbl:{fr:"cette semaine",en:"this week"},
+  scopeMonthLbl:{fr:"ce mois",en:"this month"},
+  articles:{fr:"article",en:"item"},
+  articlesP:{fr:"articles",en:"items"},
+  priceDisclaimer:{fr:"estimation, prix moyens hors promotions",en:"estimate, average prices excluding promotions"},
+  settingsIntro:{fr:"Pour afficher de vraies photos des plats, colle une clé API gratuite Pexels (2 min, sans carte bancaire).",en:"To show real dish photos, paste a free Pexels API key (2 min, no credit card)."},
+  settingsLink:{fr:"→ Obtenir une clé sur pexels.com/api",en:"→ Get a key at pexels.com/api"},
+  settingsPlaceholder:{fr:"Colle ta clé Pexels ici",en:"Paste your Pexels key here"},
+  settingsSaved:{fr:"Clé enregistrée — les photos se chargent automatiquement.",en:"Key saved — photos will load automatically."},
+  settingsRemoved:{fr:"Clé retirée. Retour aux vignettes illustrées.",en:"Key removed. Back to illustrated tiles."},
+  settingsLoading:{fr:"Clé enregistrée — chargement des photos en cours…",en:"Key saved — loading photos…"},
+  footer:{fr:"Prototype fonctionnel — les données sont stockées uniquement pour ton compte, dans cet artifact.",en:"Working prototype — your data is stored only for you, inside this artifact."},
+  paywallTitle:{fr:"Liste de courses réservée aux abonnés",en:"Shopping list for subscribers only"},
+  paywallText:{fr:"Débloque la liste de courses automatique (jour, semaine, mois) et les prix estimés pour 9,99 €/mois.",en:"Unlock the automatic shopping list (day, week, month) and estimated prices for $9.99/month."},
+  authEmailPlaceholder:{fr:"ton@email.fr",en:"you@email.com"},
+  authSendBtn:{fr:"Recevoir un lien de connexion",en:"Get a sign-in link"},
+  subscribeBtn:{fr:"S'abonner — 9,99 €/mois",en:"Subscribe — $9.99/month"},
+  logoutBtn:{fr:"Se déconnecter",en:"Sign out"},
+};
+function t(key){ return UI[key][lang]; }
+function pluralWord(fr, en, n){ return lang==="fr" ? fr : en; }
+
+/* ================================================================
+   ABONNEMENT — Supabase (comptes) + Stripe (paiement)
+   ================================================================
+   ⚠️ À REMPLIR avant de déployer sur ton propre domaine :
+   - SUPABASE_URL et SUPABASE_ANON_KEY : Supabase > Project Settings > API
+     (l'anon key est publique par design, protégée par les policies RLS)
+   - CHECKOUT_ENDPOINT : l'URL de ta fonction serverless une fois déployée
+     sur Vercel, ex. "https://tondomaine.fr/api/create-checkout-session"
+   Tant que ces valeurs restent vides, le paywall reste affiché mais
+   les boutons expliquent clairement que la config n'est pas terminée.
+================================================================= */
+const SUPABASE_URL = "";        // ex: "https://xxxxx.supabase.co"
+const SUPABASE_ANON_KEY = "";   // clé publique "anon", pas la service_role
+const CHECKOUT_ENDPOINT = "";   // ex: "https://tondomaine.fr/api/create-checkout-session"
+
+function authConfigured(){ return !!(SUPABASE_URL && SUPABASE_ANON_KEY); }
+
+async function getSession(){ return await storeGet("supabase-session"); }
+async function saveSession(session){ await storeSet("supabase-session", session); }
+async function clearSession(){ await storeSet("supabase-session", null); }
+
+function decodeJwtSub(token){
+  try{
+    const payload = token.split(".")[1];
+    const json = decodeURIComponent(atob(payload.replace(/-/g,"+").replace(/_/g,"/"))
+      .split("").map(c => "%"+("00"+c.charCodeAt(0).toString(16)).slice(-2)).join(""));
+    return JSON.parse(json).sub;
+  }catch(e){ return null; }
+}
+
+// Si l'utilisateur revient d'un clic sur son lien magique reçu par email,
+// Supabase renvoie access_token/refresh_token dans le hash de l'URL (#...)
+async function captureAuthRedirect(){
+  if(!window.location.hash.includes("access_token")) return;
+  const params = new URLSearchParams(window.location.hash.slice(1));
+  const access_token = params.get("access_token");
+  const refresh_token = params.get("refresh_token");
+  if(access_token){
+    await saveSession({ access_token, refresh_token, user_id: decodeJwtSub(access_token) });
+    history.replaceState(null, "", window.location.pathname + window.location.search);
+  }
+}
+
+async function sendMagicLink(email){
+  const res = await fetch(SUPABASE_URL+"/auth/v1/otp", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json", "apikey":SUPABASE_ANON_KEY },
+    body: JSON.stringify({ email, create_user:true, options:{ email_redirect_to: window.location.href.split("#")[0] } })
+  });
+  return res.ok;
+}
+
+async function checkSubscriptionStatus(session){
+  if(!session || !session.access_token || !session.user_id) return false;
+  try{
+    const res = await fetch(SUPABASE_URL+"/rest/v1/abonnements?select=statut&user_id=eq."+session.user_id, {
+      headers:{ "apikey":SUPABASE_ANON_KEY, "Authorization":"Bearer "+session.access_token }
+    });
+    if(!res.ok) return false;
+    const rows = await res.json();
+    return rows.length>0 && rows[0].statut === "actif";
+  }catch(e){ console.error("subscription check error", e); return false; }
+}
+
+async function startCheckout(session){
+  const status = document.getElementById("paywall-status");
+  if(!CHECKOUT_ENDPOINT){
+    status.textContent = lang==="fr"
+      ? "Configuration du paiement pas encore terminée (CHECKOUT_ENDPOINT vide)."
+      : "Payment setup not finished yet (CHECKOUT_ENDPOINT is empty).";
+    return;
+  }
+  status.textContent = lang==="fr" ? "Redirection vers le paiement…" : "Redirecting to payment…";
+  try{
+    const res = await fetch(CHECKOUT_ENDPOINT, {
+      method:"POST",
+      headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({ access_token: session.access_token })
+    });
+    const data = await res.json();
+    if(data.url){ window.location.href = data.url; }
+    else { status.textContent = lang==="fr" ? "Erreur lors de la création du paiement." : "Error creating the payment session."; }
+  }catch(e){
+    status.textContent = lang==="fr" ? "Erreur réseau, réessaie." : "Network error, please retry.";
+  }
+}
+
+let previewPaywall = false;
+
+async function renderPaywall(){
+  const gate = document.getElementById("paywall-gate");
+  const content = document.getElementById("courses-content");
+  const authForm = document.getElementById("auth-form");
+  const subscribeBtn = document.getElementById("subscribe-btn");
+  const logoutBtn = document.getElementById("logout-btn");
+  const status = document.getElementById("paywall-status");
+
+  if(!authConfigured() && !previewPaywall){
+    // Configuration pas encore branchée : on montre la liste en libre accès
+    // pour ne pas bloquer les tests avant que Supabase/Stripe soient prêts.
+    gate.classList.add("hidden");
+    content.classList.remove("hidden");
+    return;
+  }
+
+  if(previewPaywall && !authConfigured()){
+    // Mode aperçu manuel : on affiche le paywall tel qu'il apparaîtra une
+    // fois Supabase/Stripe branchés, sans vérifier de vrai abonnement.
+    content.classList.add("hidden");
+    gate.classList.remove("hidden");
+    authForm.classList.remove("hidden");
+    subscribeBtn.classList.add("hidden");
+    logoutBtn.classList.add("hidden");
+    status.textContent = lang==="fr" ? "— Mode aperçu : Supabase pas encore branché —" : "— Preview mode: Supabase not connected yet —";
+    return;
+  }
+
+  const session = await getSession();
+  const subscribed = await checkSubscriptionStatus(session);
+
+  if(subscribed){
+    gate.classList.add("hidden");
+    content.classList.remove("hidden");
+    return;
+  }
+
+  content.classList.add("hidden");
+  gate.classList.remove("hidden");
+  status.textContent = "";
+
+  if(session && session.access_token){
+    authForm.classList.add("hidden");
+    subscribeBtn.classList.remove("hidden");
+    logoutBtn.classList.remove("hidden");
+  } else {
+    authForm.classList.remove("hidden");
+    subscribeBtn.classList.add("hidden");
+    logoutBtn.classList.add("hidden");
+  }
+}
+
+/* ---------------- Storage helpers ---------------- */
+// Fonctionne à la fois dans un artifact Claude (window.storage) et sur un
+// vrai hébergement web (localStorage) — l'app détecte automatiquement où
+// elle tourne et utilise le bon mécanisme, sans rien à changer.
+const hasClaudeStorage = typeof window !== "undefined" && !!window.storage;
+
+async function storeGet(key){
+  if(hasClaudeStorage){
+    for(let attempt=0; attempt<2; attempt++){
+      try{ const r = await window.storage.get(key,false); return r ? JSON.parse(r.value) : null; }
+      catch(e){ if(attempt===1){ console.error("storage read error",e); return null; } }
+    }
+  } else {
+    try{ const v = localStorage.getItem(key); return v ? JSON.parse(v) : null; }
+    catch(e){ console.error("storage read error",e); return null; }
+  }
+}
+async function storeSet(key,value){
+  if(hasClaudeStorage){
+    for(let attempt=0; attempt<2; attempt++){
+      try{ await window.storage.set(key, JSON.stringify(value), false); return true; }
+      catch(e){ if(attempt===1){ console.error("storage write error",e); return false; } }
+    }
+  } else {
+    try{ localStorage.setItem(key, JSON.stringify(value)); return true; }
+    catch(e){ console.error("storage write error",e); return false; }
+  }
+}
+
+function todayKey(d){
+  return d.toISOString().slice(0,10);
+}
+
+/* ---------------- Menu generation ---------------- */
+async function getOrCreateTodayMenu(forceRegen){
+  const now = new Date();
+  const key = todayKey(now);
+  let history = await storeGet("historique-menus") || {};
+
+  if(history[key] && !forceRegen){
+    return history[key];
+  }
+
+  const last14Keys = Object.keys(history)
+    .filter(k => k !== key)
+    .sort()
+    .slice(-14);
+  const recentIds = new Set();
+  last14Keys.forEach(k => {
+    const entry = history[k];
+    if(entry){ Object.values(entry).forEach(id => recentIds.add(id)); }
+  });
+
+  const chosen = {};
+  ["matin","midi","soir"].forEach(meal => {
+    const pool = RECIPES.filter(r => r.meal === meal);
+    let candidates = pool.filter(r => !recentIds.has(r.id));
+    if(candidates.length === 0) candidates = pool;
+    const pick = candidates[Math.floor(Math.random()*candidates.length)];
+    chosen[meal] = pick.id;
+  });
+
+  history[key] = chosen;
+  // garde un historique raisonnable (60 derniers jours)
+  const allKeys = Object.keys(history).sort();
+  if(allKeys.length > 60){
+    delete history[allKeys[0]];
+  }
+  await storeSet("historique-menus", history);
+  return chosen;
+}
+
+function findRecipe(id){ return RECIPES.find(r => r.id === id); }
+
+/* ---------------- Shopping list ---------------- */
+const DISCRETE_UNITS = ["piece","slice","clove","leaf","bunch","can","cube","packet","sprig"];
+
+function buildShoppingList(menuIds){
+  const factor = scaleFactor();
+  const items = {}; // key: name|unit -> {n,u,r,q,isVague}
+  Object.values(menuIds).forEach(id => {
+    const recipe = findRecipe(id);
+    if(!recipe) return;
+    recipe.ingredients.forEach(ing => {
+      const vague = (ing.u === "totaste" || ing.u === "pinch");
+      const key = ing.n.toLowerCase()+"|"+ing.u;
+      const scaledRaw = ing.q * factor;
+      if(!items[key]){
+        items[key] = {n:ing.n, u:ing.u, r:ing.r, q: vague?0:scaledRaw, isVague:vague};
+      } else if(!vague){
+        items[key].q += scaledRaw;
+      }
+    });
+  });
+  // arrondi final : entier vers le haut pour les unités comptables, dixième pour le reste
+  Object.values(items).forEach(item => {
+    if(item.isVague) return;
+    if(DISCRETE_UNITS.includes(item.u)){
+      item.q = Math.max(1, Math.ceil(item.q - 0.001));
+    } else {
+      item.q = Math.round(item.q*10)/10;
+    }
+  });
+  return Object.values(items);
+}
+
+const ING_EN = {
+  "abricots secs":"dried apricots","ail":"garlic","amandes":"almonds","aneth":"dill","aubergine":"eggplant",
+  "avocat":"avocado","bacon":"bacon","banane":"banana","basilic":"basil","beurre":"butter",
+  "beurre de cacahuète":"peanut butter","blanc de poulet":"chicken breast","blanc de poulet cuit":"cooked chicken breast",
+  "bouillon de légumes":"vegetable stock","béchamel":"béchamel sauce","bœuf haché":"ground beef","cannelle":"cinnamon",
+  "carotte":"carrot","carottes":"carrots","champignons":"mushrooms","ciboulette":"chives","citron":"lemon",
+  "compote de pommes":"apple compote","concombre":"cucumber","confiture":"jam","courgette":"zucchini","courgettes":"zucchinis",
+  "crevettes":"shrimp","croûtons":"croutons","crème fraîche":"heavy cream","cuisses de poulet":"chicken thighs",
+  "emmental râpé":"grated cheese","farine":"flour","feta":"feta cheese","feuilles de lasagne":"lasagna sheets",
+  "filets de poisson blanc":"white fish fillets","flocons d'avoine":"oats","fromage blanc":"fromage blanc (quark)",
+  "fromage de chèvre":"goat cheese","fruits rouges":"mixed berries","fruits secs":"dried fruit","galette de blé":"wheat wrap",
+  "galettes de sarrasin":"buckwheat crêpes","graines de chia":"chia seeds","granola":"granola","haricots rouges":"kidney beans",
+  "huile":"oil","huile d'olive":"olive oil","jambon":"ham","jambon cru":"cured ham","lait":"milk","lait de coco":"coconut milk",
+  "lardons":"bacon bits","lentilles cuites":"cooked lentils","levure chimique":"baking powder","maïs":"corn","miel":"honey",
+  "mozzarella":"mozzarella","noix":"walnuts","nouilles udon":"udon noodles","oignon":"onion","oignon rouge":"red onion",
+  "olives":"olives","olives noires":"black olives","pain":"bread","pain aux céréales":"multigrain bread",
+  "pain de campagne":"country bread","pain de mie":"sandwich bread","pain rassis":"stale bread","parmesan":"parmesan",
+  "pavés de saumon":"salmon fillets","persil":"parsley","piment":"chili powder","piment doux":"sweet paprika",
+  "pois chiches":"chickpeas","poivre":"pepper","poivron":"bell pepper","poivrons":"bell peppers","pomme":"apple",
+  "pomme de terre":"potato","pommes de terre":"potatoes","poulet entier":"whole chicken","pâte brisée":"shortcrust pastry",
+  "pâte de curry":"curry paste","pâte miso":"miso paste","pâtes":"pasta","quinoa":"quinoa","ricotta":"ricotta",
+  "riz":"rice","riz cuit":"cooked rice","riz à risotto":"risotto rice","salade":"lettuce","salade romaine":"romaine lettuce",
+  "sauce césar":"caesar dressing","sauce fromagère":"cheese sauce","sauce soja":"soy sauce","sauce tomate":"tomato sauce",
+  "saumon frais":"fresh salmon","saumon fumé":"smoked salmon","sel & poivre":"salt & pepper","semoule":"semolina",
+  "semoule fine":"fine semolina","semoule à couscous":"couscous semolina","steaks de bœuf":"beef steaks","sucre":"sugar",
+  "thon en boîte":"canned tuna","thym":"thyme","tofu":"tofu","tomates":"tomatoes","tomates concassées":"crushed tomatoes",
+  "veau à blanquette":"veal (stewing cuts)","vinaigrette":"vinaigrette","yaourt grec":"greek yogurt",
+  "épices tajine":"tagine spice mix","épinards frais":"fresh spinach","œufs":"eggs",
+};
+function displayIngName(name){
+  if(lang==="fr") return name;
+  return ING_EN[name.toLowerCase()] || name;
+}
+
+function formatQty(item){
+  if(item.isVague) return unitLabel("totaste", 1);
+  const label = unitLabel(item.u, item.q);
+  return item.q+(label?" "+label:"");
+}
+
+/* ---------------- Prix estimatifs (moyennes type supermarché, hors promos) ---------------- */
+// Valeurs = prix par gramme/ml pour les unités g/ml, prix par unité pour les autres (pièce, tranche, cs, etc.)
+const PRICE_DB = {
+  "abricots secs|g":0.008,
+  "amandes|g":0.012,
+  "beurre|g":0.007,
+  "blanc de poulet cuit|g":0.013,
+  "blanc de poulet|g":0.013,
+  "bœuf haché|g":0.011,
+  "champignons|g":0.005,
+  "compote de pommes|g":0.003,
+  "crevettes|g":0.018,
+  "croûtons|g":0.008,
+  "emmental râpé|g":0.01,
+  "farine|g":0.0012,
+  "feta|g":0.012,
+  "flocons d'avoine|g":0.003,
+  "fromage blanc|g":0.003,
+  "fromage de chèvre|g":0.015,
+  "fruits rouges|g":0.008,
+  "fruits secs|g":0.01,
+  "granola|g":0.007,
+  "lardons|g":0.009,
+  "lentilles cuites|g":0.003,
+  "maïs|g":0.003,
+  "mozzarella|g":0.009,
+  "noix|g":0.014,
+  "nouilles udon|g":0.005,
+  "olives noires|g":0.008,
+  "olives|g":0.008,
+  "parmesan|g":0.02,
+  "pommes de terre|g":0.0015,
+  "pâtes|g":0.0018,
+  "quinoa|g":0.006,
+  "ricotta|g":0.008,
+  "riz cuit|g":0.0025,
+  "riz à risotto|g":0.004,
+  "riz|g":0.002,
+  "saumon frais|g":0.025,
+  "saumon fumé|g":0.035,
+  "semoule fine|g":0.002,
+  "semoule à couscous|g":0.002,
+  "semoule|g":0.002,
+  "tofu|g":0.008,
+  "tomates concassées|g":0.002,
+  "veau à blanquette|g":0.016,
+  "yaourt grec|g":0.004,
+  "épinards frais|g":0.006,
+  "béchamel|ml":0.004,
+  "lait|ml":0.0011,
+  "lait de coco|ml":0.0025,
+  "sauce tomate|ml":0.0025,
+  "crème fraîche|ml":0.0035,
+  "ail|clove":0.05,
+  "aubergine|piece":1.1,
+  "avocat|piece":0.9,
+  "banane|piece":0.35,
+  "carotte|piece":0.25,
+  "carottes|piece":0.25,
+  "citron|piece":0.45,
+  "concombre|piece":0.9,
+  "courgette|piece":0.8,
+  "courgettes|piece":0.8,
+  "cuisses de poulet|piece":1.6,
+  "filets de poisson blanc|piece":3,
+  "galette de blé|piece":0.35,
+  "galettes de sarrasin|piece":0.6,
+  "oignon rouge|piece":0.45,
+  "oignon|piece":0.3,
+  "pavés de saumon|piece":3.5,
+  "pomme de terre|piece":0.25,
+  "pomme|piece":0.45,
+  "poulet entier|piece":7.5,
+  "pâte brisée|piece":1.8,
+  "poivron|piece":0.9,
+  "poivrons|piece":0.9,
+  "salade romaine|piece":1.2,
+  "salade|piece":1.1,
+  "steaks de bœuf|piece":3.2,
+  "tomates|piece":0.45,
+  "feuilles de lasagne|piece":0.15,
+  "œufs|piece":0.3,
+  "bacon|slice":0.35,
+  "jambon cru|slice":0.55,
+  "jambon|slice":0.45,
+  "pain aux céréales|slice":0.2,
+  "pain de campagne|slice":0.2,
+  "pain de mie|slice":0.15,
+  "pain rassis|slice":0.1,
+  "pain|slice":0.18,
+  "aneth|bunch":1.2,
+  "basilic|bunch":1.3,
+  "ciboulette|bunch":1.2,
+  "persil|bunch":1,
+  "haricots rouges|can":1.1,
+  "pois chiches|can":1,
+  "thon en boîte|can":2.2,
+  "beurre de cacahuète|tbsp":0.2,
+  "confiture|tbsp":0.1,
+  "graines de chia|tbsp":0.15,
+  "huile d'olive|tbsp":0.15,
+  "huile|tbsp":0.08,
+  "pâte de curry|tbsp":0.3,
+  "pâte miso|tbsp":0.3,
+  "sauce césar|tbsp":0.2,
+  "sauce fromagère|tbsp":0.15,
+  "sauce soja|tbsp":0.08,
+  "sucre|tbsp":0.02,
+  "vinaigrette|tbsp":0.12,
+  "épices tajine|tbsp":0.25,
+  "miel|tbsp":0.25,
+  "miel|tsp":0.1,
+  "piment|tsp":0.05,
+  "bouillon de légumes|cube":0.15,
+  "bouillon de légumes|liter":0.6,
+  "levure chimique|packet":0.35,
+  "thym|sprig":0.3,
+  "salade|leaf":0.15,
+};
+function estimatePrice(item){
+  const key = item.n.toLowerCase()+"|"+item.u;
+  const base = PRICE_DB[key];
+  if(!base) return 0;
+  return base * item.q;
+}
+function formatPrice(v){ return v.toFixed(2).replace(".",",")+" €"; }
+const BASE_SERVINGS = 2; // toutes les recettes sont écrites pour 2 personnes à la base
+const DEFAULT_SERVINGS = 4; // valeur par défaut proposée, modifiable par l'utilisateur
+let servings = DEFAULT_SERVINGS;
+
+function scaleFactor(){ return servings / BASE_SERVINGS; }
+
+function scaledQty(ing){
+  if(ing.u === "totaste" || ing.u === "pinch") return null; // pas de quantité chiffrée
+  const raw = ing.q * scaleFactor();
+  if(DISCRETE_UNITS.includes(ing.u)){
+    return Math.max(1, Math.ceil(raw - 0.001));
+  }
+  return Math.round(raw*10)/10;
+}
+
+function formatIngredientLine(ing){
+  const q = scaledQty(ing);
+  const name = displayIngName(ing.n);
+  if(q === null) return name+" — "+unitLabel(ing.u,1);
+  const label = unitLabel(ing.u, q);
+  return name+" — "+q+(label?" "+label:"");
+}
+
+/* ---------------- Week / month menus ---------------- */
+async function getOrCreateMenusForRange(numDays){
+  const days = [];
+  const now = new Date();
+  for(let i=0;i<numDays;i++){
+    const d = new Date(now);
+    d.setDate(now.getDate()+i);
+    days.push(d);
+  }
+  const menus = [];
+  for(const d of days){
+    const isToday = todayKey(d) === todayKey(now);
+    const menu = isToday ? currentMenu : await getOrCreateMenuForDate(d);
+    menus.push({date:d, menu});
+  }
+  return menus;
+}
+function getOrCreateWeekMenus(){ return getOrCreateMenusForRange(7); }
+function getOrCreateMonthMenus(){ return getOrCreateMenusForRange(30); }
+
+async function getOrCreateMenuForDate(date){
+  const key = todayKey(date);
+  let history = await storeGet("historique-menus") || {};
+  if(history[key]) return history[key];
+
+  const allKeys = Object.keys(history).filter(k => k !== key).sort();
+  const last14Keys = allKeys.slice(-14);
+  const recentIds = new Set();
+  last14Keys.forEach(k => {
+    const entry = history[k];
+    if(entry){ Object.values(entry).forEach(id => recentIds.add(id)); }
+  });
+
+  const chosen = {};
+  ["matin","midi","soir"].forEach(meal => {
+    const pool = RECIPES.filter(r => r.meal === meal);
+    let candidates = pool.filter(r => !recentIds.has(r.id));
+    if(candidates.length === 0) candidates = pool;
+    const pick = candidates[Math.floor(Math.random()*candidates.length)];
+    chosen[meal] = pick.id;
+  });
+
+  history[key] = chosen;
+  await storeSet("historique-menus", history);
+  return chosen;
+}
+
+const PHOTO_QUERIES = {
+  m1:"avocado toast poached egg", m2:"oatmeal banana bowl", m3:"pancakes stack breakfast",
+  m4:"scrambled eggs cheese toast", m5:"yogurt granola berries bowl", m6:"toast butter jam apple",
+  m7:"smoothie bowl banana spinach", m8:"fried eggs avocado toast", m9:"french crepes sweet",
+  m10:"muesli bowl milk", m11:"ricotta toast honey", m12:"herb omelette plate",
+  m13:"french toast cinnamon", m14:"cottage cheese almonds honey bowl", m15:"peanut butter banana toast",
+  m16:"scrambled eggs smoked salmon", m17:"oatmeal apple compote", m18:"goat cheese honey toast",
+  d1:"tuna pasta salad tomato", d2:"chicken wrap vegetables", d3:"quiche lorraine slice",
+  d4:"caesar salad chicken", d5:"fried rice vegetables egg", d6:"vegetable soup croutons",
+  d7:"lentil salad feta tomato", d8:"croque monsieur sandwich", d9:"quinoa chickpea roasted vegetables bowl",
+  d10:"greek salad feta", d11:"salmon avocado tartare", d12:"buckwheat galette egg ham",
+  d13:"rice salad tuna corn", d14:"club sandwich chicken", d15:"sauteed vegetables fried egg",
+  d16:"miso soup noodles", d17:"caprese salad prosciutto", d18:"tabbouleh salad",
+  s1:"roast chicken potatoes", s2:"spaghetti carbonara", s3:"zucchini gratin",
+  s4:"vegetable coconut curry rice", s5:"salmon papillote rice", s6:"chili con carne",
+  s7:"veal blanquette stew", s8:"lasagna slice", s9:"garlic shrimp skillet",
+  s10:"ratatouille rice", s11:"steak fries salad", s12:"mushroom risotto",
+  s13:"chicken tajine apricots", s14:"potato gratin dauphinois", s15:"fish fillet mashed potatoes",
+  s16:"vegetarian chili beans", s17:"chicken basquaise peppers", s18:"couscous chicken vegetables"
+};
+
+/* ---------------- Photos réelles (Pexels) ---------------- */
+let pexelsKey = null;
+let photoCache = {};
+const pendingPhotoFetches = {};
+
+async function loadPhotoPrefs(){
+  pexelsKey = await storeGet("pexels-api-key");
+  photoCache = await storeGet("dish-photos-cache") || {};
+}
+
+async function ensurePhotoLoaded(recipe){
+  if(photoCache[recipe.id]) return photoCache[recipe.id];
+  if(!pexelsKey) return null;
+  if(pendingPhotoFetches[recipe.id]) return pendingPhotoFetches[recipe.id];
+
+  const query = PHOTO_QUERIES[recipe.id] || recipe.name;
+  const promise = (async () => {
+    try{
+      const res = await fetch("https://api.pexels.com/v1/search?query="+encodeURIComponent(query)+"&per_page=1&orientation=square", {
+        headers:{ "Authorization": pexelsKey }
+      });
+      if(!res.ok) return null;
+      const data = await res.json();
+      const url = data.photos && data.photos[0] ? (data.photos[0].src.medium || data.photos[0].src.small) : null;
+      if(url){
+        photoCache[recipe.id] = url;
+        await storeSet("dish-photos-cache", photoCache);
+      }
+      return url;
+    }catch(e){
+      console.error("photo fetch error", e);
+      return null;
+    }
+  })();
+  pendingPhotoFetches[recipe.id] = promise;
+  return promise;
+}
+
+function hydratePhotos(){
+  if(!pexelsKey) return;
+  document.querySelectorAll(".photo-tile[data-recipe]").forEach(tile => {
+    if(tile.dataset.hydrated) return;
+    const recipe = findRecipe(tile.dataset.recipe);
+    if(!recipe) return;
+    if(photoCache[recipe.id]){
+      tile.innerHTML = `<img src="${photoCache[recipe.id]}" alt="${recipe.name}">`;
+      tile.dataset.hydrated = "1";
+      return;
+    }
+    tile.dataset.hydrated = "1";
+    ensurePhotoLoaded(recipe).then(url => {
+      if(url){
+        tile.innerHTML = `<img src="${url}" alt="${recipe.name}">`;
+      }
+    });
+  });
+}
+const DISH_THEMES = [
+  [/saumon|poisson|crevette|tartare/i, ["#2f6166","#6fb3ad"]],
+  [/blanquette/i, ["#c9a86b","#f0dfae"]],
+  [/tomate|ratatouille|basquaise|caprese|chili|tajine/i, ["#b23a22","#e08a55"]],
+  [/curry|coco/i, ["#c9701f","#f0a94f"]],
+  [/bœuf|boeuf|veau|steak/i, ["#6e2f26","#a85c42"]],
+  [/poulet/i, ["#a8632c","#e0a85c"]],
+  [/fromage|gratin|quiche|croque|chèvre|ricotta|feta|mozzarella|parmesan|lasagne|risotto/i, ["#c9a86b","#f0dfae"]],
+  [/œuf|oeuf|omelette|pancake|crêpe|crepe|pain perdu|brouillé/i, ["#d9a634","#f3cf7a"]],
+  [/banane|miel|confiture|fruits rouges|pomme|compote/i, ["#c97b3d","#f0bd7a"]],
+  [/riz|couscous|taboulé|semoule|quinoa/i, ["#b99a5f","#e3cd97"]],
+  [/champignon|lentille|pois chiche/i, ["#5f6b3a","#9aab6a"]],
+  [/soupe|miso/i, ["#4f7a6a","#8fbca8"]],
+  [/porridge|muesli|avoine|yaourt|granola|smoothie|fromage blanc/i, ["#7a8f6e","#b9caa0"]],
+  [/avocat/i, ["#63784a","#a9c17c"]],
+];
+function getDishTheme(name){
+  for(const [regex, colors] of DISH_THEMES){
+    if(regex.test(name)) return colors;
+  }
+  return ["#8a7256","#c7ad82"];
+}
+const RECIPE_EN = {
+  m1:{name:"Avocado toast & poached egg", steps:["Toast the bread for 2-3 minutes until golden and crisp.","Halve the avocado, mash the flesh with a fork, add lemon juice, salt and pepper.","Bring a pot of water with 1 tbsp vinegar to a simmer. Crack each egg into a cup, then slide it gently into the water.","Poach for 3 minutes for a runny yolk, then drain on paper towel.","Spread the avocado on the toast, top with the poached egg, add pepper and serve right away."]},
+  m2:{name:"Oatmeal with banana", steps:["Pour the milk into a saucepan and bring to a simmer over medium heat.","Add the oats, lower the heat.","Cook for 5 minutes over low heat, stirring regularly, until creamy.","Pour into a bowl, mash half the banana in, slice the rest into rounds.","Drizzle with honey and sprinkle with cinnamon before serving hot."]},
+  m3:{name:"Fluffy pancakes", steps:["Mix the flour, sugar and baking powder in a large bowl.","Make a well, add the eggs and some of the milk, whisk while gradually folding in the flour.","Add the rest of the milk until you get a smooth batter. Let rest 5 minutes.","Melt a little butter in a pan over medium heat, pour in a small ladle of batter.","Cook 2 minutes until bubbles appear, then flip and cook 1-2 minutes more.","Repeat with the remaining batter, stack and serve warm."]},
+  m4:{name:"Cheesy scrambled eggs", steps:["Crack the eggs into a bowl, salt lightly and beat with a fork without overworking.","Melt the butter in a non-stick pan over low heat.","Pour in the eggs and stir constantly, forming soft creamy curds.","Remove from heat just before fully set — residual heat finishes the cooking.","Stir in the grated cheese off the heat and serve with toasted bread."]},
+  m5:{name:"Greek yogurt, granola & berries bowl", steps:["If using frozen berries, let them thaw for 5 minutes at room temperature.","Pour the Greek yogurt into a bowl and smooth the surface.","Arrange the granola on one side so it stays crunchy.","Add the berries on the other side.","Finish with a drizzle of honey right before serving."]},
+  m6:{name:"Butter & jam toast with fresh fruit", steps:["Lightly toast the bread.","Take the butter out a few minutes ahead so it's spreadable.","Spread a layer of butter, then the jam on top.","Wash and cut the apple into thin wedges.","Serve the toast with the apple wedges."]},
+  m7:{name:"Banana spinach smoothie bowl", steps:["Peel the bananas and cut into chunks.","Place bananas, spinach and milk in a blender.","Blend for 1 minute until fully smooth, no visible spinach flecks.","Pour into a bowl — the texture should be thick enough to eat with a spoon.","Sprinkle with chia seeds and enjoy right away."]},
+  m8:{name:"Fried eggs & avocado toast", steps:["Toast the bread.","Mash the avocado with a fork and a little salt.","Heat a drizzle of oil over medium-low heat, crack the eggs straight into the pan.","Cook for 3 minutes without touching for a set white and runny yolk, season lightly.","Spread the avocado on the toast, top each slice with an egg, sprinkle with sweet paprika."]},
+  m9:{name:"Sweet French crêpes", steps:["Pour the flour and sugar into a bowl, make a well in the center.","Crack the eggs into the well and start whisking.","Gradually whisk in the milk until you get a smooth, lump-free batter.","Let the batter rest for 15 minutes at room temperature.","Heat a lightly oiled pan over medium-high heat, pour in a ladle while tilting the pan to spread it thin.","Cook 1-2 minutes until the edges lift, flip and cook 1 minute more."]},
+  m10:{name:"Homemade muesli with milk", steps:["Pour the oats into a bowl.","Add the dried fruit.","Pour in the cold milk and let sit 2 minutes to soften the oats.","Grate the half apple straight over the bowl just before serving."]},
+  m11:{name:"Ricotta toast with honey", steps:["Toast the bread until crisp.","Roughly chop the walnuts.","Spread a generous layer of ricotta on the warm toast.","Drizzle with honey and sprinkle with chopped walnuts."]},
+  m12:{name:"Herb omelette", steps:["Wash and finely chop the parsley and chives.","Beat the eggs with the chopped herbs, salt and pepper.","Melt the butter in a pan over medium heat until it foams slightly.","Pour in the eggs, let set at the edges, then push the mixture toward the center.","When the center is still slightly runny, fold the omelette in half and serve."]},
+  m13:{name:"Cinnamon French toast", steps:["Beat the eggs with the milk, sugar and cinnamon in a wide dish.","Dip each slice of bread for 20-30 seconds per side to soak it well.","Heat a knob of butter in a pan over medium heat.","Brown the slices 2 minutes per side until nicely caramelized.","Serve hot, with a drizzle of honey if you like."]},
+  m14:{name:"Cottage cheese, almonds & honey bowl", steps:["Roughly chop the almonds.","Spoon the cottage cheese into a bowl and smooth the top.","Sprinkle the chopped almonds over it.","Drizzle with honey just before serving."]},
+  m15:{name:"Peanut butter banana toast", steps:["Toast the bread until golden.","Spread generously with peanut butter while the toast is still warm so it melts slightly.","Slice the banana into thin rounds.","Arrange the slices on the toast and serve."]},
+  m16:{name:"Scrambled eggs with smoked salmon", steps:["Cut the smoked salmon into strips and chop the chives.","Beat the eggs with a little pepper.","Cook over low heat in a buttered pan, stirring constantly until creamy.","Remove from heat and fold in the salmon — it will gently cook in the residual heat.","Sprinkle with chives and serve with toasted bread."]},
+  m17:{name:"Oatmeal with apple compote", steps:["Bring the milk to a simmer in a saucepan.","Add the oats and cook for 5 minutes over low heat, stirring.","Pour into a bowl and let cool for 1 minute.","Swirl in the apple compote on top and sprinkle with cinnamon."]},
+  m18:{name:"Goat cheese & honey toast", steps:["Lightly toast the bread — it should stay a little soft in the middle.","Spread the goat cheese over the warm toast.","Grill under the oven broiler for 2 minutes if you like it melted (optional).","Drizzle with honey and sprinkle with chopped walnuts before serving."]},
+
+  d1:{name:"Tuna pasta salad with tomatoes", steps:["Cook the pasta in salted boiling water according to the package, then drain and cool.","Rinse under cold water to stop the cooking and prevent sticking.","Dice the tomatoes, drain the tuna and flake it lightly with a fork.","Combine pasta, tomatoes, tuna and olives in a large bowl.","Drizzle with olive oil, season, toss and serve warm or cold."]},
+  d2:{name:"Chicken & veggie wrap", steps:["Slice the cooked chicken into strips.","Shred the lettuce and dice the tomato.","Warm the wrap for 20 seconds in a dry pan to soften it.","Spread the sauce in the center, add lettuce, tomato, then chicken.","Roll tightly, folding in the sides, then cut in half on the diagonal."]},
+  d3:{name:"Homemade quiche Lorraine", steps:["Preheat the oven to 355°F (180°C).","Line a tart pan with the pastry, prick the base with a fork.","Cook the bacon bits for 5 minutes in a dry pan until lightly browned.","Beat the eggs with the cream, salt lightly, pepper, and add the grated cheese.","Scatter the bacon over the pastry base, pour the egg mixture over it.","Bake for 35 minutes at 355°F (180°C) until the top is golden and slightly puffed."]},
+  d4:{name:"Simple Caesar salad", steps:["Season the chicken with salt and pepper, grill 4-5 minutes per side in a hot pan until cooked through.","Rest 2 minutes then slice into strips.","Wash, dry and chop the romaine lettuce.","Toss the lettuce with the Caesar dressing in a large bowl.","Add the sliced chicken and croutons, grate parmesan over the top."]},
+  d5:{name:"Fried rice with vegetables & egg", steps:["Cut the zucchini and carrot into small even cubes.","Heat a drizzle of oil in a large pan or wok over high heat.","Stir-fry the vegetables for 5 minutes until tender but still crisp.","Add the rice (ideally cold, from the day before), breaking it up, and stir-fry 5 minutes.","Push the rice to one side, crack the eggs into the space, scramble quickly then mix through.","Season with soy sauce, toss well and serve hot."]},
+  d6:{name:"Vegetable soup with croutons", steps:["Peel and cut all the vegetables into even pieces.","Place them in a pot, cover with water, add the stock cube.","Bring to a boil then simmer for 20 minutes, covered, until the vegetables are very tender.","Blend directly in the pot with an immersion blender until smooth.","Adjust seasoning if needed, serve hot topped with croutons."]},
+  d7:{name:"Lentil salad with feta & tomatoes", steps:["Rinse the cooked lentils under cold water and drain well.","Dice the tomatoes and finely slice the red onion.","Combine lentils, tomatoes and onion in a bowl.","Crumble the feta roughly over the top.","Drizzle with olive oil, season lightly (feta is already salty) and pepper."]},
+  d8:{name:"Ham & cheese croque-monsieur", steps:["Layer two slices of bread with the ham and half the cheese.","Cover with the remaining two slices of bread.","Lightly butter the outside of both faces.","Cook in a pan over medium heat, 3-4 minutes per side until golden and crisp, or bake 8 minutes at 400°F (200°C).","Scatter the remaining cheese on top just before the end of cooking so it melts."]},
+  d9:{name:"Quinoa, chickpea & roasted vegetable bowl", steps:["Preheat the oven to 400°F (200°C).","Rinse the quinoa, cook in twice its volume of salted boiling water for 12-15 minutes, then drain.","Cut the eggplant and zucchini into 1.5cm cubes, spread on a tray with olive oil, salt and pepper.","Roast for 20 minutes, stirring halfway, until tender and lightly caramelized.","Drain and rinse the chickpeas.","In a bowl, combine quinoa, roasted vegetables and chickpeas, drizzle with olive oil."]},
+  d10:{name:"Greek salad with feta", steps:["Cut the tomatoes into large wedges and the cucumber into thick half-moons.","Arrange the tomatoes and cucumber in a dish.","Add the black olives whole.","Place the feta on top in one block or large cubes (traditionally not crumbled).","Drizzle generously with olive oil and a little oregano if you have some."]},
+  d11:{name:"Salmon & avocado tartare", steps:["Make sure the salmon is very fresh (sashimi/tartare grade), cut into small even cubes with a sharp knife.","Cut the avocado into cubes of the same size.","Finely chop the chives.","Gently combine salmon and avocado with lemon juice, soy sauce and chives.","Chill for 10 minutes before serving so the flavors meld."]},
+  d12:{name:"Buckwheat galette with ham & cheese", steps:["Heat a pan or crêpe griddle over medium heat, place the galette in it.","Crack an egg directly into the center of the galette.","Scatter grated cheese around the egg, place the ham on the sides.","Fold the four edges of the galette toward the center to form a square.","Cook until the egg white is set (about 4-5 minutes), serve hot."]},
+  d13:{name:"Rice salad with tuna & corn", steps:["Let the cooked rice cool if freshly made, or use cold rice from the day before.","Dice the bell pepper.","Drain the tuna and corn.","Combine rice, flaked tuna, corn and bell pepper in a large bowl.","Toss with the vinaigrette and chill for 5 minutes before serving."]},
+  d14:{name:"Chicken club sandwich", steps:["Toast the 3 slices of sandwich bread.","Cook the bacon in a pan for 3-4 minutes until crisp.","Thinly slice the chicken and cut the tomato into rounds.","Layer on the first slice: lettuce, tomato, chicken, then cover with the second slice.","Add the bacon and a little more lettuce, cover with the third slice, press gently and cut into triangles."]},
+  d15:{name:"Sautéed vegetables with fried egg", steps:["Cut the zucchini, bell pepper and onion into thin strips.","Heat the olive oil in a pan over medium-high heat.","Sauté the onion for 2 minutes, then add the pepper and zucchini, cook 8-10 minutes, stirring regularly, until tender.","Season with salt and pepper, keep the vegetables warm on a plate.","In the same pan, fry the eggs for 3 minutes, then place them on top of the vegetables to serve."]},
+  d16:{name:"Miso soup with noodles", steps:["Cook the udon noodles in boiling water according to the package, then drain.","Slice the mushrooms and cube the tofu.","Heat water or a light broth, add mushrooms and tofu, cook for 3-4 minutes.","Remove from heat and dissolve the miso paste directly into the hot broth (don't boil it, to preserve its flavor).","Pour the broth over the noodles in a bowl, sprinkle with chopped chives."]},
+  d17:{name:"Caprese salad with prosciutto", steps:["Slice the tomatoes into even rounds about 1cm thick.","Slice the mozzarella to the same thickness.","Alternate tomato and mozzarella slices on a plate.","Tuck the prosciutto between the slices in soft folds and add fresh basil leaves.","Drizzle with olive oil and a turn of pepper just before serving."]},
+  d18:{name:"Oriental tabbouleh", steps:["Pour the semolina into a large bowl, cover with an equal amount of hot water, cover and let swell for 10 minutes.","Fluff the semolina with a fork once it has absorbed the water.","Dice the tomatoes and cucumber, finely chop the parsley.","Add the vegetables and parsley to the semolina.","Drizzle with lemon juice and a little olive oil, toss and chill before serving."]},
+
+  s1:{name:"Roast chicken with potatoes", steps:["Preheat the oven to 400°F (200°C).","Rub the chicken with olive oil, crushed garlic, thyme, salt and pepper, including inside the cavity.","Place the chicken in a roasting dish, arrange the potato chunks all around.","Roast for 1 hour, basting with the pan juices every 20 minutes to keep it moist.","Check doneness by piercing the thigh: the juice should run clear, not pink.","Rest 5 minutes out of the oven before carving."]},
+  s2:{name:"Spaghetti carbonara", steps:["Cook the pasta in salted boiling water per the package, reserving a little cooking water before draining.","Meanwhile, cook the bacon bits in a pan until nicely browned.","Beat the eggs with the grated parmesan and plenty of pepper in a bowl.","Drain the pasta while still very hot, return it to the pot off the heat.","Immediately add the bacon then the egg-parmesan mixture, stirring vigorously — the pasta's heat cooks the eggs without curdling them.","Add a splash of reserved pasta water if the sauce is too thick, serve right away."]},
+  s3:{name:"Zucchini gratin", steps:["Preheat the oven to 400°F (200°C).","Wash the zucchini and cut into rounds about 5mm thick.","Sauté for 8-10 minutes in a pan with the minced garlic, until they lose some water and start to color.","Arrange the zucchini in a gratin dish, season with salt and pepper.","Spread the cream evenly over the top, then cover completely with grated cheese.","Bake for 25 minutes at 400°F (200°C) until golden and bubbling."]},
+  s4:{name:"Coconut vegetable curry", steps:["Cut the eggplant and zucchini into 2cm cubes.","Heat a little oil in a large pan or wok, add the curry paste and cook 1 minute to release the aromas.","Add the vegetables, coat well in the paste, cook 5 minutes stirring.","Pour in the coconut milk, stir and simmer covered for 15-20 minutes until the vegetables are very tender.","Meanwhile, cook the rice according to the package.","Adjust the seasoning with salt if needed, serve hot over the rice."]},
+  s5:{name:"Salmon en papillote with rice", steps:["Preheat the oven to 400°F (200°C).","Cut two large squares of parchment paper, place a salmon fillet in the center of each.","Season with salt and pepper, add 2-3 lemon slices and a few sprigs of dill on each fillet.","Seal the parcels tightly by folding the edges well.","Bake for 15-18 minutes depending on the thickness of the fish.","Meanwhile, steam or boil the rice, serve the salmon as soon as you open the parcel to enjoy the fragrant steam."]},
+  s6:{name:"Chili con carne", steps:["Finely chop the onion.","Heat a little oil in a Dutch oven, sauté the onion for 3 minutes until translucent.","Add the ground beef, breaking it up with a fork until well browned.","Add the crushed tomatoes and chili powder, salt, pepper, and stir.","Drain and rinse the kidney beans, stir them in.","Simmer covered for 25 minutes over low heat, stirring occasionally, until the sauce has thickened slightly."]},
+  s7:{name:"Veal blanquette", steps:["Place the veal pieces in a Dutch oven, cover with cold water, bring to a boil and skim.","Add the sliced carrots, salt lightly, cover and simmer gently for 1 hour.","Add the sliced mushrooms 15 minutes before the end of cooking.","Remove the meat and vegetables, set aside warm. Reduce the broth a little if needed.","Off the heat, whisk the cream into the broth to bind the sauce.","Return the meat and vegetables to the sauce, warm through gently without boiling, serve with rice."]},
+  s8:{name:"Homemade lasagna", steps:["Preheat the oven to 375°F (190°C).","Brown the ground beef in a pan until well colored, add the tomato sauce, season, simmer 10 minutes.","In a baking dish, spoon a little meat sauce on the bottom so the first sheets don't stick.","Layer lasagna sheets, meat sauce, béchamel, repeating the layers 3 to 4 times.","Finish with a layer of béchamel, cover generously with grated cheese.","Bake for 40 minutes at 375°F (190°C) until golden on top and tender inside. Rest 5 minutes before slicing."]},
+  s9:{name:"Garlic shrimp skillet", steps:["Peel the shrimp if needed, pat dry with paper towel.","Finely slice the garlic and chop the parsley.","Heat a drizzle of olive oil in a pan over high heat, add the garlic and sauté 30 seconds without letting it burn.","Add the shrimp, cook 2-3 minutes per side until pink and opaque.","Season with salt and pepper, sprinkle with parsley off the heat.","Serve immediately, hot, with steamed rice."]},
+  s10:{name:"Ratatouille with rice", steps:["Cut all the vegetables into 2cm cubes, keeping each vegetable separate.","Heat a little olive oil in a Dutch oven, sauté the eggplant alone for 5 minutes as it soaks up more oil.","Add the bell pepper and zucchini, sauté 5 minutes more.","Add the diced tomatoes, season, add a pinch of herbes de Provence if you have some.","Cover and simmer gently for 30 minutes, stirring occasionally, until the vegetables are melting tender.","Cook the rice meanwhile and serve the ratatouille hot or warm on top."]},
+  s11:{name:"Steak, homemade fries & salad", steps:["Preheat the oven to 400°F (200°C).","Cut the potatoes into even sticks, pat dry with a towel.","Spread on a tray with oil, salt and pepper, roast for 25 minutes, turning halfway.","Take the steaks out of the fridge 10 minutes before cooking so they reach room temperature.","Sear the steaks in a very hot pan for 2-3 minutes per side depending on thickness and desired doneness, rest 3 minutes before serving.","Wash and dress the salad, serve everything together."]},
+  s12:{name:"Mushroom risotto", steps:["Heat the stock in a saucepan and keep it at a simmer throughout cooking.","Slice the mushrooms, sauté in a Dutch oven with a little oil for 5 minutes, set aside.","In the same pot, add the risotto rice and toast for 2 minutes over medium heat, stirring, without letting it color.","Add the hot stock one ladle at a time, waiting for each to be absorbed before adding the next, stirring regularly (about 18-20 minutes).","Fold the mushrooms back in for the last 5 minutes of cooking.","Remove from heat, add the parmesan, stir briskly to make it creamy (that motion is what makes a risotto silky), serve immediately."]},
+  s13:{name:"Chicken tagine with apricots", steps:["Finely chop the onion.","Heat a little oil in a Dutch oven or tagine, brown the chicken thighs 5 minutes on all sides, set aside.","Sauté the onion in the same pot, add the tagine spices, toast for 1 minute.","Return the chicken to the pot, add the dried apricots and a glass of water, cover.","Simmer gently for 35 minutes, turning the chicken halfway, until very tender.","Prepare the semolina according to the package and serve the tagine over it with a little sauce."]},
+  s14:{name:"Potato gratin dauphinois with green salad", steps:["Preheat the oven to 355°F (180°C).","Peel the potatoes and slice into thin, even rounds (about 2-3mm), with a mandoline if possible.","Rub a gratin dish with the halved garlic clove.","Layer the potato slices, seasoning each layer lightly with salt and pepper.","Pour the cream over the top, making sure it seeps between the layers.","Bake for 50 minutes at 355°F (180°C) until the potatoes are tender and the top golden. Serve with the dressed green salad."]},
+  s15:{name:"Fish fillet with mashed potatoes", steps:["Peel and cut the potatoes into chunks, boil in salted water for 20 minutes until very tender.","Drain and mash, stir in the butter then the hot milk gradually until smooth and creamy. Season.","Season the fish fillets with salt and pepper.","Heat a little butter or oil in a pan over medium-high heat.","Cook the fillets 4 minutes on the first side without moving them, then 3-4 minutes on the other side depending on thickness, until opaque and flaking easily.","Serve immediately on the hot mashed potatoes."]},
+  s16:{name:"Vegetarian chili with beans", steps:["Finely chop the onion and dice the zucchini.","Heat a little oil in a Dutch oven, sauté the onion for 3 minutes until translucent.","Add the zucchini, cook 5 minutes stirring.","Add the crushed tomatoes and chili powder, season with salt and pepper.","Drain and rinse the kidney beans, stir them in.","Simmer covered for 20 minutes over low heat until the sauce has thickened and the zucchini is tender."]},
+  s17:{name:"Chicken basquaise with peppers", steps:["Cut the peppers into strips, the tomatoes into wedges, and finely slice the onion.","Heat a little oil in a Dutch oven, brown the chicken thighs 5-6 minutes on all sides, set aside.","Sauté the onion and peppers in the same pot for 5 minutes.","Add the tomatoes, season, stir and let them release their juices for 5 minutes.","Return the chicken to the pot, cover and simmer gently for 30 minutes until the chicken is cooked through and tender.","Cook the rice meanwhile and serve the chicken basquaise with its sauce on top."]},
+  s18:{name:"Couscous with chicken & vegetables", steps:["Cut the zucchini and carrots into large chunks.","In a large pot, brown the chicken thighs for 5 minutes on all sides.","Cover with water or stock, add the carrots, season with salt and pepper, add couscous spices if you like.","Simmer for 20 minutes, then add the zucchini and drained chickpeas, continue cooking 10 minutes.","Prepare the couscous semolina by pouring in hot water (or hot stock) to an equal level, cover 5 minutes, then fluff with a fork and a little oil.","Serve the semolina topped with the chicken, vegetables, and a little broth drizzled over."]},
+};
+function dishName(recipe){ return lang==="fr" ? recipe.name : (RECIPE_EN[recipe.id]&&RECIPE_EN[recipe.id].name || recipe.name); }
+function dishSteps(recipe){ return lang==="fr" ? recipe.steps : (RECIPE_EN[recipe.id]&&RECIPE_EN[recipe.id].steps || recipe.steps); }
+
+function photoTileHTML(recipe, sizeClass){
+  const cached = photoCache[recipe.id];
+  const [a,b] = getDishTheme(recipe.name);
+  if(cached){
+    return `<div class="photo-tile ${sizeClass||''}" data-recipe="${recipe.id}" data-hydrated="1"><img src="${cached}" alt="${recipe.name}"></div>`;
+  }
+  return `<div class="photo-tile ${sizeClass||''}" data-recipe="${recipe.id}" style="--tile-a:${a};--tile-b:${b};"><span class="plate">${recipe.photo||"🍽️"}</span></div>`;
+}
+let currentMenu = null;
+let checkedState = {};
+let shoppingScope = "today";
+
+function applyStaticTranslations(){
+  document.getElementById("eyebrow-text").textContent = t('eyebrow');
+  document.getElementById("title-text").textContent = t('title');
+  document.querySelector('[data-tab="menu"]').textContent = t('tabToday');
+  document.querySelector('[data-tab="semaine"]').textContent = t('tabWeek');
+  document.querySelector('[data-tab="mois"]').textContent = t('tabMonth');
+  document.querySelector('[data-tab="courses"]').textContent = t('tabCourses');
+  document.getElementById("servings-label-text").childNodes[0].textContent = t('servingsLabel');
+  document.getElementById("servings-sub-text").textContent = t('servingsSub');
+  document.getElementById("regen-btn").textContent = t('regen');
+  document.querySelector('[data-scope="today"]').textContent = t('scopeToday');
+  document.querySelector('[data-scope="week"]').textContent = t('scopeWeek');
+  document.querySelector('[data-scope="month"]').textContent = t('scopeMonth');
+  document.getElementById("settings-text").textContent = t('settingsIntro');
+  document.getElementById("settings-link").textContent = t('settingsLink');
+  document.getElementById("pexels-key-input").placeholder = t('settingsPlaceholder');
+  document.getElementById("footer-text").textContent = t('footer');
+  document.getElementById("paywall-title").textContent = t('paywallTitle');
+  document.getElementById("paywall-text").textContent = t('paywallText');
+  document.getElementById("auth-email-input").placeholder = t('authEmailPlaceholder');
+  document.getElementById("auth-send-btn").textContent = t('authSendBtn');
+  document.getElementById("subscribe-btn").textContent = t('subscribeBtn');
+  document.getElementById("logout-btn").textContent = t('logoutBtn');
+}
+
+async function checkOwnerAccess(){
+  const params = new URLSearchParams(window.location.search);
+  if(params.get("admin") === "1"){
+    await storeSet("is-owner", true);
+    params.delete("admin");
+    const cleanUrl = window.location.pathname + (params.toString() ? "?"+params.toString() : "");
+    history.replaceState(null, "", cleanUrl);
+  }
+  const isOwner = await storeGet("is-owner");
+  document.getElementById("settings-btn").classList.toggle("hidden", !isOwner);
+}
+
+async function render(){
+  await captureAuthRedirect();
+  await checkOwnerAccess();
+
+  lang = await storeGet("lang-pref") || "fr";
+  document.querySelectorAll(".lang-toggle button").forEach(b => b.classList.toggle("active", b.dataset.lang === lang));
+  applyStaticTranslations();
+
+  const now = new Date();
+  document.getElementById("today-date").textContent = now.toLocaleDateString(lang==='fr'?'fr-FR':'en-US',{weekday:'long', day:'numeric', month:'long'});
+
+  await loadPhotoPrefs();
+  if(pexelsKey){
+    document.getElementById("pexels-key-input").value = pexelsKey;
+    document.getElementById("settings-status").textContent = t('settingsSaved');
+  }
+
+  servings = await storeGet("servings-pref");
+  if(!servings) servings = DEFAULT_SERVINGS;
+  document.getElementById("servings-count").textContent = servings;
+
+  currentMenu = await getOrCreateTodayMenu(false);
+  renderMealCards();
+
+  const key = "courses-checked-"+todayKey(now);
+  checkedState = await storeGet(key) || {};
+  await renderPaywall();
+  await renderShoppingList();
+  await renderWeekTable();
+  await renderMonthTable();
+}
+
+function renderMealCards(){
+  const wrap = document.getElementById("meal-cards");
+  wrap.innerHTML = "";
+  ["matin","midi","soir"].forEach(meal => {
+    const recipe = findRecipe(currentMenu[meal]);
+    const card = document.createElement("div");
+    card.className = "meal-card";
+    card.innerHTML = `
+      <span class="tag ${meal}">${MEAL_LABEL[meal][lang]}</span>
+      ${photoTileHTML(recipe)}
+      <h2>${dishName(recipe)}</h2>
+      <div class="meta">⏱ ${recipe.temps} · ${t('forServings')} ${servings} ${servings>1?t('persons'):t('person')}</div>
+      <button class="toggle-btn" data-id="${recipe.id}">${t('seeRecipe')}</button>
+      <div class="expand hidden" id="expand-${recipe.id}">
+        <h3>${t('ingredients')}</h3>
+        <ul class="ingredients">
+          ${recipe.ingredients.map(i => `<li>• ${formatIngredientLine(i)}</li>`).join("")}
+        </ul>
+        <h3>${t('preparation')}</h3>
+        <ol class="steps">
+          ${dishSteps(recipe).map(s => `<li>${s}</li>`).join("")}
+        </ol>
+      </div>
+    `;
+    wrap.appendChild(card);
+  });
+
+  wrap.querySelectorAll(".toggle-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = document.getElementById("expand-"+btn.dataset.id);
+      const isHidden = target.classList.contains("hidden");
+      target.classList.toggle("hidden");
+      btn.textContent = isHidden ? t('hideRecipe') : t('seeRecipe');
+    });
+  });
+  hydratePhotos();
+}
+
+function recipeExpandHTML(recipe, dateKey, meal){
+  return `
+    ${photoTileHTML(recipe, "small")}
+    <div class="exp-meta">⏱ ${recipe.temps} · ${t('forServings')} ${servings} ${servings>1?t('persons'):t('person')}</div>
+    <h4>${t('ingredients')}</h4>
+    <ul>${recipe.ingredients.map(i => `<li>• ${formatIngredientLine(i)}</li>`).join("")}</ul>
+    <h4>${t('preparation')}</h4>
+    <ol>${dishSteps(recipe).map(s => `<li>${s}</li>`).join("")}</ol>
+    <button class="replace-btn" data-datekey="${dateKey}" data-meal="${meal}">${t('replace')}</button>
+  `;
+}
+
+async function replaceRecipe(dateKey, meal){
+  let history = await storeGet("historique-menus") || {};
+  const currentId = history[dateKey] ? history[dateKey][meal] : null;
+  const pool = RECIPES.filter(r => r.meal === meal && r.id !== currentId);
+  if(pool.length === 0) return;
+  const newRecipe = pool[Math.floor(Math.random()*pool.length)];
+
+  if(!history[dateKey]) history[dateKey] = {};
+  history[dateKey][meal] = newRecipe.id;
+  await storeSet("historique-menus", history);
+
+  const now = new Date();
+  if(dateKey === todayKey(now)){
+    currentMenu[meal] = newRecipe.id;
+    renderMealCards();
+  }
+  await renderWeekTable();
+  await renderMonthTable();
+  await renderShoppingList();
+}
+
+function renderDayTable(containerId, weekMenus, prefix){
+  const wrap = document.getElementById(containerId);
+  wrap.innerHTML = "";
+  const now = new Date();
+
+  weekMenus.forEach(({date, menu}, dayIndex) => {
+    const isToday = todayKey(date) === todayKey(now);
+    const dateKey = todayKey(date);
+    const dayBlock = document.createElement("div");
+    dayBlock.className = "week-day"+(isToday?" is-today":"");
+    const label = date.toLocaleDateString(lang==='fr'?'fr-FR':'en-US',{weekday:'long', day:'numeric', month:'long'});
+    let rowsHtml = "";
+    ["matin","midi","soir"].forEach(meal => {
+      const recipe = findRecipe(menu[meal]);
+      const rowId = `${prefix}-${dayIndex}-${meal}`;
+      rowsHtml += `
+        <div class="week-row" data-target="expand-${rowId}"><span class="ico">${recipe.photo||"🍽️"}</span><span class="lbl"><span class="tagname">${MEAL_LABEL[meal][lang]}</span>${dishName(recipe)}</span></div>
+        <div class="week-expand hidden" id="expand-${rowId}">${recipeExpandHTML(recipe, dateKey, meal)}</div>
+      `;
+    });
+    dayBlock.innerHTML = `<p class="wd-label">${isToday?(t('scopeToday')+" — "):""}${label}</p>${rowsHtml}`;
+    wrap.appendChild(dayBlock);
+  });
+
+  wrap.querySelectorAll(".week-row").forEach(row => {
+    row.addEventListener("click", () => {
+      const target = document.getElementById(row.dataset.target);
+      target.classList.toggle("hidden");
+      if(!target.classList.contains("hidden")) hydratePhotos();
+    });
+  });
+
+  wrap.querySelectorAll(".replace-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      replaceRecipe(btn.dataset.datekey, btn.dataset.meal);
+    });
+  });
+}
+
+async function renderWeekTable(){
+  const weekMenus = await getOrCreateWeekMenus();
+  renderDayTable("week-table", weekMenus, "wk");
+}
+
+async function renderMonthTable(){
+  const monthMenus = await getOrCreateMonthMenus();
+  renderDayTable("month-table", monthMenus, "mo");
+}
+
+async function renderShoppingList(){
+  let recipesForList;
+  if(shoppingScope === "today"){
+    recipesForList = currentMenu;
+  } else {
+    const rangeMenus = shoppingScope === "month" ? await getOrCreateMonthMenus() : await getOrCreateWeekMenus();
+    recipesForList = {};
+    let counter = 0;
+    rangeMenus.forEach(({menu}) => {
+      Object.entries(menu).forEach(([mealType,id]) => {
+        recipesForList[mealType+"-"+(counter++)] = id;
+      });
+    });
+  }
+
+  const list = buildShoppingList(recipesForList);
+  const byRayon = {};
+  list.forEach(item => {
+    if(!byRayon[item.r]) byRayon[item.r] = [];
+    byRayon[item.r].push(item);
+  });
+
+  const wrap = document.getElementById("rayon-blocks");
+  wrap.innerHTML = "";
+  let grandTotal = 0;
+  RAYON_ORDER.forEach(rayon => {
+    if(!byRayon[rayon]) return;
+    const block = document.createElement("div");
+    block.className = "rayon-block";
+    block.innerHTML = `<h3>${RAYON_LABELS[rayon][lang]}</h3>`;
+    byRayon[rayon].forEach(item => {
+      const itemKey = item.n.toLowerCase()+"|"+item.u;
+      const checked = !!checkedState[itemKey];
+      const price = estimatePrice(item);
+      grandTotal += price;
+      const row = document.createElement("div");
+      row.className = "rayon-item"+(checked?" checked":"");
+      row.dataset.key = itemKey;
+      row.innerHTML = `<span class="chk">${checked?'✓':''}</span><span class="name">${displayIngName(item.n)}</span><span class="qty">${formatQty(item)}</span><span class="price">${price>0?formatPrice(price):''}</span>`;
+      row.addEventListener("click", async () => {
+        checkedState[itemKey] = !checkedState[itemKey];
+        await storeSet("courses-checked-"+todayKey(new Date()), checkedState);
+        renderShoppingList();
+      });
+      block.appendChild(row);
+    });
+    wrap.appendChild(block);
+  });
+
+  const scopeLabel = shoppingScope === "today" ? t('scopeTodayLbl') : (shoppingScope === "month" ? t('scopeMonthLbl') : t('scopeWeekLbl'));
+  document.getElementById("receipt-title").textContent = `${t('receiptTitle')} — ${scopeLabel} — ${servings} ${lang==='fr'?'pers.':'servings'}`;
+  document.getElementById("receipt-footer").innerHTML =
+    `${list.length} ${list.length>1?t('articlesP'):t('articles')} · <strong>≈ ${formatPrice(grandTotal)}</strong><br><span class="price-disclaimer">${t('priceDisclaimer')}</span>`;
+}
+
+/* ---------------- Tabs, scope toggle, servings, regen, langue ---------------- */
+document.querySelectorAll(".lang-toggle button").forEach(btn => {
+  btn.addEventListener("click", async () => {
+    if(btn.dataset.lang === lang) return;
+    lang = btn.dataset.lang;
+    await storeSet("lang-pref", lang);
+    document.querySelectorAll(".lang-toggle button").forEach(b => b.classList.toggle("active", b === btn));
+    applyStaticTranslations();
+    document.getElementById("today-date").textContent = new Date().toLocaleDateString(lang==='fr'?'fr-FR':'en-US',{weekday:'long', day:'numeric', month:'long'});
+    if(pexelsKey) document.getElementById("settings-status").textContent = t('settingsSaved');
+    renderMealCards();
+    await renderShoppingList();
+    await renderWeekTable();
+    await renderMonthTable();
+  });
+});
+
+document.getElementById("settings-btn").addEventListener("click", () => {
+  document.getElementById("settings-panel").classList.toggle("hidden");
+});
+
+document.getElementById("preview-paywall-btn").addEventListener("click", async () => {
+  previewPaywall = !previewPaywall;
+  document.getElementById("preview-paywall-btn").textContent = previewPaywall
+    ? (lang==="fr" ? "👁️ Désactiver l'aperçu" : "👁️ Turn off preview")
+    : (lang==="fr" ? "👁️ Aperçu du paywall (test visuel)" : "👁️ Preview paywall (visual test)");
+  await renderPaywall();
+  if(previewPaywall){
+    // bascule sur l'onglet Courses pour voir le résultat immédiatement
+    document.querySelector('[data-tab="courses"]').click();
+    document.getElementById("settings-panel").classList.add("hidden");
+  }
+});
+
+document.getElementById("save-key-btn").addEventListener("click", async () => {
+  const val = document.getElementById("pexels-key-input").value.trim();
+  const status = document.getElementById("settings-status");
+  if(!val){
+    await storeSet("pexels-api-key", "");
+    pexelsKey = null;
+    status.textContent = t('settingsRemoved');
+    return;
+  }
+  pexelsKey = val;
+  await storeSet("pexels-api-key", val);
+  status.textContent = t('settingsLoading');
+  renderMealCards();
+  await renderWeekTable();
+  await renderMonthTable();
+  status.textContent = t('settingsSaved');
+});
+
+document.querySelectorAll("nav.tabs button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll("nav.tabs button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("tab-menu").classList.toggle("hidden", btn.dataset.tab !== "menu");
+    document.getElementById("tab-semaine").classList.toggle("hidden", btn.dataset.tab !== "semaine");
+    document.getElementById("tab-mois").classList.toggle("hidden", btn.dataset.tab !== "mois");
+    document.getElementById("tab-courses").classList.toggle("hidden", btn.dataset.tab !== "courses");
+  });
+});
+
+document.querySelectorAll(".scope-toggle button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".scope-toggle button").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    shoppingScope = btn.dataset.scope;
+    renderShoppingList();
+  });
+});
+
+document.getElementById("servings-minus").addEventListener("click", async () => {
+  if(servings <= 1) return;
+  servings -= 1;
+  document.getElementById("servings-count").textContent = servings;
+  await storeSet("servings-pref", servings);
+  renderMealCards();
+  renderShoppingList();
+  renderWeekTable();
+  renderMonthTable();
+});
+document.getElementById("servings-plus").addEventListener("click", async () => {
+  if(servings >= 8) return;
+  servings += 1;
+  document.getElementById("servings-count").textContent = servings;
+  await storeSet("servings-pref", servings);
+  renderMealCards();
+  renderShoppingList();
+  renderWeekTable();
+  renderMonthTable();
+});
+
+document.getElementById("regen-btn").addEventListener("click", async () => {
+  currentMenu = await getOrCreateTodayMenu(true);
+  renderMealCards();
+  const key = "courses-checked-"+todayKey(new Date());
+  checkedState = {};
+  await storeSet(key, checkedState);
+  renderShoppingList();
+  renderWeekTable();
+  renderMonthTable();
+});
+
+document.getElementById("auth-send-btn").addEventListener("click", async () => {
+  const email = document.getElementById("auth-email-input").value.trim();
+  const status = document.getElementById("paywall-status");
+  if(!email || !email.includes("@")){
+    status.textContent = lang==="fr" ? "Entre une adresse email valide." : "Enter a valid email address.";
+    return;
+  }
+  if(!authConfigured()){
+    status.textContent = lang==="fr" ? "Configuration Supabase pas encore branchée." : "Supabase config not connected yet.";
+    return;
+  }
+  status.textContent = lang==="fr" ? "Envoi en cours…" : "Sending…";
+  const ok = await sendMagicLink(email);
+  status.textContent = ok
+    ? (lang==="fr" ? "Lien envoyé ! Vérifie tes emails et clique sur le lien." : "Link sent! Check your email and click the link.")
+    : (lang==="fr" ? "Erreur d'envoi, réessaie." : "Send error, please retry.");
+});
+
+document.getElementById("subscribe-btn").addEventListener("click", async () => {
+  const session = await getSession();
+  if(session) await startCheckout(session);
+});
+
+document.getElementById("logout-btn").addEventListener("click", async () => {
+  await clearSession();
+  await renderPaywall();
+});
+
+render();
+</script>
+</body>
+</html>

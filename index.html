@@ -565,6 +565,7 @@
 
         <button id="subscribe-btn" class="subscribe-btn hidden">S'abonner — 9,99 €/mois</button>
         <p class="paywall-status" id="paywall-status"></p>
+        <button id="manage-subscription-btn" class="logout-link hidden">Gérer mon abonnement</button>
         <button id="logout-btn" class="logout-link hidden">Se déconnecter</button>
       </div>
 
@@ -861,6 +862,7 @@ function pluralWord(fr, en, n){ return lang==="fr" ? fr : en; }
 const SUPABASE_URL = "https://ykqbwlzmvnbfgrsjmlnl.supabase.co";        // ex: "https://xxxxx.supabase.co"
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlrcWJ3bHptdm5iZmdyc2ptbG5sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMwMDUwNTgsImV4cCI6MjA5ODU4MTA1OH0.he5hxAtZkzz4ZGfo8bJRLgI7EVF0XRqiF6H3gRgDgf0";
 const CHECKOUT_ENDPOINT = "https://menu-du-jour.vercel.app/api/create-checkout-session";
+const PORTAL_ENDPOINT = "https://menu-du-jour.vercel.app/api/create-portal-session";  
 
 function authConfigured(){ return !!(SUPABASE_URL && SUPABASE_ANON_KEY); }
 
@@ -942,7 +944,8 @@ async function renderPaywall(){
   const authForm = document.getElementById("auth-form");
   const subscribeBtn = document.getElementById("subscribe-btn");
   const logoutBtn = document.getElementById("logout-btn");
-  const status = document.getElementById("paywall-status");
+    const manageSubscriptionBtn = document.getElementById("manage-subscription-btn");
+    const status = document.getElementById("paywall-status");
 
   if(!authConfigured() && !previewPaywall){
     // Configuration pas encore branchée : on montre la liste en libre accès
@@ -978,15 +981,17 @@ async function renderPaywall(){
   status.textContent = "";
 
   if(session && session.access_token){
-    authForm.classList.add("hidden");
-    subscribeBtn.classList.remove("hidden");
-    logoutBtn.classList.remove("hidden");
-  } else {
-    authForm.classList.remove("hidden");
-    subscribeBtn.classList.add("hidden");
-    logoutBtn.classList.add("hidden");
+      authForm.classList.add("hidden");
+      subscribeBtn.classList.remove("hidden");
+      logoutBtn.classList.remove("hidden");
+      manageSubscriptionBtn.classList.remove("hidden");
+    } else {
+      authForm.classList.remove("hidden");
+      subscribeBtn.classList.add("hidden");
+      logoutBtn.classList.add("hidden");
+      manageSubscriptionBtn.classList.add("hidden");
+    }
   }
-}
 
 /* ---------------- Storage helpers ---------------- */
 // Fonctionne à la fois dans un artifact Claude (window.storage) et sur un
@@ -1871,8 +1876,26 @@ document.getElementById("auth-send-btn").addEventListener("click", async () => {
 });
 
 document.getElementById("subscribe-btn").addEventListener("click", async () => {
-  const session = await getSession();
-  if(session) await startCheckout(session);
+    const session = await getSession();
+    if(session) await startCheckout(session);
+});
+
+document.getElementById("manage-subscription-btn").addEventListener("click", async () => {
+    const session = await getSession();
+    if(!session || !session.access_token) return;
+    try{
+      const res = await fetch(PORTAL_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: session.user_id })
+      });
+      const data = await res.json();
+      if(data.url) window.location.href = data.url;
+      else alert(lang==="fr" ? "Erreur lors de l'ouverture du portail." : "Error opening billing portal.");
+    } catch(e){
+      console.error("portal error", e);
+      alert(lang==="fr" ? "Erreur lors de l'ouverture du portail." : "Error opening billing portal.");
+    }
 });
 
 document.getElementById("logout-btn").addEventListener("click", async () => {

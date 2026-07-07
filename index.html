@@ -1864,6 +1864,10 @@ document.getElementById("regen-btn").addEventListener("click", async () => {
     budgetPref = btn.dataset.budget;
     document.querySelectorAll("#budget-toggle button").forEach(b => b.classList.toggle("active", b === btn));
     await storeSet("budget-pref", budgetPref);
+    let history = await storeGet("historique-menus") || {};
+   const todayStr = todayKey(new Date());
+   Object.keys(history).forEach(k => { if(k > todayStr) delete history[k]; });
+   await storeSet("historique-menus", history);
     currentMenu = await getOrCreateTodayMenu(true);
     renderMealCards();
     const key = "courses-checked-"+todayKey(new Date());

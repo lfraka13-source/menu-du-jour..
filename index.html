@@ -526,7 +526,7 @@
     <button data-tab="semaine">Semaine</button>
     <button data-tab="mois">Mois</button>
     <button data-tab="courses">Courses</button>
-  </nav>
+  </nav><div class="scope-toggle" id="budget-toggle"><button data-budget="bas">Petit prix</button><button data-budget="moyen">Confort</button><button class="active" data-budget="mixte">Mixte</button></div>
 
   <main>
     <section id="tab-menu">
@@ -597,166 +597,166 @@
    Accent volontaire sur tomates, courgettes, aubergines (potager)
 --------------------------------------------------------------- */
 const RECIPES = [
-{id:"m1",meal:"matin",name:"Tartines avocat & œuf poché",temps:"10 min",photo:"🥑",
+{id:"m1",meal:"matin",budget:"moyen",name:"Tartines avocat & œuf poché",temps:"10 min",photo:"🥑",
  ingredients:[{n:"Pain de campagne",q:2,u:"slice",r:"bakery"},{n:"Avocat",q:1,u:"piece",r:"produce"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Citron",q:0.5,u:"piece",r:"produce"},{n:"Sel & poivre",q:1,u:"totaste",r:"other"}],
  steps:["Faire toaster le pain 2-3 min jusqu'à ce qu'il soit doré et croustillant.","Couper l'avocat en deux, écraser la chair à la fourchette avec le jus de citron, saler et poivrer.","Faire frémir une casserole d'eau avec 1 cs de vinaigre, casser chaque œuf dans une tasse puis le glisser doucement dans l'eau.","Pocher 3 min pour un jaune coulant, puis égoutter sur du papier absorbant.","Étaler l'avocat sur les tartines, déposer l'œuf poché dessus, poivrer et servir immédiatement."]},
-{id:"m2",meal:"matin",name:"Porridge flocons d'avoine & banane",temps:"8 min",photo:"🥣",
+{id:"m2",meal:"matin",budget:"bas",name:"Porridge flocons d'avoine & banane",temps:"8 min",photo:"🥣",
  ingredients:[{n:"Flocons d'avoine",q:60,u:"g",r:"pantry"},{n:"Lait",q:250,u:"ml",r:"dairy_eggs"},{n:"Banane",q:1,u:"piece",r:"produce"},{n:"Miel",q:1,u:"tbsp",r:"pantry"},{n:"Cannelle",q:1,u:"pinch",r:"pantry"}],
  steps:["Verser le lait dans une casserole et porter à frémissement à feu moyen.","Ajouter les flocons d'avoine, baisser le feu.","Cuire 5 min à feu doux en remuant régulièrement jusqu'à consistance crémeuse.","Verser dans un bol, écraser la moitié de la banane et l'incorporer, couper le reste en rondelles.","Napper de miel et saupoudrer de cannelle avant de servir chaud."]},
-{id:"m3",meal:"matin",name:"Pancakes moelleux",temps:"20 min",photo:"🥞",
+{id:"m3",meal:"matin",budget:"moyen",name:"Pancakes moelleux",temps:"20 min",photo:"🥞",
  ingredients:[{n:"Farine",q:200,u:"g",r:"pantry"},{n:"Lait",q:250,u:"ml",r:"dairy_eggs"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Sucre",q:2,u:"tbsp",r:"pantry"},{n:"Levure chimique",q:1,u:"packet",r:"pantry"},{n:"Beurre",q:20,u:"g",r:"dairy_eggs"}],
  steps:["Mélanger la farine, le sucre et la levure dans un grand bol.","Creuser un puits, ajouter les œufs et une partie du lait, fouetter en incorporant la farine petit à petit.","Ajouter le reste du lait jusqu'à obtenir une pâte lisse. Laisser reposer 5 min.","Faire fondre un peu de beurre dans une poêle à feu moyen, verser une petite louche de pâte.","Cuire 2 min jusqu'à ce que des bulles apparaissent, retourner et cuire 1-2 min de plus.","Répéter avec le reste de pâte, empiler et servir tiède."]},
-{id:"m4",meal:"matin",name:"Œufs brouillés au fromage",temps:"8 min",photo:"🍳",
+{id:"m4",meal:"matin",budget:"moyen",name:"Œufs brouillés au fromage",temps:"8 min",photo:"🍳",
  ingredients:[{n:"Œufs",q:3,u:"piece",r:"dairy_eggs"},{n:"Emmental râpé",q:30,u:"g",r:"dairy_eggs"},{n:"Beurre",q:10,u:"g",r:"dairy_eggs"},{n:"Pain",q:2,u:"slice",r:"bakery"}],
  steps:["Casser les œufs dans un bol, saler légèrement et battre à la fourchette sans trop insister.","Faire fondre le beurre dans une poêle antiadhésive à feu doux.","Verser les œufs et remuer sans cesse en formant de petits tas crémeux.","Retirer du feu juste avant qu'ils soient totalement cuits.","Incorporer le fromage râpé hors du feu, mélanger et servir avec le pain grillé."]},
-{id:"m5",meal:"matin",name:"Bol yaourt grec, granola & fruits rouges",temps:"5 min",photo:"🫐",
+{id:"m5",meal:"matin",budget:"moyen",name:"Bol yaourt grec, granola & fruits rouges",temps:"5 min",photo:"🫐",
  ingredients:[{n:"Yaourt grec",q:200,u:"g",r:"dairy_eggs"},{n:"Granola",q:40,u:"g",r:"pantry"},{n:"Fruits rouges",q:80,u:"g",r:"frozen"},{n:"Miel",q:1,u:"tsp",r:"pantry"}],
  steps:["Laisser les fruits rouges décongeler 5 min à température ambiante.","Verser le yaourt grec dans un bol, lisser la surface.","Répartir le granola sur un côté pour qu'il reste croustillant.","Ajouter les fruits rouges de l'autre côté.","Terminer par un filet de miel juste avant de servir."]},
-{id:"m6",meal:"matin",name:"Tartines beurre-confiture & fruit frais",temps:"5 min",photo:"🍞",
+{id:"m6",meal:"matin",budget:"bas",name:"Tartines beurre-confiture & fruit frais",temps:"5 min",photo:"🍞",
  ingredients:[{n:"Pain",q:2,u:"slice",r:"bakery"},{n:"Beurre",q:20,u:"g",r:"dairy_eggs"},{n:"Confiture",q:2,u:"tbsp",r:"pantry"},{n:"Pomme",q:1,u:"piece",r:"produce"}],
  steps:["Faire toaster légèrement le pain.","Sortir le beurre quelques minutes avant pour qu'il soit tartinable.","Étaler une couche de beurre, puis la confiture par-dessus.","Laver et couper la pomme en quartiers fins.","Servir les tartines avec les quartiers de pomme."]},
-{id:"m7",meal:"matin",name:"Smoothie bowl banane-épinard",temps:"7 min",photo:"🥤",
+{id:"m7",meal:"matin",budget:"bas",name:"Smoothie bowl banane-épinard",temps:"7 min",photo:"🥤",
  ingredients:[{n:"Banane",q:2,u:"piece",r:"produce"},{n:"Épinards frais",q:30,u:"g",r:"produce"},{n:"Lait",q:100,u:"ml",r:"dairy_eggs"},{n:"Graines de chia",q:1,u:"tbsp",r:"pantry"}],
  steps:["Éplucher les bananes et les couper en morceaux.","Placer bananes, épinards et lait dans un blender.","Mixer 1 min jusqu'à obtenir une texture lisse, sans morceaux d'épinard visibles.","Verser dans un bol, la texture doit être assez épaisse pour tenir à la cuillère.","Parsemer de graines de chia et déguster aussitôt."]},
-{id:"m8",meal:"matin",name:"Œufs au plat & toast avocat",temps:"10 min",photo:"🍳",
+{id:"m8",meal:"matin",budget:"moyen",name:"Œufs au plat & toast avocat",temps:"10 min",photo:"🍳",
  ingredients:[{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Avocat",q:1,u:"piece",r:"produce"},{n:"Pain",q:2,u:"slice",r:"bakery"},{n:"Piment doux",q:1,u:"pinch",r:"pantry"}],
  steps:["Faire toaster le pain.","Écraser l'avocat à la fourchette avec un peu de sel.","Chauffer un filet d'huile à feu moyen-doux, casser les œufs directement dans la poêle.","Cuire 3 min sans y toucher pour un blanc pris et un jaune coulant, saler légèrement.","Étaler l'avocat sur le pain, déposer un œuf sur chaque tartine, saupoudrer de piment doux."]},
-{id:"m9",meal:"matin",name:"Crêpes maison sucrées",temps:"25 min",photo:"🥞",
+{id:"m9",meal:"matin",budget:"moyen",name:"Crêpes maison sucrées",temps:"25 min",photo:"🥞",
  ingredients:[{n:"Farine",q:250,u:"g",r:"pantry"},{n:"Œufs",q:3,u:"piece",r:"dairy_eggs"},{n:"Lait",q:500,u:"ml",r:"dairy_eggs"},{n:"Sucre",q:1,u:"tbsp",r:"pantry"}],
  steps:["Verser la farine et le sucre dans un bol, creuser un puits au centre.","Casser les œufs dans le puits et commencer à mélanger au fouet.","Ajouter le lait petit à petit en fouettant, jusqu'à obtenir une pâte fluide sans grumeaux.","Laisser reposer la pâte 15 min à température ambiante.","Chauffer une poêle légèrement huilée à feu moyen-vif, verser une louche en inclinant la poêle.","Cuire 1-2 min jusqu'à ce que les bords se détachent, retourner et cuire 1 min de plus."]},
-{id:"m10",meal:"matin",name:"Muesli maison au lait",temps:"3 min",photo:"🥣",
+{id:"m10",meal:"matin",budget:"bas",name:"Muesli maison au lait",temps:"3 min",photo:"🥣",
  ingredients:[{n:"Flocons d'avoine",q:50,u:"g",r:"pantry"},{n:"Fruits secs",q:20,u:"g",r:"pantry"},{n:"Lait",q:200,u:"ml",r:"dairy_eggs"},{n:"Pomme",q:0.5,u:"piece",r:"produce"}],
  steps:["Verser les flocons d'avoine dans un bol.","Ajouter les fruits secs.","Verser le lait froid et laisser reposer 2 min pour attendrir les flocons.","Râper la demi-pomme directement au-dessus du bol juste avant de servir."]},
-{id:"m11",meal:"matin",name:"Tartine de ricotta & miel",temps:"5 min",photo:"🍯",
+{id:"m11",meal:"matin",budget:"bas",name:"Tartine de ricotta & miel",temps:"5 min",photo:"🍯",
  ingredients:[{n:"Pain aux céréales",q:2,u:"slice",r:"bakery"},{n:"Ricotta",q:80,u:"g",r:"dairy_eggs"},{n:"Miel",q:1,u:"tbsp",r:"pantry"},{n:"Noix",q:20,u:"g",r:"pantry"}],
  steps:["Faire toaster le pain jusqu'à ce qu'il soit croustillant.","Concasser grossièrement les noix.","Étaler généreusement la ricotta sur les tartines encore tièdes.","Napper de miel en filet et parsemer de noix concassées."]},
-{id:"m12",meal:"matin",name:"Omelette aux herbes",temps:"8 min",photo:"🍳",
+{id:"m12",meal:"matin",budget:"moyen",name:"Omelette aux herbes",temps:"8 min",photo:"🍳",
  ingredients:[{n:"Œufs",q:3,u:"piece",r:"dairy_eggs"},{n:"Persil",q:1,u:"bunch",r:"produce"},{n:"Ciboulette",q:1,u:"bunch",r:"produce"},{n:"Beurre",q:10,u:"g",r:"dairy_eggs"}],
  steps:["Laver et ciseler finement le persil et la ciboulette.","Battre les œufs avec les herbes ciselées, saler et poivrer.","Faire fondre le beurre dans une poêle à feu moyen jusqu'à ce qu'il mousse.","Verser les œufs, laisser prendre sur les bords puis ramener la préparation vers le centre.","Quand le centre est encore légèrement baveux, plier l'omelette en deux et servir."]},
-{id:"m13",meal:"matin",name:"Pain perdu à la cannelle",temps:"12 min",photo:"🍞",
+{id:"m13",meal:"matin",budget:"bas",name:"Pain perdu à la cannelle",temps:"12 min",photo:"🍞",
  ingredients:[{n:"Pain rassis",q:4,u:"slice",r:"bakery"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Lait",q:150,u:"ml",r:"dairy_eggs"},{n:"Cannelle",q:1,u:"pinch",r:"pantry"},{n:"Sucre",q:1,u:"tbsp",r:"pantry"}],
  steps:["Battre les œufs avec le lait, le sucre et la cannelle dans un plat large.","Tremper chaque tranche de pain 20-30 secondes par face pour bien l'imbiber.","Faire chauffer une noix de beurre dans une poêle à feu moyen.","Dorer les tranches 2 min par face jusqu'à ce qu'elles soient caramélisées.","Servir chaud, éventuellement avec un filet de miel."]},
-{id:"m14",meal:"matin",name:"Bol fromage blanc, fruits secs & miel",temps:"4 min",photo:"🥣",
+{id:"m14",meal:"matin",budget:"bas",name:"Bol fromage blanc, fruits secs & miel",temps:"4 min",photo:"🥣",
  ingredients:[{n:"Fromage blanc",q:200,u:"g",r:"dairy_eggs"},{n:"Amandes",q:20,u:"g",r:"pantry"},{n:"Miel",q:1,u:"tbsp",r:"pantry"}],
  steps:["Concasser grossièrement les amandes.","Verser le fromage blanc dans un bol, lisser la surface.","Parsemer les amandes concassées sur le dessus.","Napper de miel en filet juste avant de servir."]},
-{id:"m15",meal:"matin",name:"Toast banane & beurre de cacahuète",temps:"5 min",photo:"🍌",
+{id:"m15",meal:"matin",budget:"bas",name:"Toast banane & beurre de cacahuète",temps:"5 min",photo:"🍌",
  ingredients:[{n:"Pain",q:2,u:"slice",r:"bakery"},{n:"Beurre de cacahuète",q:2,u:"tbsp",r:"pantry"},{n:"Banane",q:1,u:"piece",r:"produce"}],
  steps:["Faire toaster le pain jusqu'à ce qu'il soit doré.","Tartiner généreusement de beurre de cacahuète pendant que le pain est encore chaud.","Couper la banane en rondelles fines.","Disposer les rondelles sur les tartines et servir."]},
-{id:"m16",meal:"matin",name:"Œufs brouillés au saumon fumé",temps:"8 min",photo:"🐟",
+{id:"m16",meal:"matin",budget:"moyen",name:"Œufs brouillés au saumon fumé",temps:"8 min",photo:"🐟",
  ingredients:[{n:"Œufs",q:3,u:"piece",r:"dairy_eggs"},{n:"Saumon fumé",q:50,u:"g",r:"meat_fish"},{n:"Ciboulette",q:1,u:"bunch",r:"produce"},{n:"Pain",q:2,u:"slice",r:"bakery"}],
  steps:["Couper le saumon fumé en lanières et ciseler la ciboulette.","Battre les œufs avec un peu de poivre.","Cuire à feu doux dans une poêle beurrée, en remuant sans cesse jusqu'à consistance crémeuse.","Retirer du feu, incorporer le saumon qui va légèrement cuire à la chaleur résiduelle.","Parsemer de ciboulette et servir avec le pain grillé."]},
-{id:"m17",meal:"matin",name:"Porridge à la compote de pommes",temps:"8 min",photo:"🥣",
+{id:"m17",meal:"matin",budget:"bas",name:"Porridge à la compote de pommes",temps:"8 min",photo:"🥣",
  ingredients:[{n:"Flocons d'avoine",q:60,u:"g",r:"pantry"},{n:"Lait",q:200,u:"ml",r:"dairy_eggs"},{n:"Compote de pommes",q:60,u:"g",r:"pantry"},{n:"Cannelle",q:1,u:"pinch",r:"pantry"}],
  steps:["Porter le lait à frémissement dans une casserole.","Ajouter les flocons d'avoine et cuire 5 min à feu doux en remuant.","Verser dans un bol et laisser tiédir 1 min.","Incorporer la compote de pommes en surface et saupoudrer de cannelle."]},
-{id:"m18",meal:"matin",name:"Tartines chèvre & miel",temps:"6 min",photo:"🍯",
+{id:"m18",meal:"matin",budget:"moyen",name:"Tartines chèvre & miel",temps:"6 min",photo:"🍯",
  ingredients:[{n:"Pain de campagne",q:2,u:"slice",r:"bakery"},{n:"Fromage de chèvre",q:60,u:"g",r:"dairy_eggs"},{n:"Miel",q:1,u:"tbsp",r:"pantry"},{n:"Noix",q:15,u:"g",r:"pantry"}],
  steps:["Faire toaster légèrement le pain, il doit rester un peu souple au centre.","Étaler le fromage de chèvre sur le pain encore tiède.","Passer 2 min sous le gril du four si vous aimez le chèvre fondu (facultatif).","Napper de miel et parsemer de noix concassées avant de servir."]},
-{id:"d1",meal:"midi",name:"Salade de pâtes au thon & tomates",temps:"15 min",photo:"🍝",
+{id:"d1",meal:"midi",budget:"moyen",name:"Salade de pâtes au thon & tomates",temps:"15 min",photo:"🍝",
  ingredients:[{n:"Pâtes",q:150,u:"g",r:"pantry"},{n:"Thon en boîte",q:1,u:"can",r:"pantry"},{n:"Tomates",q:2,u:"piece",r:"produce"},{n:"Olives",q:30,u:"g",r:"pantry"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"}],
  steps:["Cuire les pâtes dans l'eau bouillante salée selon le temps indiqué sur le paquet.","Égoutter et passer sous l'eau froide pour stopper la cuisson et éviter qu'elles collent.","Couper les tomates en dés, égoutter le thon en émiettant légèrement à la fourchette.","Mélanger pâtes, tomates, thon et olives dans un grand bol.","Arroser d'huile d'olive, saler, poivrer et mélanger avant de servir tiède ou froid."]},
-{id:"d2",meal:"midi",name:"Wrap poulet crudités",temps:"12 min",photo:"🌯",
+{id:"d2",meal:"midi",budget:"moyen",name:"Wrap poulet crudités",temps:"12 min",photo:"🌯",
  ingredients:[{n:"Galette de blé",q:2,u:"piece",r:"bakery"},{n:"Blanc de poulet cuit",q:150,u:"g",r:"meat_fish"},{n:"Salade",q:1,u:"piece",r:"produce"},{n:"Tomates",q:1,u:"piece",r:"produce"},{n:"Sauce fromagère",q:2,u:"tbsp",r:"dairy_eggs"}],
  steps:["Émincer le poulet cuit en lanières.","Laver et émincer la salade, couper la tomate en petits dés.","Réchauffer légèrement la galette 20 sec à la poêle sèche pour l'assouplir.","Étaler la sauce au centre de la galette, ajouter salade, tomate puis poulet.","Rouler fermement en repliant les côtés, puis couper en deux en biais."]},
-{id:"d3",meal:"midi",name:"Quiche lorraine maison",temps:"45 min",photo:"🥧",
+{id:"d3",meal:"midi",budget:"moyen",name:"Quiche lorraine maison",temps:"45 min",photo:"🥧",
  ingredients:[{n:"Pâte brisée",q:1,u:"piece",r:"bakery"},{n:"Lardons",q:150,u:"g",r:"meat_fish"},{n:"Œufs",q:3,u:"piece",r:"dairy_eggs"},{n:"Crème fraîche",q:200,u:"ml",r:"dairy_eggs"},{n:"Emmental râpé",q:50,u:"g",r:"dairy_eggs"}],
  steps:["Préchauffer le four à 180°C.","Étaler la pâte dans un moule à tarte, piquer le fond à la fourchette.","Faire revenir les lardons 5 min dans une poêle sans matière grasse jusqu'à légère coloration.","Battre les œufs avec la crème fraîche, saler légèrement, poivrer, ajouter le fromage râpé.","Répartir les lardons sur le fond de pâte, verser l'appareil œufs-crème par-dessus.","Cuire 35 min à 180°C jusqu'à ce que le dessus soit doré et légèrement gonflé."]},
-{id:"d4",meal:"midi",name:"Salade César simplifiée",temps:"15 min",photo:"🥗",
+{id:"d4",meal:"midi",budget:"moyen",name:"Salade César simplifiée",temps:"15 min",photo:"🥗",
  ingredients:[{n:"Salade romaine",q:1,u:"piece",r:"produce"},{n:"Blanc de poulet",q:150,u:"g",r:"meat_fish"},{n:"Parmesan",q:30,u:"g",r:"dairy_eggs"},{n:"Croûtons",q:50,u:"g",r:"pantry"},{n:"Sauce César",q:2,u:"tbsp",r:"pantry"}],
  steps:["Assaisonner le poulet de sel et poivre, le griller 4-5 min par face dans une poêle chaude jusqu'à ce qu'il soit bien cuit.","Laisser reposer 2 min puis trancher en aiguillettes.","Laver, essorer et couper la salade romaine en morceaux.","Mélanger la salade avec la sauce César dans un grand bol.","Ajouter le poulet tranché, les croûtons, et râper le parmesan par-dessus."]},
-{id:"d5",meal:"midi",name:"Riz sauté aux légumes & œuf",temps:"18 min",photo:"🍚",
+{id:"d5",meal:"midi",budget:"bas",name:"Riz sauté aux légumes & œuf",temps:"18 min",photo:"🍚",
  ingredients:[{n:"Riz cuit",q:250,u:"g",r:"pantry"},{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Carotte",q:1,u:"piece",r:"produce"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Sauce soja",q:2,u:"tbsp",r:"pantry"}],
  steps:["Couper la courgette et la carotte en petits dés réguliers.","Chauffer un filet d'huile dans une grande poêle ou un wok à feu vif.","Faire sauter les légumes 5 min jusqu'à ce qu'ils soient tendres mais encore croquants.","Ajouter le riz cuit (idéalement froid de la veille), l'écraser un peu pour bien le disperser, faire revenir 5 min.","Pousser le riz sur un côté, casser les œufs dans l'espace libre, brouiller rapidement puis mélanger au riz.","Assaisonner de sauce soja, bien mélanger et servir chaud."]},
-{id:"d6",meal:"midi",name:"Soupe de légumes & croûtons",temps:"25 min",photo:"🍲",
+{id:"d6",meal:"midi",budget:"bas",name:"Soupe de légumes & croûtons",temps:"25 min",photo:"🍲",
  ingredients:[{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Carotte",q:2,u:"piece",r:"produce"},{n:"Pomme de terre",q:1,u:"piece",r:"produce"},{n:"Bouillon de légumes",q:1,u:"cube",r:"pantry"},{n:"Croûtons",q:40,u:"g",r:"pantry"}],
  steps:["Éplucher et couper tous les légumes en morceaux réguliers.","Les placer dans une casserole, couvrir d'eau, ajouter le cube de bouillon.","Porter à ébullition puis laisser mijoter 20 min à couvert jusqu'à ce que les légumes soient bien tendres.","Mixer directement dans la casserole avec un mixeur plongeant jusqu'à texture lisse.","Rectifier l'assaisonnement si besoin, servir chaud avec les croûtons par-dessus."]},
-{id:"d7",meal:"midi",name:"Salade de lentilles, feta & tomates",temps:"15 min",photo:"🥗",
+{id:"d7",meal:"midi",budget:"bas",name:"Salade de lentilles, feta & tomates",temps:"15 min",photo:"🥗",
  ingredients:[{n:"Lentilles cuites",q:250,u:"g",r:"pantry"},{n:"Feta",q:80,u:"g",r:"dairy_eggs"},{n:"Tomates",q:2,u:"piece",r:"produce"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"},{n:"Oignon rouge",q:0.5,u:"piece",r:"produce"}],
  steps:["Rincer les lentilles cuites sous l'eau froide et bien égoutter.","Couper les tomates en dés et émincer finement l'oignon rouge.","Mélanger lentilles, tomates et oignon dans un bol.","Émietter la feta grossièrement par-dessus.","Arroser d'huile d'olive, saler légèrement (la feta est déjà salée) et poivrer."]},
-{id:"d8",meal:"midi",name:"Croque-monsieur jambon fromage",temps:"12 min",photo:"🥪",
+{id:"d8",meal:"midi",budget:"bas",name:"Croque-monsieur jambon fromage",temps:"12 min",photo:"🥪",
  ingredients:[{n:"Pain de mie",q:4,u:"slice",r:"bakery"},{n:"Jambon",q:2,u:"slice",r:"meat_fish"},{n:"Emmental râpé",q:60,u:"g",r:"dairy_eggs"},{n:"Beurre",q:15,u:"g",r:"dairy_eggs"}],
  steps:["Garnir deux tranches de pain avec le jambon et la moitié du fromage.","Recouvrir avec les deux autres tranches de pain.","Beurrer légèrement l'extérieur des deux faces.","Cuire à la poêle à feu moyen 3-4 min par face jusqu'à ce que le pain soit doré et croustillant, ou au four 8 min à 200°C.","Parsemer du reste de fromage sur le dessus juste avant la fin de cuisson pour qu'il gratine."]},
-{id:"d9",meal:"midi",name:"Bowl quinoa, pois chiches & légumes rôtis",temps:"30 min",photo:"🥗",
+{id:"d9",meal:"midi",budget:"moyen",name:"Bowl quinoa, pois chiches & légumes rôtis",temps:"30 min",photo:"🥗",
  ingredients:[{n:"Quinoa",q:100,u:"g",r:"pantry"},{n:"Pois chiches",q:1,u:"can",r:"pantry"},{n:"Aubergine",q:1,u:"piece",r:"produce"},{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"}],
  steps:["Préchauffer le four à 200°C.","Rincer le quinoa, le cuire dans deux fois son volume d'eau bouillante salée 12-15 min, puis égoutter.","Couper aubergine et courgette en dés d'environ 1,5 cm, les répartir sur une plaque avec l'huile d'olive, sel et poivre.","Enfourner 20 min en remuant à mi-cuisson, jusqu'à ce qu'ils soient tendres et légèrement caramélisés.","Égoutter et rincer les pois chiches.","Dans un bol, assembler quinoa, légumes rôtis et pois chiches, arroser d'un filet d'huile d'olive."]},
-{id:"d10",meal:"midi",name:"Salade grecque au feta",temps:"12 min",photo:"🥗",
+{id:"d10",meal:"midi",budget:"bas",name:"Salade grecque au feta",temps:"12 min",photo:"🥗",
  ingredients:[{n:"Tomates",q:2,u:"piece",r:"produce"},{n:"Concombre",q:1,u:"piece",r:"produce"},{n:"Feta",q:100,u:"g",r:"dairy_eggs"},{n:"Olives noires",q:40,u:"g",r:"pantry"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"}],
  steps:["Couper les tomates en gros quartiers et le concombre en demi-rondelles épaisses.","Disposer tomates et concombre dans un plat.","Ajouter les olives noires entières.","Déposer la feta en un bloc ou en gros cubes sur le dessus (à la grecque, on ne l'émiette pas toujours).","Arroser généreusement d'huile d'olive et d'un peu d'origan si disponible."]},
-{id:"d11",meal:"midi",name:"Tartare de saumon & avocat",temps:"15 min",photo:"🐟",
+{id:"d11",meal:"midi",budget:"moyen",name:"Tartare de saumon & avocat",temps:"15 min",photo:"🐟",
  ingredients:[{n:"Saumon frais",q:200,u:"g",r:"meat_fish"},{n:"Avocat",q:1,u:"piece",r:"produce"},{n:"Citron",q:1,u:"piece",r:"produce"},{n:"Ciboulette",q:1,u:"bunch",r:"produce"},{n:"Sauce soja",q:1,u:"tbsp",r:"pantry"}],
  steps:["S'assurer que le saumon est bien frais (qualité tartare/sushi), le couper au couteau bien aiguisé en petits dés réguliers.","Couper l'avocat en dés de la même taille.","Ciseler finement la ciboulette.","Mélanger délicatement saumon et avocat avec le jus de citron, la sauce soja et la ciboulette.","Réserver au réfrigérateur 10 min avant de servir pour que les saveurs se mêlent."]},
-{id:"d12",meal:"midi",name:"Galette de sarrasin jambon-fromage",temps:"15 min",photo:"🥞",
+{id:"d12",meal:"midi",budget:"bas",name:"Galette de sarrasin jambon-fromage",temps:"15 min",photo:"🥞",
  ingredients:[{n:"Galettes de sarrasin",q:2,u:"piece",r:"bakery"},{n:"Jambon",q:2,u:"slice",r:"meat_fish"},{n:"Emmental râpé",q:60,u:"g",r:"dairy_eggs"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"}],
  steps:["Chauffer une poêle ou une crêpière à feu moyen, y déposer la galette.","Casser un œuf directement au centre de la galette.","Parsemer de fromage râpé tout autour de l'œuf, déposer le jambon sur les côtés.","Replier les quatre bords de la galette vers le centre pour former un carré.","Cuire jusqu'à ce que le blanc de l'œuf soit pris (environ 4-5 min), servir bien chaud."]},
-{id:"d13",meal:"midi",name:"Salade de riz au thon & maïs",temps:"15 min",photo:"🍚",
+{id:"d13",meal:"midi",budget:"moyen",name:"Salade de riz au thon & maïs",temps:"15 min",photo:"🍚",
  ingredients:[{n:"Riz cuit",q:200,u:"g",r:"pantry"},{n:"Thon en boîte",q:1,u:"can",r:"pantry"},{n:"Maïs",q:100,u:"g",r:"pantry"},{n:"Poivron",q:1,u:"piece",r:"produce"},{n:"Vinaigrette",q:2,u:"tbsp",r:"pantry"}],
  steps:["Laisser le riz cuit refroidir s'il vient d'être préparé, ou utiliser du riz froid de la veille.","Couper le poivron en petits dés.","Égoutter le thon et le maïs.","Mélanger riz, thon émietté, maïs et poivron dans un grand bol.","Assaisonner de vinaigrette, mélanger et réserver au frais 5 min avant de servir."]},
-{id:"d14",meal:"midi",name:"Sandwich club poulet",temps:"12 min",photo:"🥪",
+{id:"d14",meal:"midi",budget:"bas",name:"Sandwich club poulet",temps:"12 min",photo:"🥪",
  ingredients:[{n:"Pain de mie",q:3,u:"slice",r:"bakery"},{n:"Blanc de poulet cuit",q:120,u:"g",r:"meat_fish"},{n:"Bacon",q:2,u:"slice",r:"meat_fish"},{n:"Salade",q:2,u:"leaf",r:"produce"},{n:"Tomates",q:1,u:"piece",r:"produce"}],
  steps:["Faire griller les 3 tranches de pain de mie.","Cuire le bacon à la poêle 3-4 min jusqu'à ce qu'il soit croustillant.","Trancher le poulet finement et couper la tomate en rondelles.","Étager sur la première tranche : salade, tomate, poulet, puis couvrir avec la deuxième tranche.","Ajouter le bacon et un peu de salade, couvrir avec la troisième tranche, presser légèrement et couper en triangles."]},
-{id:"d15",meal:"midi",name:"Poêlée de légumes & œuf au plat",temps:"18 min",photo:"🍳",
+{id:"d15",meal:"midi",budget:"bas",name:"Poêlée de légumes & œuf au plat",temps:"18 min",photo:"🍳",
  ingredients:[{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Poivron",q:1,u:"piece",r:"produce"},{n:"Oignon",q:1,u:"piece",r:"produce"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"}],
  steps:["Couper la courgette, le poivron et l'oignon en lamelles fines.","Chauffer l'huile d'olive dans une poêle à feu moyen-vif.","Faire revenir l'oignon 2 min, puis ajouter poivron et courgette, cuire 8-10 min en remuant régulièrement jusqu'à ce qu'ils soient tendres.","Assaisonner de sel et poivre, réserver les légumes dans une assiette au chaud.","Dans la même poêle, cuire les œufs au plat 3 min, puis les déposer sur les légumes pour servir."]},
-{id:"d16",meal:"midi",name:"Soupe miso & nouilles",temps:"15 min",photo:"🍜",
+{id:"d16",meal:"midi",budget:"moyen",name:"Soupe miso & nouilles",temps:"15 min",photo:"🍜",
  ingredients:[{n:"Pâte miso",q:2,u:"tbsp",r:"pantry"},{n:"Nouilles udon",q:150,u:"g",r:"pantry"},{n:"Champignons",q:80,u:"g",r:"produce"},{n:"Tofu",q:100,u:"g",r:"pantry"},{n:"Ciboulette",q:1,u:"bunch",r:"produce"}],
  steps:["Cuire les nouilles udon dans l'eau bouillante selon le temps indiqué sur le paquet, égoutter.","Émincer les champignons et couper le tofu en cubes.","Chauffer de l'eau ou un bouillon léger, ajouter champignons et tofu, cuire 3-4 min.","Retirer du feu et diluer la pâte miso directement dans le bouillon chaud (ne pas la faire bouillir pour préserver ses arômes).","Verser le bouillon sur les nouilles dans un bol, parsemer de ciboulette ciselée."]},
-{id:"d17",meal:"midi",name:"Salade caprese & jambon cru",temps:"10 min",photo:"🍅",
+{id:"d17",meal:"midi",budget:"moyen",name:"Salade caprese & jambon cru",temps:"10 min",photo:"🍅",
  ingredients:[{n:"Tomates",q:3,u:"piece",r:"produce"},{n:"Mozzarella",q:125,u:"g",r:"dairy_eggs"},{n:"Jambon cru",q:4,u:"slice",r:"meat_fish"},{n:"Basilic",q:1,u:"bunch",r:"produce"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"}],
  steps:["Trancher les tomates en rondelles régulières d'environ 1 cm.","Trancher la mozzarella de la même épaisseur.","Alterner sur une assiette les tranches de tomate et de mozzarella.","Disposer le jambon cru en plis harmonieux entre les tranches et ajouter les feuilles de basilic frais.","Arroser d'huile d'olive et d'un tour de poivre juste avant de servir."]},
-{id:"d18",meal:"midi",name:"Taboulé oriental",temps:"20 min",photo:"🥗",
+{id:"d18",meal:"midi",budget:"bas",name:"Taboulé oriental",temps:"20 min",photo:"🥗",
  ingredients:[{n:"Semoule fine",q:150,u:"g",r:"pantry"},{n:"Tomates",q:2,u:"piece",r:"produce"},{n:"Concombre",q:1,u:"piece",r:"produce"},{n:"Persil",q:1,u:"bunch",r:"produce"},{n:"Citron",q:1,u:"piece",r:"produce"}],
  steps:["Verser la semoule dans un grand bol, couvrir d'eau chaude à niveau égal, couvrir et laisser gonfler 10 min.","Égrainer la semoule à la fourchette une fois qu'elle a absorbé l'eau.","Couper les tomates et le concombre en petits dés, ciseler finement le persil.","Ajouter les légumes et le persil à la semoule.","Arroser du jus de citron et d'un filet d'huile d'olive, mélanger et réserver au frais avant de servir."]},
-{id:"s1",meal:"soir",name:"Poulet rôti & pommes de terre",temps:"1h10",photo:"🍗",
+{id:"s1",meal:"soir",budget:"moyen",name:"Poulet rôti & pommes de terre",temps:"1h10",photo:"🍗",
  ingredients:[{n:"Poulet entier",q:1,u:"piece",r:"meat_fish"},{n:"Pommes de terre",q:800,u:"g",r:"produce"},{n:"Ail",q:3,u:"clove",r:"produce"},{n:"Thym",q:1,u:"sprig",r:"produce"},{n:"Huile d'olive",q:2,u:"tbsp",r:"pantry"}],
  steps:["Préchauffer le four à 200°C.","Frotter le poulet avec l'huile d'olive, l'ail écrasé, le thym, du sel et du poivre, y compris à l'intérieur.","Placer le poulet dans un plat, disposer les pommes de terre coupées en gros morceaux tout autour.","Enfourner 1h en arrosant le poulet de son jus toutes les 20 min pour qu'il reste moelleux.","Vérifier la cuisson en piquant la cuisse : le jus qui s'écoule doit être clair, pas rosé.","Laisser reposer 5 min hors du four avant de découper."]},
-{id:"s2",meal:"soir",name:"Pâtes à la carbonara",temps:"20 min",photo:"🍝",
+{id:"s2",meal:"soir",budget:"bas",name:"Pâtes à la carbonara",temps:"20 min",photo:"🍝",
  ingredients:[{n:"Pâtes",q:200,u:"g",r:"pantry"},{n:"Lardons",q:150,u:"g",r:"meat_fish"},{n:"Œufs",q:2,u:"piece",r:"dairy_eggs"},{n:"Parmesan",q:40,u:"g",r:"dairy_eggs"},{n:"Poivre",q:1,u:"totaste",r:"other"}],
  steps:["Cuire les pâtes dans l'eau bouillante salée selon le temps du paquet, en réservant un peu d'eau de cuisson avant d'égoutter.","Pendant ce temps, faire revenir les lardons à sec dans une poêle jusqu'à ce qu'ils soient bien dorés.","Battre les œufs avec le parmesan râpé et beaucoup de poivre dans un bol.","Égoutter les pâtes encore très chaudes, les remettre dans la casserole hors du feu.","Ajouter immédiatement les lardons puis le mélange œuf-parmesan, remuer vivement : la chaleur des pâtes cuit les œufs sans les figer en omelette.","Ajouter un peu d'eau de cuisson réservée si la sauce est trop épaisse, servir tout de suite."]},
-{id:"s3",meal:"soir",name:"Gratin de courgettes",temps:"40 min",photo:"🥘",
+{id:"s3",meal:"soir",budget:"bas",name:"Gratin de courgettes",temps:"40 min",photo:"🥘",
  ingredients:[{n:"Courgettes",q:3,u:"piece",r:"produce"},{n:"Crème fraîche",q:200,u:"ml",r:"dairy_eggs"},{n:"Emmental râpé",q:80,u:"g",r:"dairy_eggs"},{n:"Ail",q:1,u:"clove",r:"produce"}],
  steps:["Préchauffer le four à 200°C.","Laver les courgettes et les couper en rondelles d'environ 5 mm.","Les faire revenir 8-10 min dans une poêle avec l'ail émincé, jusqu'à ce qu'elles perdent un peu d'eau et commencent à dorer.","Disposer les courgettes dans un plat à gratin, saler et poivrer.","Napper de crème fraîche en l'étalant bien, puis couvrir uniformément de fromage râpé.","Cuire 25 min à 200°C jusqu'à ce que le dessus soit doré et gratiné."]},
-{id:"s4",meal:"soir",name:"Curry de légumes au lait de coco",temps:"30 min",photo:"🍛",
+{id:"s4",meal:"soir",budget:"bas",name:"Curry de légumes au lait de coco",temps:"30 min",photo:"🍛",
  ingredients:[{n:"Aubergine",q:1,u:"piece",r:"produce"},{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Lait de coco",q:400,u:"ml",r:"pantry"},{n:"Pâte de curry",q:2,u:"tbsp",r:"pantry"},{n:"Riz",q:150,u:"g",r:"pantry"}],
  steps:["Couper l'aubergine et la courgette en cubes d'environ 2 cm.","Chauffer un peu d'huile dans une grande poêle ou un wok, ajouter la pâte de curry et la faire revenir 1 min pour libérer les arômes.","Ajouter les légumes, bien les enrober de pâte de curry, cuire 5 min en remuant.","Verser le lait de coco, mélanger et laisser mijoter à couvert 15-20 min jusqu'à ce que les légumes soient bien tendres.","Pendant ce temps, cuire le riz selon les instructions du paquet.","Rectifier l'assaisonnement du curry en sel si besoin, servir chaud sur le riz."]},
-{id:"s5",meal:"soir",name:"Saumon en papillote & riz",temps:"25 min",photo:"🐟",
+{id:"s5",meal:"soir",budget:"moyen",name:"Saumon en papillote & riz",temps:"25 min",photo:"🐟",
  ingredients:[{n:"Pavés de saumon",q:2,u:"piece",r:"meat_fish"},{n:"Citron",q:1,u:"piece",r:"produce"},{n:"Aneth",q:1,u:"bunch",r:"produce"},{n:"Riz",q:150,u:"g",r:"pantry"}],
  steps:["Préchauffer le four à 200°C.","Découper deux grands carrés de papier cuisson, déposer un pavé de saumon au centre de chacun.","Saler, poivrer, ajouter 2-3 rondelles de citron et quelques brins d'aneth sur chaque pavé.","Refermer hermétiquement les papillotes en repliant bien les bords.","Enfourner 15-18 min selon l'épaisseur du poisson.","Pendant ce temps, cuire le riz à la vapeur ou à l'eau, servir le saumon dès l'ouverture de la papillote pour profiter de la vapeur parfumée."]},
-{id:"s6",meal:"soir",name:"Chili con carne",temps:"35 min",photo:"🌶️",
+{id:"s6",meal:"soir",budget:"bas",name:"Chili con carne",temps:"35 min",photo:"🌶️",
  ingredients:[{n:"Bœuf haché",q:400,u:"g",r:"meat_fish"},{n:"Haricots rouges",q:1,u:"can",r:"pantry"},{n:"Tomates concassées",q:400,u:"g",r:"pantry"},{n:"Oignon",q:1,u:"piece",r:"produce"},{n:"Piment",q:1,u:"tsp",r:"pantry"}],
  steps:["Émincer finement l'oignon.","Chauffer un peu d'huile dans une cocotte, faire revenir l'oignon 3 min jusqu'à ce qu'il devienne translucide.","Ajouter le bœuf haché, faire revenir en émiettant à la fourchette jusqu'à ce qu'il soit bien coloré.","Ajouter les tomates concassées et le piment, saler, poivrer, mélanger.","Égoutter et rincer les haricots rouges, les incorporer.","Laisser mijoter à couvert 25 min à feu doux en remuant de temps en temps, jusqu'à ce que la sauce ait légèrement épaissi."]},
-{id:"s7",meal:"soir",name:"Blanquette de veau",temps:"1h30",photo:"🍲",
+{id:"s7",meal:"soir",budget:"moyen",name:"Blanquette de veau",temps:"1h30",photo:"🍲",
  ingredients:[{n:"Veau à blanquette",q:600,u:"g",r:"meat_fish"},{n:"Carottes",q:2,u:"piece",r:"produce"},{n:"Champignons",q:150,u:"g",r:"produce"},{n:"Crème fraîche",q:200,u:"ml",r:"dairy_eggs"},{n:"Riz",q:150,u:"g",r:"pantry"}],
  steps:["Placer les morceaux de veau dans une cocotte, couvrir d'eau froide, porter à ébullition puis écumer.","Ajouter les carottes coupées en rondelles, saler légèrement, couvrir et laisser mijoter 1h à feu doux.","Ajouter les champignons émincés 15 min avant la fin de cuisson.","Retirer la viande et les légumes, réserver au chaud. Faire réduire le bouillon quelques minutes si besoin.","Hors du feu, incorporer la crème fraîche au bouillon en fouettant pour lier la sauce.","Remettre viande et légumes dans la sauce, réchauffer doucement sans bouillir, servir avec le riz."]},
-{id:"s8",meal:"soir",name:"Lasagnes maison",temps:"1h",photo:"🍝",
+{id:"s8",meal:"soir",budget:"moyen",name:"Lasagnes maison",temps:"1h",photo:"🍝",
  ingredients:[{n:"Feuilles de lasagne",q:12,u:"piece",r:"pantry"},{n:"Bœuf haché",q:400,u:"g",r:"meat_fish"},{n:"Sauce tomate",q:500,u:"ml",r:"pantry"},{n:"Béchamel",q:400,u:"ml",r:"dairy_eggs"},{n:"Emmental râpé",q:100,u:"g",r:"dairy_eggs"}],
  steps:["Préchauffer le four à 190°C.","Faire revenir le bœuf haché dans une poêle jusqu'à ce qu'il soit bien coloré, ajouter la sauce tomate, saler, poivrer, laisser mijoter 10 min.","Dans un plat à gratin, verser un peu de sauce viande au fond pour éviter que les premières feuilles collent.","Alterner les couches : feuilles de lasagne, sauce viande, béchamel, en répétant l'opération 3 à 4 fois.","Terminer par une couche de béchamel, couvrir généreusement de fromage râpé.","Cuire 40 min à 190°C jusqu'à ce que le dessus soit bien doré et que les lasagnes soient fondantes. Laisser reposer 5 min avant de découper."]},
-{id:"s9",meal:"soir",name:"Poêlée de crevettes à l'ail",temps:"15 min",photo:"🍤",
+{id:"s9",meal:"soir",budget:"bas",name:"Poêlée de crevettes à l'ail",temps:"15 min",photo:"🍤",
  ingredients:[{n:"Crevettes",q:300,u:"g",r:"meat_fish"},{n:"Ail",q:3,u:"clove",r:"produce"},{n:"Persil",q:1,u:"bunch",r:"produce"},{n:"Riz",q:150,u:"g",r:"pantry"}],
  steps:["Décortiquer les crevettes si besoin, éponger avec du papier absorbant.","Émincer finement l'ail et ciseler le persil.","Chauffer un filet d'huile d'olive dans une poêle à feu vif, ajouter l'ail et le faire revenir 30 sec sans le laisser brûler.","Ajouter les crevettes, cuire 2-3 min par côté jusqu'à ce qu'elles deviennent roses et opaques.","Saler, poivrer, parsemer de persil hors du feu.","Servir immédiatement, bien chaud, avec le riz cuit à la vapeur."]},
-{id:"s10",meal:"soir",name:"Ratatouille & riz",temps:"45 min",photo:"🍆",
+{id:"s10",meal:"soir",budget:"bas",name:"Ratatouille & riz",temps:"45 min",photo:"🍆",
  ingredients:[{n:"Aubergine",q:1,u:"piece",r:"produce"},{n:"Courgette",q:2,u:"piece",r:"produce"},{n:"Tomates",q:3,u:"piece",r:"produce"},{n:"Poivron",q:1,u:"piece",r:"produce"},{n:"Riz",q:150,u:"g",r:"pantry"}],
  steps:["Couper tous les légumes en dés d'environ 2 cm, en gardant chaque légume séparé.","Chauffer un fond d'huile d'olive dans une cocotte, faire revenir l'aubergine seule 5 min car elle absorbe plus d'huile.","Ajouter le poivron et la courgette, faire revenir 5 min de plus.","Ajouter les tomates coupées en dés, saler, poivrer, ajouter un peu d'herbes de Provence si disponibles.","Couvrir et laisser mijoter à feu doux 30 min en remuant de temps en temps, jusqu'à ce que les légumes soient fondants.","Cuire le riz pendant ce temps et servir la ratatouille chaude ou tiède par-dessus."]},
-{id:"s11",meal:"soir",name:"Steak, frites maison & salade",temps:"30 min",photo:"🥩",
+{id:"s11",meal:"soir",budget:"moyen",name:"Steak, frites maison & salade",temps:"30 min",photo:"🥩",
  ingredients:[{n:"Steaks de bœuf",q:2,u:"piece",r:"meat_fish"},{n:"Pommes de terre",q:500,u:"g",r:"produce"},{n:"Salade",q:1,u:"piece",r:"produce"},{n:"Huile",q:2,u:"tbsp",r:"pantry"}],
  steps:["Préchauffer le four à 200°C.","Couper les pommes de terre en bâtonnets réguliers, les sécher avec un torchon.","Les disposer sur une plaque avec l'huile, sel et poivre, enfourner 25 min en les retournant à mi-cuisson.","Sortir les steaks du réfrigérateur 10 min avant cuisson pour qu'ils soient à température ambiante.","Saisir les steaks dans une poêle très chaude 2-3 min par face selon l'épaisseur et la cuisson désirée, laisser reposer 3 min avant de servir.","Laver et assaisonner la salade, servir l'ensemble ensemble."]},
-{id:"s12",meal:"soir",name:"Risotto aux champignons",temps:"30 min",photo:"🍚",
+{id:"s12",meal:"soir",budget:"bas",name:"Risotto aux champignons",temps:"30 min",photo:"🍚",
  ingredients:[{n:"Riz à risotto",q:200,u:"g",r:"pantry"},{n:"Champignons",q:200,u:"g",r:"produce"},{n:"Bouillon de légumes",q:1,u:"liter",r:"pantry"},{n:"Parmesan",q:40,u:"g",r:"dairy_eggs"}],
  steps:["Faire chauffer le bouillon dans une casserole et le garder à frémissement tout au long de la préparation.","Émincer les champignons, les faire revenir dans une cocotte avec un peu d'huile 5 min, réserver.","Dans la même cocotte, verser le riz à risotto et le faire nacrer 2 min à feu moyen en remuant, sans le laisser colorer.","Ajouter le bouillon chaud louche par louche, en attendant que chaque louche soit absorbée avant d'ajouter la suivante, en remuant régulièrement (environ 18-20 min).","Réincorporer les champignons dans les 5 dernières minutes de cuisson.","Retirer du feu, ajouter le parmesan râpé, mélanger vivement pour obtenir un risotto crémeux (l'onctuosité vient de ce mouvement), servir immédiatement."]},
-{id:"s13",meal:"soir",name:"Tajine de poulet aux abricots",temps:"45 min",photo:"🍗",
+{id:"s13",meal:"soir",budget:"moyen",name:"Tajine de poulet aux abricots",temps:"45 min",photo:"🍗",
  ingredients:[{n:"Cuisses de poulet",q:4,u:"piece",r:"meat_fish"},{n:"Abricots secs",q:100,u:"g",r:"pantry"},{n:"Oignon",q:1,u:"piece",r:"produce"},{n:"Épices tajine",q:1,u:"tbsp",r:"pantry"},{n:"Semoule",q:150,u:"g",r:"pantry"}],
  steps:["Émincer l'oignon.","Chauffer un peu d'huile dans une cocotte ou un tajine, faire dorer les cuisses de poulet 5 min sur toutes les faces, réserver.","Faire revenir l'oignon dans la même cocotte, ajouter les épices à tajine, laisser torréfier 1 min.","Remettre le poulet, ajouter les abricots secs et un verre d'eau, couvrir.","Laisser mijoter à feu doux 35 min en retournant le poulet à mi-cuisson, jusqu'à ce qu'il soit bien tendre.","Préparer la semoule selon le paquet et servir le tajine par-dessus avec un peu de sauce."]},
-{id:"s14",meal:"soir",name:"Gratin dauphinois & salade verte",temps:"1h",photo:"🥘",
+{id:"s14",meal:"soir",budget:"bas",name:"Gratin dauphinois & salade verte",temps:"1h",photo:"🥘",
  ingredients:[{n:"Pommes de terre",q:800,u:"g",r:"produce"},{n:"Crème fraîche",q:300,u:"ml",r:"dairy_eggs"},{n:"Ail",q:1,u:"clove",r:"produce"},{n:"Salade",q:1,u:"piece",r:"produce"}],
  steps:["Préchauffer le four à 180°C.","Éplucher les pommes de terre et les couper en fines rondelles régulières (environ 2-3 mm), à la mandoline si possible.","Frotter un plat à gratin avec la gousse d'ail coupée en deux.","Disposer les rondelles de pommes de terre en couches successives, en salant et poivrant légèrement chaque couche.","Verser la crème fraîche sur le dessus en veillant à ce qu'elle s'infiltre entre les couches.","Cuire 50 min à 180°C jusqu'à ce que les pommes de terre soient tendres et le dessus doré. Servir avec la salade verte assaisonnée."]},
-{id:"s15",meal:"soir",name:"Filet de poisson, purée maison",temps:"30 min",photo:"🐟",
+{id:"s15",meal:"soir",budget:"moyen",name:"Filet de poisson, purée maison",temps:"30 min",photo:"🐟",
  ingredients:[{n:"Filets de poisson blanc",q:2,u:"piece",r:"meat_fish"},{n:"Pommes de terre",q:600,u:"g",r:"produce"},{n:"Beurre",q:30,u:"g",r:"dairy_eggs"},{n:"Lait",q:100,u:"ml",r:"dairy_eggs"}],
  steps:["Éplucher et couper les pommes de terre en morceaux, les cuire à l'eau bouillante salée 20 min jusqu'à ce qu'elles soient bien tendres.","Égoutter et écraser au presse-purée, incorporer le beurre puis le lait chaud petit à petit jusqu'à consistance lisse et crémeuse. Saler.","Saler et poivrer les filets de poisson.","Chauffer un peu de beurre ou d'huile dans une poêle à feu moyen-vif.","Cuire les filets 4 min sur la première face sans les bouger, puis 3-4 min sur l'autre face selon l'épaisseur, jusqu'à ce que la chair soit opaque et se détache facilement.","Servir immédiatement le poisson sur la purée bien chaude."]},
-{id:"s16",meal:"soir",name:"Chili végétarien aux haricots rouges",temps:"30 min",photo:"🌶️",
+{id:"s16",meal:"soir",budget:"bas",name:"Chili végétarien aux haricots rouges",temps:"30 min",photo:"🌶️",
  ingredients:[{n:"Haricots rouges",q:1,u:"can",r:"pantry"},{n:"Tomates concassées",q:400,u:"g",r:"pantry"},{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Oignon",q:1,u:"piece",r:"produce"},{n:"Piment",q:1,u:"tsp",r:"pantry"}],
  steps:["Émincer l'oignon et couper la courgette en dés.","Chauffer un peu d'huile dans une cocotte, faire revenir l'oignon 3 min jusqu'à ce qu'il devienne translucide.","Ajouter la courgette, cuire 5 min en remuant.","Ajouter les tomates concassées et le piment, saler, poivrer.","Égoutter et rincer les haricots rouges, les incorporer à la préparation.","Laisser mijoter à couvert 20 min à feu doux jusqu'à ce que la sauce ait épaissi et que la courgette soit bien tendre."]},
-{id:"s17",meal:"soir",name:"Poulet basquaise",temps:"45 min",photo:"🍗",
+{id:"s17",meal:"soir",budget:"moyen",name:"Poulet basquaise",temps:"45 min",photo:"🍗",
  ingredients:[{n:"Cuisses de poulet",q:4,u:"piece",r:"meat_fish"},{n:"Poivrons",q:2,u:"piece",r:"produce"},{n:"Tomates",q:3,u:"piece",r:"produce"},{n:"Oignon",q:1,u:"piece",r:"produce"},{n:"Riz",q:150,u:"g",r:"pantry"}],
  steps:["Couper les poivrons en lanières, les tomates en quartiers et émincer l'oignon.","Chauffer un peu d'huile dans une cocotte, faire dorer les cuisses de poulet 5-6 min sur toutes les faces, réserver.","Faire revenir l'oignon et les poivrons dans la même cocotte 5 min.","Ajouter les tomates, saler, poivrer, mélanger et laisser rendre leur jus 5 min.","Remettre le poulet dans la cocotte, couvrir et laisser mijoter à feu doux 30 min jusqu'à ce que le poulet soit bien cuit et fondant.","Cuire le riz pendant ce temps et servir le poulet basquaise avec sa sauce par-dessus."]},
-{id:"s18",meal:"soir",name:"Couscous poulet-légumes",temps:"40 min",photo:"🍛",
+{id:"s18",meal:"soir",budget:"moyen",name:"Couscous poulet-légumes",temps:"40 min",photo:"🍛",
  ingredients:[{n:"Cuisses de poulet",q:4,u:"piece",r:"meat_fish"},{n:"Courgette",q:1,u:"piece",r:"produce"},{n:"Carotte",q:2,u:"piece",r:"produce"},{n:"Pois chiches",q:1,u:"can",r:"pantry"},{n:"Semoule à couscous",q:200,u:"g",r:"pantry"}],
  steps:["Couper la courgette et les carottes en gros tronçons.","Dans une grande cocotte, faire dorer les cuisses de poulet 5 min sur toutes les faces.","Couvrir d'eau ou de bouillon, ajouter les carottes, saler, poivrer, ajouter éventuellement des épices à couscous.","Laisser mijoter 20 min, puis ajouter la courgette et les pois chiches égouttés, poursuivre la cuisson 10 min.","Préparer la semoule à couscous en versant de l'eau chaude (ou du bouillon chaud) à niveau égal, couvrir 5 min puis égrainer à la fourchette avec un peu d'huile.","Servir la semoule surmontée du poulet, des légumes et arrosée d'un peu de bouillon."]},
 ];
@@ -1048,7 +1048,7 @@ async function getOrCreateTodayMenu(forceRegen){
 
   const chosen = {};
   ["matin","midi","soir"].forEach(meal => {
-    const pool = RECIPES.filter(r => r.meal === meal);
+    let pool = RECIPES.filter(r => r.meal === meal && (budgetPref === "mixte" || r.budget === budgetPref)); if(pool.length === 0) pool = RECIPES.filter(r => r.meal === meal);
     let candidates = pool.filter(r => !recentIds.has(r.id));
     if(candidates.length === 0) candidates = pool;
     const pick = candidates[Math.floor(Math.random()*candidates.length)];
@@ -1323,7 +1323,7 @@ async function getOrCreateMenuForDate(date){
 
   const chosen = {};
   ["matin","midi","soir"].forEach(meal => {
-    const pool = RECIPES.filter(r => r.meal === meal);
+    let pool = RECIPES.filter(r => r.meal === meal && (budgetPref === "mixte" || r.budget === budgetPref)); if(pool.length === 0) pool = RECIPES.filter(r => r.meal === meal);
     let candidates = pool.filter(r => !recentIds.has(r.id));
     if(candidates.length === 0) candidates = pool;
     const pick = candidates[Math.floor(Math.random()*candidates.length)];
@@ -1545,6 +1545,8 @@ async function checkOwnerAccess(){
   document.getElementById("settings-btn").classList.toggle("hidden", !isOwner);
 }
 
+ let budgetPref = "mixte"; 
+
 async function render(){
   await captureAuthRedirect();
   await checkOwnerAccess();
@@ -1562,7 +1564,7 @@ async function render(){
     document.getElementById("settings-status").textContent = t('settingsSaved');
   }
 
-  servings = await storeGet("servings-pref");
+  budgetPref = await storeGet("budget-pref") || "mixte";   document.querySelectorAll("#budget-toggle button").forEach(b => b.classList.toggle("active", b.dataset.budget === budgetPref));    servings = await storeGet("servings-pref");
   if(!servings) servings = DEFAULT_SERVINGS;
   document.getElementById("servings-count").textContent = servings;
 
@@ -1630,7 +1632,7 @@ function recipeExpandHTML(recipe, dateKey, meal){
 async function replaceRecipe(dateKey, meal){
   let history = await storeGet("historique-menus") || {};
   const currentId = history[dateKey] ? history[dateKey][meal] : null;
-  const pool = RECIPES.filter(r => r.meal === meal && r.id !== currentId);
+  let pool = RECIPES.filter(r => r.meal === meal && r.id !== currentId && (budgetPref === "mixte" || r.budget === budgetPref)); if(pool.length === 0) pool = RECIPES.filter(r => r.meal === meal && r.id !== currentId);
   if(pool.length === 0) return;
   const newRecipe = pool[Math.floor(Math.random()*pool.length)];
 
@@ -1855,6 +1857,22 @@ document.getElementById("regen-btn").addEventListener("click", async () => {
   renderShoppingList();
   renderWeekTable();
   renderMonthTable();
+});
+
+  document.querySelectorAll("#budget-toggle button").forEach(btn => {
+  btn.addEventListener("click", async () => {
+    budgetPref = btn.dataset.budget;
+    document.querySelectorAll("#budget-toggle button").forEach(b => b.classList.toggle("active", b === btn));
+    await storeSet("budget-pref", budgetPref);
+    currentMenu = await getOrCreateTodayMenu(true);
+    renderMealCards();
+    const key = "courses-checked-"+todayKey(new Date());
+    checkedState = {};
+    await storeSet(key, checkedState);
+    renderShoppingList();
+    renderWeekTable();
+    renderMonthTable();
+  });
 });
 
 document.getElementById("auth-send-btn").addEventListener("click", async () => {

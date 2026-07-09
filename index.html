@@ -556,7 +556,7 @@
       <div id="paywall-gate" class="paywall-gate hidden">
         <div class="paywall-icon">🔒</div>
         <h3 id="paywall-title">Liste de courses réservée aux abonnés</h3>
-        <p class="paywall-text" id="paywall-text">Débloque la liste de courses automatique (jour, semaine, mois) et les prix estimés pour 9,99 €/mois.</p>
+        <p class="paywall-text" id="paywall-text">Profite de 7 jours d'essai gratuit, puis débloque la liste de courses automatique (jour, semaine, mois) et les prix estimés pour 9,99 €/mois.</p>
 
         <div id="auth-form">
           <input type="email" id="auth-email-input" placeholder="ton@email.fr" autocomplete="email">
@@ -840,7 +840,7 @@ const UI = {
   settingsLoading:{fr:"Clé enregistrée — chargement des photos en cours…",en:"Key saved — loading photos…"},
   footer:{fr:"Menu du jour - Clement Arliaud, auto-entrepreneur (SIRET 953 500 303 00011), Six-Fours-les-Plages. Prix indiques a titre d'estimation. <a href=\"./terms-of-service.md\">CGU/CGV</a> - <a href=\"./privacy-policy.md\">Politique de confidentialite</a>",en:"Menu du jour - Clement Arliaud, sole trader (SIRET 953 500 303 00011), Six-Fours-les-Plages, France. Prices shown are estimates. <a href=\"./terms-of-service.md\">Terms</a> - <a href=\"./privacy-policy.md\">Privacy policy</a>"},
   paywallTitle:{fr:"Liste de courses réservée aux abonnés",en:"Shopping list for subscribers only"},
-  paywallText:{fr:"Débloque la liste de courses automatique (jour, semaine, mois) et les prix estimés pour 9,99 €/mois.",en:"Unlock the automatic shopping list (day, week, month) and estimated prices for $9.99/month."},
+  paywallText:{fr:"Profite de 7 jours d'essai gratuit, puis débloque la liste de courses automatique (jour, semaine, mois) et les prix estimés pour 9,99 €/mois.",en:"Enjoy a 7-day free trial, then unlock the automatic shopping list (day, week, month) and estimated prices for $9.99/month."},
   authEmailPlaceholder:{fr:"ton@email.fr",en:"you@email.com"},
   authSendBtn:{fr:"Recevoir un lien de connexion",en:"Get a sign-in link"},
   subscribeBtn:{fr:"S'abonner — 9,99 €/mois",en:"Subscribe — $9.99/month"},
@@ -907,10 +907,26 @@ async function checkSubscriptionStatus(session){
     const res = await fetch(SUPABASE_URL+"/rest/v1/abonnements?select=statut&user_id=eq."+session.user_id, {
       headers:{ "apikey":SUPABASE_ANON_KEY, "Authorization":"Bearer "+session.access_token }
     });
+    if(res.ok){
+      const rows = await res.json();
+      if(rows.length>0 && rows[0].statut === "actif") return true;
+    }
+  }catch(e){ console.error("subscription check error", e); }
+  return await checkTrialAccess(session);
+}
+
+async function checkTrialAccess(session){
+  try{
+    const res = await fetch(SUPABASE_URL+"/auth/v1/user", {
+      headers:{ "apikey":SUPABASE_ANON_KEY, "Authorization":"Bearer "+session.access_token }
+    });
     if(!res.ok) return false;
-    const rows = await res.json();
-    return rows.length>0 && rows[0].statut === "actif";
-  }catch(e){ console.error("subscription check error", e); return false; }
+    const user = await res.json();
+    if(!user.created_at) return false;
+    const createdMs = new Date(user.created_at).getTime();
+    const sevenDaysMs = 7*24*60*60*1000;
+    return (Date.now() - createdMs) < sevenDaysMs;
+  }catch(e){ return false; }
 }
 
 async function startCheckout(session){

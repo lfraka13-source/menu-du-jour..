@@ -919,10 +919,12 @@ async function captureAuthRedirect(){
 }
 
 async function sendMagicLink(email){
-  const res = await fetch(SUPABASE_URL+"/auth/v1/otp", {
+  // Envoi via notre fonction serverless (Supabase admin + Resend),
+  // qui contourne l'envoi d'email SMTP de Supabase.
+  const res = await fetch("/api/send-magic-link", {
     method:"POST",
-    headers:{ "Content-Type":"application/json", "apikey":SUPABASE_ANON_KEY },
-    body: JSON.stringify({ email, create_user:true, options:{ email_redirect_to: window.location.href.split("#")[0] } })
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ email, redirect_to: window.location.href.split("#")[0] })
   });
   return res.ok;
 }

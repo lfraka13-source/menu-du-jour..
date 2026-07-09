@@ -1607,7 +1607,7 @@ function renderMealCards(){
       ${photoTileHTML(recipe)}
       <h2>${dishName(recipe)}</h2>
       <div class="meta">⏱ ${recipe.temps} · ${t('forServings')} ${servings} ${servings>1?t('persons'):t('person')}</div>
-      <button class="toggle-btn" data-id="${recipe.id}">${t('seeRecipe')}</button>
+      <button class="toggle-btn" data-id="${recipe.id}">${t('seeRecipe')}</button>    <button class="replace-btn" data-meal="${meal}">${t('replace')}</button>
       <div class="expand hidden" id="expand-${recipe.id}">
         <h3>${t('ingredients')}</h3>
         <ul class="ingredients">
@@ -1622,8 +1622,8 @@ function renderMealCards(){
     wrap.appendChild(card);
   });
 
-  wrap.querySelectorAll(".toggle-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
+  wrap.querySelectorAll(".replace-btn").forEach(btn => {   btn.addEventListener("click", () => {     replaceRecipe(todayKey(new Date()), btn.dataset.meal);   }); });
+    wrap.querySelectorAll(".toggle-btn").forEach(btn => {btn.addEventListener("click", () => {
       const target = document.getElementById("expand-"+btn.dataset.id);
       const isHidden = target.classList.contains("hidden");
       target.classList.toggle("hidden");

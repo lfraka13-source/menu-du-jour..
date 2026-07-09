@@ -305,6 +305,21 @@
     text-align:center;
     line-height:1.5;
   }
+  footer.disclaimer a{color:rgba(245,243,238,0.6);text-decoration:underline;}
+.cookie-banner{
+  position:fixed;left:0;right:0;bottom:0;z-index:1000;
+  background:var(--chalk-bg-2);color:var(--chalk-text);
+  border-top:1px solid var(--chalk-line);
+  padding:16px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;
+  font-family:'Work Sans',sans-serif;font-size:13px;
+}
+.cookie-banner p{margin:0;flex:1;min-width:220px;}
+.cookie-banner-buttons{display:flex;gap:10px;}
+.cookie-banner-buttons button{
+  padding:8px 16px;border-radius:8px;border:1.5px solid var(--chalk-line);
+  background:transparent;color:var(--chalk-text);font-weight:600;cursor:pointer;
+}
+.cookie-banner-buttons .cookie-accept{background:var(--tomate);border-color:var(--tomate);color:#fff;}
 
   @media (prefers-reduced-motion: no-preference){
     .meal-card, .receipt-wrap{animation:fadeIn 0.35s ease-out;}
@@ -586,9 +601,16 @@
     </section>
   </main>
 
-  <footer class="disclaimer" id="footer-text">
-    Menu du jour - Clement Arliaud, auto-entrepreneur (SIRET 953 500 303 00011), Six-Fours-les-Plages. Prix indiques a titre d'estimation. <a href="./terms-of-service.md">CGU/CGV</a> - <a href="./privacy-policy.md">Politique de confidentialite</a>
+  <footer class="disclaimer">        <span id="footer-text"></span><br>        <a href="#" id="cookie-manage-link"></a>
+    
   </footer>
+  <div class="cookie-banner hidden" id="cookie-banner">
+  <p id="cookie-banner-text"></p>
+  <div class="cookie-banner-buttons">
+    <button id="cookie-decline-btn" class="cookie-decline"></button>
+    <button id="cookie-accept-btn" class="cookie-accept"></button>
+  </div>
+</div>
 </div>
 
 <script>
@@ -845,6 +867,10 @@ const UI = {
   authSendBtn:{fr:"Recevoir un lien de connexion",en:"Get a sign-in link"},
   subscribeBtn:{fr:"S'abonner — 9,99 €/mois",en:"Subscribe — $9.99/month"},
   logoutBtn:{fr:"Se déconnecter",en:"Sign out"},
+  manageCookies:{fr:"Gerer mes cookies",en:"Manage cookies"},
+cookieBannerText:{fr:"Nous utilisons des cookies pour mesurer l'audience et personnaliser nos publicites (Meta). Tu peux accepter ou refuser ces cookies non essentiels ; l'application fonctionne sans eux.",en:"We use cookies to measure traffic and personalize our ads (Meta). You can accept or decline these non essential cookies; the app works fine without them."},
+cookieAccept:{fr:"Accepter",en:"Accept"},
+cookieDecline:{fr:"Refuser",en:"Decline"},
 };
 function t(key){ return UI[key][lang]; }
 function pluralWord(fr, en, n){ return lang==="fr" ? fr : en; }
@@ -1547,6 +1573,10 @@ function applyStaticTranslations(){
   document.getElementById("auth-send-btn").textContent = t('authSendBtn');
   document.getElementById("subscribe-btn").textContent = t('subscribeBtn');
   document.getElementById("logout-btn").textContent = t('logoutBtn');
+document.getElementById("cookie-manage-link").textContent = t('manageCookies');
+document.getElementById("cookie-banner-text").textContent = t('cookieBannerText');
+document.getElementById("cookie-accept-btn").textContent = t('cookieAccept');
+document.getElementById("cookie-decline-btn").textContent = t('cookieDecline');  
 }
 
 async function checkOwnerAccess(){
@@ -1941,7 +1971,48 @@ document.getElementById("logout-btn").addEventListener("click", async () => {
   await renderPaywall();
 });
 
-render();
+const META_PIXEL_ID = "";
+
+function loadMetaPixel(){
+  if(!META_PIXEL_ID) return;
+  if(window.fbq) return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=true;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=true;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', META_PIXEL_ID);
+  fbq('track', 'PageView');
+}
+
+async function getCookieConsent(){ return await storeGet("cookie-consent"); }
+async function setCookieConsent(value){ await storeSet("cookie-consent", value); }
+
+async function initCookieBanner(){
+  const banner = document.getElementById("cookie-banner");
+  const consent = await getCookieConsent();
+  if(consent === "accepted"){ loadMetaPixel(); banner.classList.add("hidden"); return; }
+  if(consent === "declined"){ banner.classList.add("hidden"); return; }
+  banner.classList.remove("hidden");
+}
+
+document.getElementById("cookie-accept-btn").addEventListener("click", async () => {
+  await setCookieConsent("accepted");
+  document.getElementById("cookie-banner").classList.add("hidden");
+  loadMetaPixel();
+});
+
+document.getElementById("cookie-decline-btn").addEventListener("click", async () => {
+  await setCookieConsent("declined");
+  document.getElementById("cookie-banner").classList.add("hidden");
+});
+
+document.getElementById("cookie-manage-link").addEventListener("click", (e) => {
+  e.preventDefault();
+  document.getElementById("cookie-banner").classList.remove("hidden");
+});
+
+initCookieBanner();render();
 </script>
 </body>
 </html>

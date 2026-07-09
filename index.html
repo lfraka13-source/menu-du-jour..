@@ -587,7 +587,7 @@
   </main>
 
   <footer class="disclaimer" id="footer-text">
-    Prototype fonctionnel — les données sont stockées uniquement pour ton compte, dans cet artifact.
+    Menu du jour - Clement Arliaud, auto-entrepreneur (SIRET 953 500 303 00011), Six-Fours-les-Plages. Prix indiques a titre d'estimation. <a href="./terms-of-service.md">CGU/CGV</a> - <a href="./privacy-policy.md">Politique de confidentialite</a>
   </footer>
 </div>
 
@@ -838,7 +838,7 @@ const UI = {
   settingsSaved:{fr:"Clé enregistrée — les photos se chargent automatiquement.",en:"Key saved — photos will load automatically."},
   settingsRemoved:{fr:"Clé retirée. Retour aux vignettes illustrées.",en:"Key removed. Back to illustrated tiles."},
   settingsLoading:{fr:"Clé enregistrée — chargement des photos en cours…",en:"Key saved — loading photos…"},
-  footer:{fr:"Prototype fonctionnel — les données sont stockées uniquement pour ton compte, dans cet artifact.",en:"Working prototype — your data is stored only for you, inside this artifact."},
+  footer:{fr:"Menu du jour - Clement Arliaud, auto-entrepreneur (SIRET 953 500 303 00011), Six-Fours-les-Plages. Prix indiques a titre d'estimation. <a href=\"./terms-of-service.md\">CGU/CGV</a> - <a href=\"./privacy-policy.md\">Politique de confidentialite</a>",en:"Menu du jour - Clement Arliaud, sole trader (SIRET 953 500 303 00011), Six-Fours-les-Plages, France. Prices shown are estimates. <a href=\"./terms-of-service.md\">Terms</a> - <a href=\"./privacy-policy.md\">Privacy policy</a>"},
   paywallTitle:{fr:"Liste de courses réservée aux abonnés",en:"Shopping list for subscribers only"},
   paywallText:{fr:"Débloque la liste de courses automatique (jour, semaine, mois) et les prix estimés pour 9,99 €/mois.",en:"Unlock the automatic shopping list (day, week, month) and estimated prices for $9.99/month."},
   authEmailPlaceholder:{fr:"ton@email.fr",en:"you@email.com"},
@@ -1524,7 +1524,7 @@ function applyStaticTranslations(){
   document.getElementById("settings-text").textContent = t('settingsIntro');
   document.getElementById("settings-link").textContent = t('settingsLink');
   document.getElementById("pexels-key-input").placeholder = t('settingsPlaceholder');
-  document.getElementById("footer-text").textContent = t('footer');
+  document.getElementById("footer-text").innerHTML = t('footer');
   document.getElementById("paywall-title").textContent = t('paywallTitle');
   document.getElementById("paywall-text").textContent = t('paywallText');
   document.getElementById("auth-email-input").placeholder = t('authEmailPlaceholder');

@@ -10,8 +10,10 @@ Les présentes conditions régissent l'utilisation de l'application "Menu du jou
 L'accès aux recettes et au menu est **gratuit**. L'accès à la liste de courses automatique (jour/semaine/mois) nécessite un **abonnement payant**.
 
 ## Article 3 — Tarifs et abonnement
+- Un essai gratuit de 7 jours est offert à la création de tout nouveau compte, donnant accès à la liste de courses automatique sans qu'aucun moyen de paiement ne soit demandé
+- Passé ce délai de 7 jours, l'accès à la liste de courses nécessite un abonnement payant
 - Abonnement mensuel : 9,99 € TTC/mois
-- Facturation récurrente automatique, tant que l'abonnement n'est pas annulé
+- Facturation récurrente automatique dès la souscription, tant que l'abonnement n'est pas annulé ; aucun prélèvement n'intervient pendant la période d'essai gratuite
 - Paiement traité par Stripe ; Clément Arliaud n'a jamais accès à tes coordonnées bancaires complètes
 - Les prix affichés dans la liste de courses sont des **estimations moyennes** et ne constituent pas un engagement de prix réel en magasin
 

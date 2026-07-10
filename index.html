@@ -215,6 +215,16 @@
   }
   .toggle-btn:active{background:rgba(245,243,238,0.08);}
 
+  .sel-row{margin-top:10px;}
+  .sel-box{
+    display:inline-flex;align-items:center;gap:7px;
+    font-family:'Work Sans',sans-serif;font-size:12.5px;
+    color:rgba(245,243,238,0.75);
+    cursor:pointer;user-select:none;
+  }
+  .sel-box input{accent-color:#C1502E;width:16px;height:16px;cursor:pointer;margin:0;flex:none;}
+  .sel-box.compact{margin:0;}
+
   .day-actions{
     display:flex;justify-content:space-between;align-items:center;
     margin-top:6px; margin-bottom:14px;
@@ -392,7 +402,7 @@
   }
   .week-day.is-today .wd-label{color:var(--miel);}
   .week-row{
-    display:grid;grid-template-columns:26px 1fr;gap:8px;
+    display:grid;grid-template-columns:26px 1fr auto;gap:8px;
     align-items:center;
     padding:4px 0;
     font-size:13px;
@@ -837,6 +847,7 @@ const UI = {
   servingsSub:{fr:"quantités recalculées automatiquement",en:"quantities recalculated automatically"},
   regen:{fr:"↻ régénérer le menu du jour",en:"↻ regenerate today's menu"},
   seeRecipe:{fr:"Voir la recette",en:"See recipe"},
+  selCourses:{fr:"Dans la liste de courses",en:"In shopping list"},
   hideRecipe:{fr:"Masquer la recette",en:"Hide recipe"},
   ingredients:{fr:"Ingrédients",en:"Ingredients"},
   preparation:{fr:"Préparation",en:"Preparation"},
@@ -1110,6 +1121,52 @@ async function getOrCreateTodayMenu(forceRegen){
 }
 
 function findRecipe(id){ return RECIPES.find(r => r.id === id); }
+
+/* ---------------- Sélection des recettes pour la liste de courses ----------------
+   Chaque créneau (date + repas) est coché par défaut. recipeSelection ne stocke
+   que les créneaux DÉCOCHÉS ("dateKey|meal" -> false). ---------------- */
+let recipeSelection = {};
+
+async function loadRecipeSelection(){
+  recipeSelection = await storeGet("recettes-selection") || {};
+  // nettoyage des entrées de plus de 35 jours
+  const cutoff = new Date(); cutoff.setDate(cutoff.getDate()-35);
+  const cutoffKey = todayKey(cutoff);
+  let changed = false;
+  Object.keys(recipeSelection).forEach(k => {
+    if(k.split("|")[0] < cutoffKey){ delete recipeSelection[k]; changed = true; }
+  });
+  if(changed) await storeSet("recettes-selection", recipeSelection);
+}
+
+function isRecipeSelected(dateKey, meal){
+  return recipeSelection[dateKey+"|"+meal] !== false;
+}
+
+async function toggleRecipeSelection(dateKey, meal){
+  const k = dateKey+"|"+meal;
+  if(recipeSelection[k] === false) delete recipeSelection[k];
+  else recipeSelection[k] = false;
+  await storeSet("recettes-selection", recipeSelection);
+  // synchronise les cases affichées ailleurs (Aujourd'hui / Semaine / Mois)
+  document.querySelectorAll(`.sel-input[data-datekey="${dateKey}"][data-meal="${meal}"]`).forEach(cb => {
+    cb.checked = isRecipeSelected(dateKey, meal);
+  });
+  await renderShoppingList();
+}
+
+function selectionCheckboxHTML(dateKey, meal, compact){
+  const checked = isRecipeSelected(dateKey, meal) ? "checked" : "";
+  const label = compact ? "" : `<span>${t('selCourses')}</span>`;
+  return `<label class="sel-box${compact?" compact":""}" title="${t('selCourses')}"><input type="checkbox" class="sel-input" data-datekey="${dateKey}" data-meal="${meal}" ${checked}>${label}</label>`;
+}
+
+function bindSelectionInputs(root){
+  root.querySelectorAll(".sel-box").forEach(l => l.addEventListener("click", e => e.stopPropagation()));
+  root.querySelectorAll(".sel-input").forEach(cb => {
+    cb.addEventListener("change", () => toggleRecipeSelection(cb.dataset.datekey, cb.dataset.meal));
+  });
+}
 
 /* ---------------- Shopping list ---------------- */
 const DISCRETE_UNITS = ["piece","slice","clove","leaf","bunch","can","cube","packet","sprig"];
@@ -1616,6 +1673,8 @@ async function render(){
   if(!servings) servings = DEFAULT_SERVINGS;
   document.getElementById("servings-count").textContent = servings;
 
+  await loadRecipeSelection();
+
   currentMenu = await getOrCreateTodayMenu(false);
   renderMealCards();
 
@@ -1640,6 +1699,7 @@ function renderMealCards(){
       <h2>${dishName(recipe)}</h2>
       <div class="meta">⏱ ${recipe.temps} · ${t('forServings')} ${servings} ${servings>1?t('persons'):t('person')}</div>
       <button class="toggle-btn" data-id="${recipe.id}">${t('seeRecipe')}</button>    <button class="replace-btn" data-meal="${meal}">${t('replace')}</button>
+      <div class="sel-row">${selectionCheckboxHTML(todayKey(new Date()), meal)}</div>
       <div class="expand hidden" id="expand-${recipe.id}">
         <h3>${t('ingredients')}</h3>
         <ul class="ingredients">
@@ -1662,6 +1722,7 @@ function renderMealCards(){
       btn.textContent = isHidden ? t('hideRecipe') : t('seeRecipe');
     });
   });
+  bindSelectionInputs(wrap);
   hydratePhotos();
 }
 
@@ -1714,7 +1775,7 @@ function renderDayTable(containerId, weekMenus, prefix){
       const recipe = findRecipe(menu[meal]);
       const rowId = `${prefix}-${dayIndex}-${meal}`;
       rowsHtml += `
-        <div class="week-row" data-target="expand-${rowId}"><span class="ico">${recipe.photo||"🍽️"}</span><span class="lbl"><span class="tagname">${MEAL_LABEL[meal][lang]}</span>${dishName(recipe)}</span></div>
+        <div class="week-row" data-target="expand-${rowId}"><span class="ico">${recipe.photo||"🍽️"}</span><span class="lbl"><span class="tagname">${MEAL_LABEL[meal][lang]}</span>${dishName(recipe)}</span>${selectionCheckboxHTML(dateKey, meal, true)}</div>
         <div class="week-expand hidden" id="expand-${rowId}">${recipeExpandHTML(recipe, dateKey, meal)}</div>
       `;
     });
@@ -1736,6 +1797,7 @@ function renderDayTable(containerId, weekMenus, prefix){
       replaceRecipe(btn.dataset.datekey, btn.dataset.meal);
     });
   });
+  bindSelectionInputs(wrap);
 }
 
 async function renderWeekTable(){
@@ -1751,14 +1813,19 @@ async function renderMonthTable(){
 async function renderShoppingList(){
   let recipesForList;
   if(shoppingScope === "today"){
-    recipesForList = currentMenu;
+    recipesForList = {};
+    const dk = todayKey(new Date());
+    Object.entries(currentMenu).forEach(([meal,id]) => {
+      if(isRecipeSelected(dk, meal)) recipesForList[meal] = id;
+    });
   } else {
     const rangeMenus = shoppingScope === "month" ? await getOrCreateMonthMenus() : await getOrCreateWeekMenus();
     recipesForList = {};
     let counter = 0;
-    rangeMenus.forEach(({menu}) => {
+    rangeMenus.forEach(({date, menu}) => {
+      const dk = todayKey(date);
       Object.entries(menu).forEach(([mealType,id]) => {
-        recipesForList[mealType+"-"+(counter++)] = id;
+        if(isRecipeSelected(dk, mealType)) recipesForList[mealType+"-"+(counter++)] = id;
       });
     });
   }

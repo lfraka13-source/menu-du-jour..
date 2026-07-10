@@ -913,8 +913,9 @@ function pluralWord(fr, en, n){ return lang==="fr" ? fr : en; }
 ================================================================= */
 const SUPABASE_URL = "https://ykqbwlzmvnbfgrsjmlnl.supabase.co";        // ex: "https://xxxxx.supabase.co"
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlrcWJ3bHptdm5iZmdyc2ptbG5sIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMwMDUwNTgsImV4cCI6MjA5ODU4MTA1OH0.he5hxAtZkzz4ZGfo8bJRLgI7EVF0XRqiF6H3gRgDgf0";
-const CHECKOUT_ENDPOINT = "https://menu-du-jour.vercel.app/api/create-checkout-session";
-const PORTAL_ENDPOINT = "https://menu-du-jour.vercel.app/api/create-portal-session";  
+// Chemins relatifs : fonctionnent quel que soit le domaine (menu-du-jour.com, www, vercel.app)
+const CHECKOUT_ENDPOINT = "/api/create-checkout-session";
+const PORTAL_ENDPOINT = "/api/create-portal-session";
 
 function authConfigured(){ return !!(SUPABASE_URL && SUPABASE_ANON_KEY); }
 

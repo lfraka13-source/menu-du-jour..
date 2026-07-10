@@ -224,6 +224,15 @@
   }
   .sel-box input{accent-color:#C1502E;width:16px;height:16px;cursor:pointer;margin:0;flex:none;}
   .sel-box.compact{margin:0;}
+  .meal-filter{
+    display:flex;gap:18px;align-items:center;justify-content:center;
+    margin:12px 0 2px;flex-wrap:wrap;
+  }
+  .meal-filter .mf-label{
+    font-family:'IBM Plex Mono',monospace;font-size:11px;
+    letter-spacing:0.08em;text-transform:uppercase;
+    color:rgba(245,243,238,0.55);
+  }
 
   .day-actions{
     display:flex;justify-content:space-between;align-items:center;
@@ -599,6 +608,12 @@
           <button class="active" data-scope="today">Aujourd'hui</button>
           <button data-scope="week">Semaine</button>
           <button data-scope="month">Mois</button>
+        </div>
+        <div class="meal-filter">
+          <span class="mf-label" id="mf-label">Inclure :</span>
+          <label class="sel-box"><input type="checkbox" class="mf-input" data-meal="matin" checked><span class="mf-name" data-meal="matin">Matin</span></label>
+          <label class="sel-box"><input type="checkbox" class="mf-input" data-meal="midi" checked><span class="mf-name" data-meal="midi">Midi</span></label>
+          <label class="sel-box"><input type="checkbox" class="mf-input" data-meal="soir" checked><span class="mf-name" data-meal="soir">Soir</span></label>
         </div>
         <div class="receipt-wrap">
           <div class="receipt-inner">
@@ -1166,6 +1181,41 @@ function bindSelectionInputs(root){
   root.querySelectorAll(".sel-input").forEach(cb => {
     cb.addEventListener("change", () => toggleRecipeSelection(cb.dataset.datekey, cb.dataset.meal));
   });
+}
+
+async function scopeDateKeys(){
+  if(shoppingScope === "today") return [todayKey(new Date())];
+  const rangeMenus = shoppingScope === "month" ? await getOrCreateMonthMenus() : await getOrCreateWeekMenus();
+  return rangeMenus.map(({date}) => todayKey(date));
+}
+
+async function setMealSelection(meal, selected){
+  const keys = await scopeDateKeys();
+  keys.forEach(dk => {
+    const k = dk+"|"+meal;
+    if(selected) delete recipeSelection[k];
+    else recipeSelection[k] = false;
+  });
+  await storeSet("recettes-selection", recipeSelection);
+  keys.forEach(dk => {
+    document.querySelectorAll(`.sel-input[data-datekey="${dk}"][data-meal="${meal}"]`).forEach(cb => { cb.checked = selected; });
+  });
+  await renderShoppingList();
+}
+
+async function updateMealFilter(){
+  const keys = await scopeDateKeys();
+  ["matin","midi","soir"].forEach(meal => {
+    const cb = document.querySelector(`.mf-input[data-meal="${meal}"]`);
+    const lbl = document.querySelector(`.mf-name[data-meal="${meal}"]`);
+    if(lbl) lbl.textContent = MEAL_LABEL[meal][lang];
+    if(!cb) return;
+    const selectedCount = keys.filter(dk => isRecipeSelected(dk, meal)).length;
+    cb.checked = selectedCount === keys.length;
+    cb.indeterminate = selectedCount > 0 && selectedCount < keys.length;
+  });
+  const label = document.getElementById("mf-label");
+  if(label) label.textContent = lang === "fr" ? "Inclure :" : "Include:";
 }
 
 /* ---------------- Shopping list ---------------- */
@@ -1868,6 +1918,7 @@ async function renderShoppingList(){
   document.getElementById("receipt-title").textContent = `${t('receiptTitle')} — ${scopeLabel} — ${servings} ${lang==='fr'?'pers.':'servings'}`;
   document.getElementById("receipt-footer").innerHTML =
     `${list.length} ${list.length>1?t('articlesP'):t('articles')} · <strong>≈ ${formatPrice(grandTotal)}</strong><br><span class="price-disclaimer">${t('priceDisclaimer')}</span>`;
+  await updateMealFilter();
 }
 
 /* ---------------- Tabs, scope toggle, servings, regen, langue ---------------- */
@@ -1940,6 +1991,10 @@ document.querySelectorAll(".scope-toggle button").forEach(btn => {
     shoppingScope = btn.dataset.scope;
     renderShoppingList();
   });
+});
+
+document.querySelectorAll(".mf-input").forEach(cb => {
+  cb.addEventListener("change", () => setMealSelection(cb.dataset.meal, cb.checked));
 });
 
 document.getElementById("servings-minus").addEventListener("click", async () => {

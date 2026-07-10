@@ -33,7 +33,7 @@ export default async function handler(req, res) {
     // Créer la session du portail client Stripe
     const session = await stripe.billingPortal.sessions.create({
       customer: profile.stripe_customer_id,
-      return_url: `${process.env.SITE_URL || 'https://menu-du-jour.vercel.app'}`,
+      return_url: `${process.env.APP_URL || 'https://www.menu-du-jour.com'}`,
     });
 
     return res.status(200).json({ url: session.url });

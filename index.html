@@ -922,6 +922,54 @@ async function getSession(){ return await storeGet("supabase-session"); }
 async function saveSession(session){ await storeSet("supabase-session", session); }
 async function clearSession(){ await storeSet("supabase-session", null); }
 
+/* Session persistante : le jeton d'accès Supabase expire au bout d'1h, mais le
+   refresh_token permet d'en obtenir un neuf sans repasser par l'email. On ne
+   déconnecte l'utilisateur que s'il clique lui-même sur "Se déconnecter" (ou si
+   le refresh_token est révoqué côté serveur). */
+function jwtExpiresSoon(token){
+  try{
+    const payload = token.split(".")[1];
+    const json = decodeURIComponent(atob(payload.replace(/-/g,"+").replace(/_/g,"/"))
+      .split("").map(c => "%"+("00"+c.charCodeAt(0).toString(16)).slice(-2)).join(""));
+    const exp = JSON.parse(json).exp;
+    if(!exp) return false;
+    return (exp*1000 - Date.now()) < 2*60*1000; // moins de 2 min de validité
+  }catch(e){ return true; }
+}
+
+async function refreshSession(session){
+  try{
+    const res = await fetch(SUPABASE_URL+"/auth/v1/token?grant_type=refresh_token", {
+      method:"POST",
+      headers:{ "Content-Type":"application/json", "apikey":SUPABASE_ANON_KEY },
+      body: JSON.stringify({ refresh_token: session.refresh_token })
+    });
+    if(res.ok){
+      const data = await res.json();
+      const fresh = { access_token: data.access_token, refresh_token: data.refresh_token, user_id: decodeJwtSub(data.access_token) };
+      await saveSession(fresh);
+      return fresh;
+    }
+    if(res.status === 400 || res.status === 401 || res.status === 403){
+      // refresh token invalide ou révoqué : la session est vraiment morte
+      await clearSession();
+      return null;
+    }
+    return session; // erreur serveur passagère : on garde la session
+  }catch(e){
+    return session; // hors-ligne : on ne déconnecte surtout pas
+  }
+}
+
+async function getValidSession(){
+  let session = await getSession();
+  if(!session || !session.access_token) return null;
+  if(session.refresh_token && jwtExpiresSoon(session.access_token)){
+    session = await refreshSession(session);
+  }
+  return session;
+}
+
 function decodeJwtSub(token){
   try{
     const payload = token.split(".")[1];
@@ -1037,7 +1085,7 @@ async function renderPaywall(){
     return;
   }
 
-  const session = await getSession();
+  const session = await getValidSession();
   const subscribed = await checkSubscriptionStatus(session);
 
   if(subscribed){
@@ -2068,12 +2116,12 @@ document.getElementById("auth-send-btn").addEventListener("click", async () => {
 });
 
 document.getElementById("subscribe-btn").addEventListener("click", async () => {
-    const session = await getSession();
+    const session = await getValidSession();
     if(session) await startCheckout(session);
 });
 
 document.getElementById("manage-subscription-btn").addEventListener("click", async () => {
-    const session = await getSession();
+    const session = await getValidSession();
     if(!session || !session.access_token) return;
     try{
       const res = await fetch(PORTAL_ENDPOINT, {
@@ -2093,6 +2141,13 @@ document.getElementById("manage-subscription-btn").addEventListener("click", asy
 document.getElementById("logout-btn").addEventListener("click", async () => {
   await clearSession();
   await renderPaywall();
+});
+
+// Garde la session vivante : rafraîchit le jeton toutes les 25 min tant que
+// l'app est ouverte, et au retour sur l'onglet/l'app (PWA).
+setInterval(() => { getValidSession(); }, 25*60*1000);
+document.addEventListener("visibilitychange", () => {
+  if(!document.hidden) getValidSession();
 });
 
 const META_PIXEL_ID = "";

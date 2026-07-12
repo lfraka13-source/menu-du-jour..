@@ -2204,4 +2204,455 @@ initCookieBanner();render();
 <!-- Vercel Web Analytics : mesure des vues et visiteurs, sans cookies -->
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
+<script>
+  /* ===================================================================
+   MODULE INDÉPENDANT — Modes Sport/Diète & Grossesse (54 recettes/cat.)
+   Ajouté par Claude — n'interfère avec aucune fonction existante.
+   Utilise localStorage (indépendant du compte Supabase) pour rester
+   totalement autonome vis-à-vis du reste de l'app.
+=================================================================== */
+(function(){
+
+const SG_LANG = (typeof lang !== "undefined" && lang) ? lang : "fr";
+
+const SPORT_RECIPES = [
+{id:"sp-m1",meal:"matin",name:"Skyr, flocons d'avoine & banane",temps:"5 min",photo:"🥣",kcal:380,proteines:32,
+ ingredients:[{n:"Skyr nature",q:250,u:"g"},{n:"Flocons d'avoine",q:50,u:"g"},{n:"Banane",q:1,u:"piece"},{n:"Miel",q:1,u:"tsp"}],
+ steps:["Verser le skyr dans un bol.","Ajouter les flocons d'avoine et mélanger.","Couper la banane en rondelles et disposer dessus.","Napper d'un filet de miel avant de servir."]},
+{id:"sp-m2",meal:"matin",name:"Omelette blanc d'œuf, épinards & fromage frais",temps:"10 min",photo:"🍳",kcal:320,proteines:34,
+ ingredients:[{n:"Blancs d'œufs",q:5,u:"piece"},{n:"Œuf entier",q:1,u:"piece"},{n:"Épinards frais",q:60,u:"g"},{n:"Fromage frais 0%",q:40,u:"g"}],
+ steps:["Battre les blancs avec l'œuf entier, saler légèrement.","Faire revenir les épinards 2 min dans une poêle antiadhésive.","Verser les œufs sur les épinards, cuire à feu doux 4-5 min.","Ajouter le fromage frais, replier l'omelette et servir."]},
+{id:"sp-m3",meal:"matin",name:"Porridge protéiné cacahuète",temps:"8 min",photo:"🥣",kcal:420,proteines:28,
+ ingredients:[{n:"Flocons d'avoine",q:50,u:"g"},{n:"Lait écrémé",q:250,u:"ml"},{n:"Whey protéine nature",q:1,u:"scoop"},{n:"Beurre de cacahuète",q:1,u:"tbsp"}],
+ steps:["Cuire les flocons d'avoine dans le lait 5 min à feu doux.","Retirer du feu, laisser tiédir 2 min.","Incorporer la whey en mélangeant vivement pour éviter les grumeaux.","Ajouter le beurre de cacahuète en filet et servir."]},
+{id:"sp-m4",meal:"matin",name:"Toast complet, œufs brouillés & avocat",temps:"10 min",photo:"🍳",kcal:410,proteines:26,
+ ingredients:[{n:"Pain complet",q:2,u:"slice"},{n:"Œufs",q:3,u:"piece"},{n:"Avocat",q:0.5,u:"piece"},{n:"Sel & poivre",q:1,u:"totaste"}],
+ steps:["Faire toaster le pain complet.","Battre les œufs et les cuire brouillés à feu doux.","Écraser l'avocat sur le pain toasté.","Déposer les œufs brouillés par-dessus, poivrer et servir."]},
+{id:"sp-m5",meal:"matin",name:"Smoothie protéiné fruits rouges",temps:"5 min",photo:"🥤",kcal:340,proteines:30,
+ ingredients:[{n:"Fruits rouges surgelés",q:100,u:"g"},{n:"Lait écrémé",q:200,u:"ml"},{n:"Whey protéine nature",q:1,u:"scoop"},{n:"Flocons d'avoine",q:20,u:"g"}],
+ steps:["Placer tous les ingrédients dans un blender.","Mixer 1 min jusqu'à texture lisse et onctueuse.","Ajouter un peu d'eau si trop épais.","Verser dans un grand verre et déguster aussitôt."]},
+{id:"sp-m6",meal:"matin",name:"Fromage blanc, graines & fruits secs",temps:"3 min",photo:"🥣",kcal:300,proteines:29,
+ ingredients:[{n:"Fromage blanc 0%",q:250,u:"g"},{n:"Graines de chia",q:1,u:"tbsp"},{n:"Amandes",q:15,u:"g"},{n:"Miel",q:1,u:"tsp"}],
+ steps:["Verser le fromage blanc dans un bol.","Ajouter les graines de chia et mélanger.","Concasser grossièrement les amandes et les parsemer dessus.","Terminer par un filet de miel."]},
+{id:"sp-m7",meal:"matin",name:"Cottage cheese, myrtilles & granola protéiné",temps:"5 min",photo:"🫐",kcal:350,proteines:28,
+ ingredients:[{n:"Cottage cheese",q:200,u:"g"},{n:"Myrtilles",q:80,u:"g"},{n:"Granola protéiné",q:30,u:"g"}],
+ steps:["Verser le cottage cheese dans un bol.","Ajouter les myrtilles.","Parsemer de granola protéiné juste avant de servir."]},
+{id:"sp-m8",meal:"matin",name:"Pain complet, jambon blanc & fromage cottage",temps:"6 min",photo:"🥪",kcal:380,proteines:30,
+ ingredients:[{n:"Pain complet",q:2,u:"slice"},{n:"Jambon blanc",q:2,u:"slice"},{n:"Cottage cheese",q:80,u:"g"}],
+ steps:["Faire toaster le pain complet.","Étaler le cottage cheese sur une tranche.","Ajouter le jambon blanc, refermer avec l'autre tranche."]},
+{id:"sp-m9",meal:"matin",name:"Shake protéiné avoine-cacao",temps:"5 min",photo:"🥤",kcal:400,proteines:32,
+ ingredients:[{n:"Flocons d'avoine",q:30,u:"g"},{n:"Lait écrémé",q:250,u:"ml"},{n:"Whey chocolat",q:1,u:"scoop"},{n:"Cacao non sucré",q:1,u:"tsp"}],
+ steps:["Placer tous les ingrédients dans un blender.","Mixer 1 min jusqu'à consistance lisse.","Verser dans un verre et servir immédiatement."]},
+{id:"sp-m10",meal:"matin",name:"Œufs durs, avocat & pain complet",temps:"12 min",photo:"🥚",kcal:420,proteines:24,
+ ingredients:[{n:"Œufs",q:3,u:"piece"},{n:"Avocat",q:0.5,u:"piece"},{n:"Pain complet",q:2,u:"slice"}],
+ steps:["Cuire les œufs durs 9-10 min dans l'eau bouillante.","Écraser l'avocat sur le pain toasté.","Écaler les œufs, les couper en deux et disposer sur le pain."]},
+{id:"sp-m11",meal:"matin",name:"Galette de sarrasin, blanc de poulet & fromage frais",temps:"15 min",photo:"🥞",kcal:410,proteines:36,
+ ingredients:[{n:"Galette de sarrasin",q:1,u:"piece"},{n:"Blanc de poulet cuit",q:120,u:"g"},{n:"Fromage frais 0%",q:30,u:"g"}],
+ steps:["Réchauffer la galette à la poêle sèche.","Émincer le poulet cuit.","Garnir la galette de fromage frais et de poulet, replier et servir."]},
+{id:"sp-m12",meal:"matin",name:"Yaourt grec, whey & fruits rouges",temps:"5 min",photo:"🍓",kcal:330,proteines:35,
+ ingredients:[{n:"Yaourt grec 0%",q:200,u:"g"},{n:"Whey nature",q:1,u:"scoop"},{n:"Fruits rouges",q:80,u:"g"}],
+ steps:["Mélanger le yaourt et la whey jusqu'à consistance lisse.","Ajouter les fruits rouges par-dessus.","Servir aussitôt."]},
+{id:"sp-m13",meal:"matin",name:"Tartine ricotta & blanc de poulet froid",temps:"8 min",photo:"🍞",kcal:360,proteines:30,
+ ingredients:[{n:"Pain complet",q:2,u:"slice"},{n:"Ricotta light",q:60,u:"g"},{n:"Blanc de poulet cuit",q:100,u:"g"}],
+ steps:["Faire toaster le pain.","Étaler la ricotta.","Ajouter le poulet émincé par-dessus et servir."]},
+{id:"sp-m14",meal:"matin",name:"Porridge quinoa protéiné",temps:"12 min",photo:"🥣",kcal:390,proteines:26,
+ ingredients:[{n:"Quinoa",q:50,u:"g"},{n:"Lait écrémé",q:200,u:"ml"},{n:"Whey vanille",q:1,u:"scoop"},{n:"Cannelle",q:1,u:"pinch"}],
+ steps:["Cuire le quinoa dans le lait 12 min à feu doux.","Laisser tiédir 2 min hors du feu.","Incorporer la whey et la cannelle, mélanger et servir."]},
+{id:"sp-m15",meal:"matin",name:"Wrap œufs brouillés & épinards",temps:"12 min",photo:"🌯",kcal:370,proteines:28,
+ ingredients:[{n:"Galette complète",q:1,u:"piece"},{n:"Œufs",q:3,u:"piece"},{n:"Épinards frais",q:40,u:"g"}],
+ steps:["Faire revenir les épinards 2 min.","Ajouter les œufs battus, cuire en brouillade.","Garnir la galette, rouler et servir."]},
+{id:"sp-m16",meal:"matin",name:"Bol skyr, noix & miel",temps:"3 min",photo:"🥣",kcal:340,proteines:30,
+ ingredients:[{n:"Skyr nature",q:250,u:"g"},{n:"Noix",q:15,u:"g"},{n:"Miel",q:1,u:"tsp"}],
+ steps:["Verser le skyr dans un bol.","Concasser les noix et les parsemer dessus.","Napper de miel avant de servir."]},
+{id:"sp-m17",meal:"matin",name:"Toast saumon fumé & fromage frais 0%",temps:"6 min",photo:"🐟",kcal:380,proteines:32,
+ ingredients:[{n:"Pain complet",q:2,u:"slice"},{n:"Saumon fumé",q:60,u:"g"},{n:"Fromage frais 0%",q:30,u:"g"}],
+ steps:["Faire toaster le pain.","Étaler le fromage frais.","Déposer le saumon fumé par-dessus et servir."]},
+{id:"sp-m18",meal:"matin",name:"Smoothie vert protéiné",temps:"5 min",photo:"🥤",kcal:320,proteines:28,
+ ingredients:[{n:"Épinards frais",q:30,u:"g"},{n:"Banane",q:1,u:"piece"},{n:"Whey nature",q:1,u:"scoop"},{n:"Lait écrémé",q:200,u:"ml"}],
+ steps:["Placer tous les ingrédients dans un blender.","Mixer jusqu'à texture lisse.","Verser et déguster aussitôt."]},
+
+{id:"sp-d1",meal:"midi",name:"Poulet grillé, quinoa & brocolis",temps:"25 min",photo:"🍗",kcal:520,proteines:48,
+ ingredients:[{n:"Blanc de poulet",q:180,u:"g"},{n:"Quinoa",q:80,u:"g"},{n:"Brocolis",q:150,u:"g"},{n:"Huile d'olive",q:1,u:"tbsp"}],
+ steps:["Cuire le quinoa dans deux fois son volume d'eau, 12-15 min.","Cuire les brocolis à la vapeur 8-10 min.","Griller le poulet 5-6 min par face dans une poêle chaude.","Assembler le tout dans une assiette avec un filet d'huile d'olive."]},
+{id:"sp-d2",meal:"midi",name:"Bowl thon, riz complet & edamame",temps:"15 min",photo:"🍚",kcal:490,proteines:40,
+ ingredients:[{n:"Thon au naturel",q:150,u:"g"},{n:"Riz complet cuit",q:200,u:"g"},{n:"Edamame",q:80,u:"g"},{n:"Sauce soja",q:1,u:"tbsp"}],
+ steps:["Cuire ou réchauffer le riz complet.","Égoutter le thon et l'émietter.","Cuire les edamame 5 min à l'eau bouillante salée.","Assembler dans un bol et arroser de sauce soja."]},
+{id:"sp-d3",meal:"midi",name:"Salade de poulet, patate douce & épinards",temps:"25 min",photo:"🥗",kcal:460,proteines:42,
+ ingredients:[{n:"Blanc de poulet",q:150,u:"g"},{n:"Patate douce",q:200,u:"g"},{n:"Épinards frais",q:60,u:"g"},{n:"Huile d'olive",q:1,u:"tbsp"}],
+ steps:["Couper la patate douce en dés, cuire au four 20 min à 200°C.","Griller le poulet 5-6 min par face, puis trancher.","Disposer les épinards en base de salade.","Ajouter patate douce et poulet, arroser d'huile d'olive."]},
+{id:"sp-d4",meal:"midi",name:"Steak haché 5%, riz & haricots verts",temps:"20 min",photo:"🥩",kcal:480,proteines:44,
+ ingredients:[{n:"Steak haché 5% MG",q:180,u:"g"},{n:"Riz basmati",q:70,u:"g"},{n:"Haricots verts",q:150,u:"g"},{n:"Sel & poivre",q:1,u:"totaste"}],
+ steps:["Cuire le riz selon les instructions du paquet.","Cuire les haricots verts à la vapeur 10 min.","Cuire le steak haché à la poêle selon la cuisson désirée.","Assembler l'ensemble dans une assiette."]},
+{id:"sp-d5",meal:"midi",name:"Wrap dinde, crudités & fromage frais",temps:"12 min",photo:"🌯",kcal:410,proteines:38,
+ ingredients:[{n:"Galette complète",q:1,u:"piece"},{n:"Blanc de dinde",q:150,u:"g"},{n:"Fromage frais 0%",q:30,u:"g"},{n:"Salade & tomate",q:1,u:"piece"}],
+ steps:["Griller ou réchauffer le blanc de dinde tranché.","Étaler le fromage frais sur la galette.","Ajouter salade, tomate et dinde.","Rouler fermement et couper en deux."]},
+{id:"sp-d6",meal:"midi",name:"Cabillaud, riz complet & courgettes vapeur",temps:"20 min",photo:"🐟",kcal:440,proteines:41,
+ ingredients:[{n:"Filet de cabillaud",q:180,u:"g"},{n:"Riz complet",q:70,u:"g"},{n:"Courgette",q:1,u:"piece"},{n:"Citron",q:0.5,u:"piece"}],
+ steps:["Cuire le riz complet selon les instructions.","Cuire la courgette coupée en rondelles à la vapeur 8 min.","Cuire le cabillaud à la poêle 3-4 min par face.","Arroser de jus de citron avant de servir."]},
+{id:"sp-d7",meal:"midi",name:"Wrap thon, avocat & crudités",temps:"12 min",photo:"🌯",kcal:460,proteines:38,
+ ingredients:[{n:"Galette complète",q:1,u:"piece"},{n:"Thon au naturel",q:150,u:"g"},{n:"Avocat",q:0.5,u:"piece"},{n:"Salade & tomate",q:1,u:"piece"}],
+ steps:["Égoutter et émietter le thon.","Écraser l'avocat sur la galette.","Ajouter thon, salade et tomate, rouler et servir."]},
+{id:"sp-d8",meal:"midi",name:"Escalope de dinde, patate douce & brocolis",temps:"25 min",photo:"🍗",kcal:480,proteines:44,
+ ingredients:[{n:"Escalope de dinde",q:180,u:"g"},{n:"Patate douce",q:200,u:"g"},{n:"Brocolis",q:150,u:"g"}],
+ steps:["Cuire la patate douce en dés au four 20 min à 200°C.","Cuire les brocolis à la vapeur 8-10 min.","Griller l'escalope 4-5 min par face et servir avec les légumes."]},
+{id:"sp-d9",meal:"midi",name:"Bowl saumon, quinoa & edamame",temps:"20 min",photo:"🐟",kcal:520,proteines:36,
+ ingredients:[{n:"Pavé de saumon",q:150,u:"g"},{n:"Quinoa",q:70,u:"g"},{n:"Edamame",q:80,u:"g"}],
+ steps:["Cuire le quinoa 12-15 min.","Cuire les edamame 5 min à l'eau bouillante.","Griller le saumon 4 min par face et assembler dans un bol."]},
+{id:"sp-d10",meal:"midi",name:"Salade poulet, pois chiches & feta light",temps:"20 min",photo:"🥗",kcal:470,proteines:38,
+ ingredients:[{n:"Blanc de poulet",q:150,u:"g"},{n:"Pois chiches",q:1,u:"can"},{n:"Feta light",q:40,u:"g"},{n:"Tomates",q:1,u:"piece"}],
+ steps:["Griller le poulet et le trancher.","Égoutter et rincer les pois chiches.","Mélanger tous les ingrédients dans un saladier et servir."]},
+{id:"sp-d11",meal:"midi",name:"Riz, œufs durs & légumes sautés",temps:"20 min",photo:"🍚",kcal:430,proteines:28,
+ ingredients:[{n:"Riz cuit",q:200,u:"g"},{n:"Œufs",q:3,u:"piece"},{n:"Poivron & carotte",q:150,u:"g"}],
+ steps:["Cuire les œufs durs 9 min, écaler et couper en deux.","Faire sauter les légumes 8 min.","Ajouter le riz, réchauffer, servir avec les œufs."]},
+{id:"sp-d12",meal:"midi",name:"Filet de bœuf, riz complet & haricots verts",temps:"20 min",photo:"🥩",kcal:510,proteines:42,
+ ingredients:[{n:"Filet de bœuf",q:180,u:"g"},{n:"Riz complet",q:70,u:"g"},{n:"Haricots verts",q:150,u:"g"}],
+ steps:["Cuire le riz complet selon les instructions.","Cuire les haricots verts à la vapeur 10 min.","Saisir le filet de bœuf 2-3 min par face et servir."]},
+{id:"sp-d13",meal:"midi",name:"Pâtes complètes, poulet & tomates",temps:"18 min",photo:"🍝",kcal:480,proteines:40,
+ ingredients:[{n:"Pâtes complètes",q:150,u:"g"},{n:"Blanc de poulet",q:150,u:"g"},{n:"Tomates",q:2,u:"piece"}],
+ steps:["Cuire les pâtes complètes.","Griller le poulet, le trancher.","Mélanger pâtes, poulet et tomates coupées en dés, servir chaud."]},
+{id:"sp-d14",meal:"midi",name:"Bowl tofu, riz complet & légumes",temps:"20 min",photo:"🍚",kcal:420,proteines:26,
+ ingredients:[{n:"Tofu ferme",q:180,u:"g"},{n:"Riz complet",q:70,u:"g"},{n:"Poivron & courgette",q:150,u:"g"}],
+ steps:["Cuire le riz complet.","Griller le tofu en dés 5 min.","Faire sauter les légumes, assembler le tout dans un bol."]},
+{id:"sp-d15",meal:"midi",name:"Salade thon, quinoa & avocat",temps:"15 min",photo:"🥗",kcal:460,proteines:34,
+ ingredients:[{n:"Thon au naturel",q:150,u:"g"},{n:"Quinoa",q:70,u:"g"},{n:"Avocat",q:0.5,u:"piece"}],
+ steps:["Cuire le quinoa 12-15 min et laisser refroidir.","Égoutter et émietter le thon.","Mélanger quinoa, thon et avocat coupé en dés."]},
+{id:"sp-d16",meal:"midi",name:"Poêlée de crevettes, riz & courgettes",temps:"18 min",photo:"🍤",kcal:410,proteines:34,
+ ingredients:[{n:"Crevettes",q:200,u:"g"},{n:"Riz",q:70,u:"g"},{n:"Courgette",q:1,u:"piece"}],
+ steps:["Cuire le riz selon les instructions.","Faire sauter la courgette en dés 5 min.","Ajouter les crevettes, cuire 3-4 min et servir avec le riz."]},
+{id:"sp-d17",meal:"midi",name:"Sandwich complet dinde & crudités",temps:"10 min",photo:"🥪",kcal:400,proteines:32,
+ ingredients:[{n:"Pain complet",q:3,u:"slice"},{n:"Blanc de dinde",q:120,u:"g"},{n:"Salade & tomate",q:1,u:"piece"}],
+ steps:["Trancher la dinde finement.","Garnir le pain complet de salade, tomate et dinde.","Refermer et couper en deux."]},
+{id:"sp-d18",meal:"midi",name:"Curry de poulet léger & riz complet",temps:"25 min",photo:"🍛",kcal:500,proteines:40,
+ ingredients:[{n:"Blanc de poulet",q:180,u:"g"},{n:"Lait de coco light",q:200,u:"ml"},{n:"Riz complet",q:70,u:"g"},{n:"Pâte de curry",q:1,u:"tbsp"}],
+ steps:["Cuire le riz complet.","Faire revenir le poulet en morceaux avec la pâte de curry.","Ajouter le lait de coco, mijoter 12 min et servir avec le riz."]},
+
+{id:"sp-s1",meal:"soir",name:"Poulet, patate douce rôtie & haricots verts",temps:"35 min",photo:"🍗",kcal:520,proteines:46,
+ ingredients:[{n:"Blanc de poulet",q:180,u:"g"},{n:"Patate douce",q:250,u:"g"},{n:"Haricots verts",q:150,u:"g"},{n:"Huile d'olive",q:1,u:"tbsp"}],
+ steps:["Couper la patate douce en frites, enfourner 25 min à 200°C avec l'huile.","Cuire les haricots verts à la vapeur 10 min.","Griller le poulet 5-6 min par face.","Servir l'ensemble ensemble."]},
+{id:"sp-s2",meal:"soir",name:"Saumon grillé, riz complet & brocolis",temps:"25 min",photo:"🐟",kcal:540,proteines:38,
+ ingredients:[{n:"Pavé de saumon",q:180,u:"g"},{n:"Riz complet",q:70,u:"g"},{n:"Brocolis",q:150,u:"g"},{n:"Citron",q:0.5,u:"piece"}],
+ steps:["Cuire le riz complet selon les instructions.","Cuire les brocolis à la vapeur 8-10 min.","Griller le saumon à la poêle 4 min par face.","Arroser de citron et servir avec riz et brocolis."]},
+{id:"sp-s3",meal:"soir",name:"Chili de dinde haute protéine",temps:"30 min",photo:"🌶️",kcal:460,proteines:44,
+ ingredients:[{n:"Dinde hachée",q:250,u:"g"},{n:"Haricots rouges",q:1,u:"can"},{n:"Tomates concassées",q:300,u:"g"},{n:"Oignon",q:1,u:"piece"}],
+ steps:["Émincer l'oignon et le faire revenir 3 min.","Ajouter la dinde hachée, cuire en émiettant jusqu'à coloration.","Ajouter tomates concassées et haricots rouges égouttés.","Laisser mijoter 20 min à feu doux."]},
+{id:"sp-s4",meal:"soir",name:"Omelette thon, riz & tomates",temps:"15 min",photo:"🍳",kcal:430,proteines:36,
+ ingredients:[{n:"Œufs",q:4,u:"piece"},{n:"Thon au naturel",q:100,u:"g"},{n:"Riz cuit",q:150,u:"g"},{n:"Tomates",q:1,u:"piece"}],
+ steps:["Battre les œufs avec le thon émietté.","Faire revenir les tomates coupées en dés 2 min.","Verser les œufs sur les tomates, cuire à feu doux 5-6 min.","Servir avec le riz cuit à côté."]},
+{id:"sp-s5",meal:"soir",name:"Bœuf sauté, légumes & nouilles de riz",temps:"20 min",photo:"🥩",kcal:500,proteines:40,
+ ingredients:[{n:"Émincé de bœuf maigre",q:180,u:"g"},{n:"Nouilles de riz",q:70,u:"g"},{n:"Poivron & carotte",q:150,u:"g"},{n:"Sauce soja",q:1,u:"tbsp"}],
+ steps:["Cuire les nouilles de riz selon les instructions.","Faire sauter le bœuf émincé 3-4 min à feu vif.","Ajouter les légumes coupés en lanières, cuire 5 min.","Ajouter les nouilles et la sauce soja, mélanger et servir chaud."]},
+{id:"sp-s6",meal:"soir",name:"Tofu grillé, riz complet & légumes sautés",temps:"20 min",photo:"🍚",kcal:420,proteines:26,
+ ingredients:[{n:"Tofu ferme",q:200,u:"g"},{n:"Riz complet",q:70,u:"g"},{n:"Poivron & courgette",q:150,u:"g"},{n:"Sauce soja",q:1,u:"tbsp"}],
+ steps:["Cuire le riz complet selon les instructions.","Couper le tofu en tranches, le griller 3-4 min par face.","Faire sauter les légumes 5-6 min.","Assembler et arroser de sauce soja."]},
+{id:"sp-s7",meal:"soir",name:"Filet de poisson, riz complet & épinards",temps:"22 min",photo:"🐟",kcal:440,proteines:36,
+ ingredients:[{n:"Filet de poisson blanc",q:180,u:"g"},{n:"Riz complet",q:70,u:"g"},{n:"Épinards frais",q:100,u:"g"}],
+ steps:["Cuire le riz complet.","Faire revenir les épinards 3-4 min.","Cuire le poisson à la poêle 4-5 min par face et servir."]},
+{id:"sp-s8",meal:"soir",name:"Poulet basquaise léger & riz",temps:"40 min",photo:"🍗",kcal:500,proteines:42,
+ ingredients:[{n:"Blanc de poulet",q:200,u:"g"},{n:"Poivrons",q:2,u:"piece"},{n:"Tomates",q:2,u:"piece"},{n:"Riz",q:70,u:"g"}],
+ steps:["Faire dorer le poulet 5 min.","Ajouter poivrons et tomates, mijoter 25 min.","Cuire le riz et servir avec le poulet basquaise."]},
+{id:"sp-s9",meal:"soir",name:"Escalope de veau, patate douce & haricots verts",temps:"25 min",photo:"🥩",kcal:470,proteines:40,
+ ingredients:[{n:"Escalope de veau",q:180,u:"g"},{n:"Patate douce",q:200,u:"g"},{n:"Haricots verts",q:150,u:"g"}],
+ steps:["Cuire la patate douce au four 20 min à 200°C.","Cuire les haricots verts à la vapeur.","Griller l'escalope 3-4 min par face et servir."]},
+{id:"sp-s10",meal:"soir",name:"Wok de bœuf, légumes & nouilles complètes",temps:"20 min",photo:"🥩",kcal:510,proteines:38,
+ ingredients:[{n:"Émincé de bœuf maigre",q:180,u:"g"},{n:"Nouilles complètes",q:80,u:"g"},{n:"Légumes wok",q:150,u:"g"}],
+ steps:["Cuire les nouilles selon les instructions.","Faire sauter le bœuf à feu vif 3-4 min.","Ajouter les légumes puis les nouilles, mélanger et servir."]},
+{id:"sp-s11",meal:"soir",name:"Cabillaud, quinoa & brocolis",temps:"22 min",photo:"🐟",kcal:430,proteines:38,
+ ingredients:[{n:"Filet de cabillaud",q:180,u:"g"},{n:"Quinoa",q:70,u:"g"},{n:"Brocolis",q:150,u:"g"}],
+ steps:["Cuire le quinoa 12-15 min.","Cuire les brocolis à la vapeur.","Cuire le cabillaud 3-4 min par face et assembler."]},
+{id:"sp-s12",meal:"soir",name:"Chili de bœuf maigre & riz",temps:"30 min",photo:"🌶️",kcal:500,proteines:42,
+ ingredients:[{n:"Bœuf haché 5%",q:250,u:"g"},{n:"Haricots rouges",q:1,u:"can"},{n:"Tomates concassées",q:300,u:"g"},{n:"Riz",q:70,u:"g"}],
+ steps:["Faire revenir le bœuf haché jusqu'à coloration.","Ajouter tomates et haricots rouges, mijoter 20 min.","Cuire le riz et servir avec le chili."]},
+{id:"sp-s13",meal:"soir",name:"Poulet grillé, ratatouille & riz",temps:"30 min",photo:"🍗",kcal:460,proteines:40,
+ ingredients:[{n:"Blanc de poulet",q:180,u:"g"},{n:"Ratatouille maison",q:200,u:"g"},{n:"Riz",q:70,u:"g"}],
+ steps:["Cuire le riz selon les instructions.","Griller le poulet 5-6 min par face.","Réchauffer la ratatouille et servir le tout ensemble."]},
+{id:"sp-s14",meal:"soir",name:"Saumon, patate douce rôtie & épinards",temps:"30 min",photo:"🐟",kcal:530,proteines:34,
+ ingredients:[{n:"Pavé de saumon",q:180,u:"g"},{n:"Patate douce",q:200,u:"g"},{n:"Épinards frais",q:100,u:"g"}],
+ steps:["Cuire la patate douce au four 20 min à 200°C.","Faire revenir les épinards 3-4 min.","Griller le saumon 4 min par face et assembler."]},
+{id:"sp-s15",meal:"soir",name:"Dinde sautée, poivrons & riz complet",temps:"20 min",photo:"🍗",kcal:460,proteines:40,
+ ingredients:[{n:"Émincé de dinde",q:180,u:"g"},{n:"Poivrons",q:2,u:"piece"},{n:"Riz complet",q:70,u:"g"}],
+ steps:["Cuire le riz complet selon les instructions.","Faire sauter la dinde émincée 5 min.","Ajouter les poivrons, cuire 5 min de plus et servir."]},
+{id:"sp-s16",meal:"soir",name:"Omelette légumes & jambon blanc",temps:"15 min",photo:"🍳",kcal:380,proteines:30,
+ ingredients:[{n:"Œufs",q:4,u:"piece"},{n:"Jambon blanc",q:2,u:"slice"},{n:"Poivron & courgette",q:100,u:"g"}],
+ steps:["Faire sauter les légumes 5 min.","Battre les œufs, ajouter le jambon coupé en dés.","Verser sur les légumes, cuire à feu doux 5-6 min."]},
+{id:"sp-s17",meal:"soir",name:"Crevettes sautées, riz complet & brocolis",temps:"18 min",photo:"🍤",kcal:410,proteines:32,
+ ingredients:[{n:"Crevettes",q:200,u:"g"},{n:"Riz complet",q:70,u:"g"},{n:"Brocolis",q:150,u:"g"}],
+ steps:["Cuire le riz complet.","Cuire les brocolis à la vapeur.","Faire sauter les crevettes 3-4 min et assembler."]},
+{id:"sp-s18",meal:"soir",name:"Steak, purée patate douce & haricots verts",temps:"30 min",photo:"🥩",kcal:500,proteines:40,
+ ingredients:[{n:"Steak de bœuf",q:180,u:"g"},{n:"Patate douce",q:300,u:"g"},{n:"Haricots verts",q:150,u:"g"}],
+ steps:["Cuire la patate douce à l'eau 20 min, égoutter et écraser en purée.","Cuire les haricots verts à la vapeur.","Cuire le steak à la poêle selon la cuisson désirée et servir."]},
+];
+
+const GROSSESSE_RECIPES = [
+{id:"gr-m1",meal:"matin",name:"Porridge avoine & compote (bien cuit)",temps:"8 min",photo:"🥣",kcal:300,
+ ingredients:[{n:"Flocons d'avoine",q:60,u:"g"},{n:"Lait pasteurisé",q:250,u:"ml"},{n:"Compote de pommes sans sucre",q:60,u:"g"},{n:"Cannelle",q:1,u:"pinch"}],
+ steps:["Porter le lait à frémissement dans une casserole.","Ajouter les flocons d'avoine, cuire 5 min à feu doux en remuant.","Verser dans un bol et laisser tiédir.","Incorporer la compote et saupoudrer de cannelle."]},
+{id:"gr-m2",meal:"matin",name:"Œufs brouillés bien cuits & pain complet",temps:"10 min",photo:"🍳",kcal:340,
+ ingredients:[{n:"Œufs",q:3,u:"piece"},{n:"Pain complet",q:2,u:"slice"},{n:"Beurre pasteurisé",q:10,u:"g"},{n:"Sel & poivre",q:1,u:"totaste"}],
+ steps:["Battre les œufs avec un peu de sel.","Faire fondre le beurre dans une poêle à feu doux.","Cuire les œufs en remuant jusqu'à ce qu'ils soient bien pris (pas baveux).","Servir avec le pain complet grillé."]},
+{id:"gr-m3",meal:"matin",name:"Yaourt pasteurisé, granola & banane",temps:"5 min",photo:"🍌",kcal:310,
+ ingredients:[{n:"Yaourt nature pasteurisé",q:200,u:"g"},{n:"Granola",q:40,u:"g"},{n:"Banane",q:1,u:"piece"},{n:"Miel",q:1,u:"tsp"}],
+ steps:["Verser le yaourt dans un bol.","Couper la banane en rondelles.","Ajouter le granola et la banane sur le yaourt.","Terminer par un filet de miel."]},
+{id:"gr-m4",meal:"matin",name:"Pancakes maison bien cuits",temps:"20 min",photo:"🥞",kcal:420,
+ ingredients:[{n:"Farine",q:150,u:"g"},{n:"Lait pasteurisé",q:200,u:"ml"},{n:"Œuf",q:1,u:"piece"},{n:"Sucre",q:1,u:"tbsp"}],
+ steps:["Mélanger farine et sucre dans un bol.","Ajouter l'œuf et le lait petit à petit en fouettant.","Cuire chaque pancake 2 min par face à feu moyen, jusqu'à cuisson complète.","Servir tiède."]},
+{id:"gr-m5",meal:"matin",name:"Fromage blanc pasteurisé, fruits secs & miel",temps:"4 min",photo:"🥣",kcal:280,
+ ingredients:[{n:"Fromage blanc pasteurisé",q:200,u:"g"},{n:"Amandes",q:20,u:"g"},{n:"Miel",q:1,u:"tbsp"},{n:"Pomme",q:0.5,u:"piece"}],
+ steps:["Verser le fromage blanc dans un bol.","Couper la pomme en petits dés.","Ajouter amandes concassées et pomme.","Napper de miel avant de servir."]},
+{id:"gr-m6",meal:"matin",name:"Toast avocat & œuf bien cuit",temps:"10 min",photo:"🍳",kcal:360,
+ ingredients:[{n:"Pain complet",q:2,u:"slice"},{n:"Avocat",q:1,u:"piece"},{n:"Œuf",q:1,u:"piece"},{n:"Citron",q:0.5,u:"piece"}],
+ steps:["Faire toaster le pain.","Écraser l'avocat avec un filet de citron.","Cuire l'œuf au plat jusqu'à ce que le jaune soit entièrement pris (pas coulant).","Étaler l'avocat sur le pain et déposer l'œuf par-dessus."]},
+{id:"gr-m7",meal:"matin",name:"Porridge banane & cannelle",temps:"8 min",photo:"🥣",kcal:310,
+ ingredients:[{n:"Flocons d'avoine",q:60,u:"g"},{n:"Lait pasteurisé",q:250,u:"ml"},{n:"Banane",q:1,u:"piece"},{n:"Cannelle",q:1,u:"pinch"}],
+ steps:["Cuire les flocons d'avoine dans le lait 5 min.","Écraser la moitié de la banane, l'incorporer.","Couper le reste en rondelles, ajouter et saupoudrer de cannelle."]},
+{id:"gr-m8",meal:"matin",name:"Pain complet, fromage frais pasteurisé & confiture",temps:"5 min",photo:"🍞",kcal:340,
+ ingredients:[{n:"Pain complet",q:2,u:"slice"},{n:"Fromage frais pasteurisé",q:40,u:"g"},{n:"Confiture",q:1,u:"tbsp"}],
+ steps:["Faire toaster légèrement le pain.","Étaler le fromage frais.","Ajouter une touche de confiture par-dessus."]},
+{id:"gr-m9",meal:"matin",name:"Crêpes bien cuites & compote",temps:"20 min",photo:"🥞",kcal:380,
+ ingredients:[{n:"Farine",q:120,u:"g"},{n:"Lait pasteurisé",q:250,u:"ml"},{n:"Œuf",q:1,u:"piece"},{n:"Compote de pommes",q:80,u:"g"}],
+ steps:["Mélanger farine, œuf et lait en une pâte lisse.","Cuire chaque crêpe 1-2 min par face jusqu'à cuisson complète.","Garnir de compote et servir."]},
+{id:"gr-m10",meal:"matin",name:"Muesli maison au lait pasteurisé",temps:"3 min",photo:"🥣",kcal:300,
+ ingredients:[{n:"Flocons d'avoine",q:50,u:"g"},{n:"Fruits secs",q:20,u:"g"},{n:"Lait pasteurisé",q:200,u:"ml"}],
+ steps:["Verser les flocons dans un bol.","Ajouter les fruits secs.","Verser le lait et laisser reposer 2 min avant de servir."]},
+{id:"gr-m11",meal:"matin",name:"Omelette jambon blanc bien cuite",temps:"10 min",photo:"🍳",kcal:350,
+ ingredients:[{n:"Œufs",q:3,u:"piece"},{n:"Jambon blanc cuit",q:2,u:"slice"},{n:"Emmental",q:20,u:"g"}],
+ steps:["Battre les œufs, saler légèrement.","Couper le jambon en dés, l'ajouter aux œufs avec le fromage.","Cuire à feu doux jusqu'à ce que l'omelette soit bien prise à cœur."]},
+{id:"gr-m12",meal:"matin",name:"Yaourt pasteurisé, miel & noix",temps:"3 min",photo:"🥣",kcal:320,
+ ingredients:[{n:"Yaourt nature pasteurisé",q:200,u:"g"},{n:"Miel",q:1,u:"tbsp"},{n:"Noix",q:15,u:"g"}],
+ steps:["Verser le yaourt dans un bol.","Concasser les noix et les ajouter.","Napper de miel avant de servir."]},
+{id:"gr-m13",meal:"matin",name:"Pain perdu bien cuit à la cannelle",temps:"12 min",photo:"🍞",kcal:340,
+ ingredients:[{n:"Pain complet",q:4,u:"slice"},{n:"Œuf",q:1,u:"piece"},{n:"Lait pasteurisé",q:150,u:"ml"},{n:"Cannelle",q:1,u:"pinch"}],
+ steps:["Battre l'œuf avec le lait et la cannelle.","Tremper le pain quelques secondes de chaque côté.","Dorer à la poêle 2-3 min par face jusqu'à cuisson complète."]},
+{id:"gr-m14",meal:"matin",name:"Tartine fromage frais & concombre",temps:"6 min",photo:"🥒",kcal:300,
+ ingredients:[{n:"Pain complet",q:2,u:"slice"},{n:"Fromage frais pasteurisé",q:50,u:"g"},{n:"Concombre",q:0.5,u:"piece"}],
+ steps:["Étaler le fromage frais sur le pain.","Couper le concombre en fines rondelles.","Disposer sur les tartines et servir."]},
+{id:"gr-m15",meal:"matin",name:"Riz au lait pasteurisé (bien cuit)",temps:"25 min",photo:"🍚",kcal:330,
+ ingredients:[{n:"Riz rond",q:60,u:"g"},{n:"Lait pasteurisé",q:400,u:"ml"},{n:"Sucre",q:1,u:"tbsp"},{n:"Vanille",q:1,u:"pinch"}],
+ steps:["Porter le lait à frémissement.","Ajouter le riz, cuire à feu doux 20 min en remuant régulièrement.","Ajouter le sucre et la vanille, laisser tiédir avant de servir."]},
+{id:"gr-m16",meal:"matin",name:"Bol de céréales complètes & lait pasteurisé",temps:"3 min",photo:"🥣",kcal:310,
+ ingredients:[{n:"Céréales complètes",q:50,u:"g"},{n:"Lait pasteurisé",q:250,u:"ml"},{n:"Banane",q:0.5,u:"piece"}],
+ steps:["Verser les céréales dans un bol.","Ajouter le lait.","Couper la banane en rondelles et disposer dessus."]},
+{id:"gr-m17",meal:"matin",name:"Tartine avocat & jambon blanc",temps:"8 min",photo:"🥑",kcal:360,
+ ingredients:[{n:"Pain complet",q:2,u:"slice"},{n:"Avocat",q:0.5,u:"piece"},{n:"Jambon blanc cuit",q:1,u:"slice"}],
+ steps:["Faire toaster le pain.","Écraser l'avocat dessus.","Ajouter le jambon blanc et servir."]},
+{id:"gr-m18",meal:"matin",name:"Gaufres maison bien cuites",temps:"20 min",photo:"🧇",kcal:400,
+ ingredients:[{n:"Farine",q:150,u:"g"},{n:"Lait pasteurisé",q:200,u:"ml"},{n:"Œuf",q:1,u:"piece"},{n:"Beurre pasteurisé",q:20,u:"g"}],
+ steps:["Mélanger farine, œuf, lait et beurre fondu en une pâte lisse.","Cuire au gaufrier jusqu'à ce que les gaufres soient bien dorées et cuites à cœur.","Servir tiède."]},
+
+{id:"gr-d1",meal:"midi",name:"Poulet rôti, riz & carottes vapeur",temps:"30 min",photo:"🍗",kcal:480,
+ ingredients:[{n:"Blanc de poulet",q:150,u:"g"},{n:"Riz",q:70,u:"g"},{n:"Carottes",q:2,u:"piece"},{n:"Huile d'olive",q:1,u:"tbsp"}],
+ steps:["Cuire le riz selon les instructions.","Cuire les carottes à la vapeur 12-15 min.","Cuire le poulet à la poêle jusqu'à ce qu'il soit bien cuit à cœur, sans rosé.","Assembler dans une assiette avec un filet d'huile d'olive."]},
+{id:"gr-d2",meal:"midi",name:"Pâtes au thon cuit & tomates",temps:"15 min",photo:"🍝",kcal:450,
+ ingredients:[{n:"Pâtes",q:150,u:"g"},{n:"Thon au naturel",q:1,u:"can"},{n:"Tomates",q:2,u:"piece"},{n:"Huile d'olive",q:1,u:"tbsp"}],
+ steps:["Cuire les pâtes dans l'eau bouillante salée.","Couper les tomates en dés.","Égoutter le thon et l'émietter.","Mélanger pâtes, tomates, thon et huile d'olive, servir chaud."]},
+{id:"gr-d3",meal:"midi",name:"Riz sauté légumes & œuf bien cuit",temps:"18 min",photo:"🍚",kcal:400,
+ ingredients:[{n:"Riz cuit",q:200,u:"g"},{n:"Courgette",q:1,u:"piece"},{n:"Carotte",q:1,u:"piece"},{n:"Œuf",q:2,u:"piece"}],
+ steps:["Couper courgette et carotte en petits dés.","Faire sauter les légumes 5 min dans une poêle huilée.","Ajouter le riz cuit, faire revenir 5 min.","Pousser le riz sur un côté, casser les œufs, cuire jusqu'à ce qu'ils soient bien pris, puis mélanger."]},
+{id:"gr-d4",meal:"midi",name:"Croque-monsieur jambon cuit fromage",temps:"12 min",photo:"🥪",kcal:420,
+ ingredients:[{n:"Pain de mie",q:4,u:"slice"},{n:"Jambon blanc cuit",q:2,u:"slice"},{n:"Emmental",q:60,u:"g"},{n:"Beurre pasteurisé",q:15,u:"g"}],
+ steps:["Garnir deux tranches de pain de jambon et de la moitié du fromage.","Couvrir avec les deux autres tranches.","Beurrer l'extérieur, cuire à la poêle jusqu'à ce que le pain soit doré des deux côtés.","Vérifier que le fromage est bien fondu à cœur avant de servir."]},
+{id:"gr-d5",meal:"midi",name:"Soupe de légumes maison & pain",temps:"25 min",photo:"🍲",kcal:280,
+ ingredients:[{n:"Courgette",q:1,u:"piece"},{n:"Carotte",q:2,u:"piece"},{n:"Pomme de terre",q:1,u:"piece"},{n:"Pain complet",q:2,u:"slice"}],
+ steps:["Éplucher et couper les légumes en morceaux.","Cuire à l'eau 20 min jusqu'à ce qu'ils soient tendres.","Mixer jusqu'à texture lisse.","Servir chaud avec le pain complet."]},
+{id:"gr-d6",meal:"midi",name:"Saumon bien cuit, riz & épinards",temps:"20 min",photo:"🐟",kcal:460,
+ ingredients:[{n:"Pavé de saumon",q:150,u:"g"},{n:"Riz",q:70,u:"g"},{n:"Épinards frais",q:100,u:"g"},{n:"Citron",q:0.5,u:"piece"}],
+ steps:["Cuire le riz selon les instructions.","Faire revenir les épinards 3-4 min à la poêle.","Cuire le saumon à la poêle 5-6 min par face, jusqu'à ce qu'il soit bien cuit à cœur (chair opaque).","Servir avec riz et épinards, arroser de citron."]},
+{id:"gr-d7",meal:"midi",name:"Salade de pâtes, jambon blanc & tomates",temps:"15 min",photo:"🍝",kcal:430,
+ ingredients:[{n:"Pâtes",q:150,u:"g"},{n:"Jambon blanc cuit",q:100,u:"g"},{n:"Tomates",q:2,u:"piece"}],
+ steps:["Cuire les pâtes, égoutter et laisser refroidir.","Couper le jambon et les tomates en dés.","Mélanger le tout avec un filet d'huile d'olive."]},
+{id:"gr-d8",meal:"midi",name:"Poulet basquaise bien cuit & riz",temps:"40 min",photo:"🍗",kcal:470,
+ ingredients:[{n:"Blanc de poulet",q:180,u:"g"},{n:"Poivrons",q:2,u:"piece"},{n:"Tomates",q:2,u:"piece"},{n:"Riz",q:70,u:"g"}],
+ steps:["Faire dorer le poulet à la poêle 5 min.","Ajouter poivrons et tomates, mijoter 25 min jusqu'à cuisson complète du poulet.","Servir avec le riz cuit."]},
+{id:"gr-d9",meal:"midi",name:"Gratin de pâtes au jambon bien cuit",temps:"30 min",photo:"🍝",kcal:480,
+ ingredients:[{n:"Pâtes",q:150,u:"g"},{n:"Jambon blanc cuit",q:100,u:"g"},{n:"Crème pasteurisée",q:150,u:"ml"},{n:"Emmental",q:60,u:"g"}],
+ steps:["Cuire les pâtes, égoutter.","Mélanger avec le jambon coupé et la crème.","Verser dans un plat, couvrir de fromage, gratiner 15 min au four à 200°C jusqu'à ce que ce soit bien chaud à cœur."]},
+{id:"gr-d10",meal:"midi",name:"Riz, poulet bien cuit & légumes",temps:"25 min",photo:"🍚",kcal:440,
+ ingredients:[{n:"Blanc de poulet",q:150,u:"g"},{n:"Riz",q:70,u:"g"},{n:"Courgette & carotte",q:150,u:"g"}],
+ steps:["Cuire le riz.","Faire sauter les légumes 8 min.","Cuire le poulet à la poêle jusqu'à cuisson complète, assembler le tout."]},
+{id:"gr-d11",meal:"midi",name:"Quiche bien cuite au jambon",temps:"45 min",photo:"🥧",kcal:460,
+ ingredients:[{n:"Pâte brisée",q:1,u:"piece"},{n:"Jambon blanc cuit",q:100,u:"g"},{n:"Œufs",q:3,u:"piece"},{n:"Crème pasteurisée",q:200,u:"ml"}],
+ steps:["Préchauffer le four à 180°C.","Étaler la pâte, ajouter le jambon coupé en dés.","Battre œufs et crème, verser sur la pâte.","Cuire 35 min jusqu'à ce que le centre soit bien pris et doré."]},
+{id:"gr-d12",meal:"midi",name:"Galette de sarrasin jambon-fromage bien cuite",temps:"15 min",photo:"🥞",kcal:420,
+ ingredients:[{n:"Galette de sarrasin",q:2,u:"piece"},{n:"Jambon blanc cuit",q:2,u:"slice"},{n:"Emmental",q:60,u:"g"}],
+ steps:["Chauffer la galette à la poêle.","Ajouter jambon et fromage.","Cuire jusqu'à ce que le fromage soit bien fondu et servir chaud."]},
+{id:"gr-d13",meal:"midi",name:"Salade de riz, thon cuit & maïs",temps:"15 min",photo:"🍚",kcal:400,
+ ingredients:[{n:"Riz cuit",q:200,u:"g"},{n:"Thon au naturel",q:1,u:"can"},{n:"Maïs",q:100,u:"g"}],
+ steps:["Laisser le riz refroidir.","Égoutter thon et maïs.","Mélanger le tout et servir frais."]},
+{id:"gr-d14",meal:"midi",name:"Sandwich club poulet bien cuit",temps:"15 min",photo:"🥪",kcal:410,
+ ingredients:[{n:"Pain de mie",q:3,u:"slice"},{n:"Blanc de poulet cuit",q:120,u:"g"},{n:"Salade & tomate",q:1,u:"piece"}],
+ steps:["Griller le poulet jusqu'à cuisson complète, trancher.","Étager pain, salade, tomate et poulet.","Refermer et couper en triangles."]},
+{id:"gr-d15",meal:"midi",name:"Poêlée de légumes & œuf bien cuit",temps:"18 min",photo:"🍳",kcal:330,
+ ingredients:[{n:"Courgette & poivron",q:200,u:"g"},{n:"Oignon",q:1,u:"piece"},{n:"Œufs",q:2,u:"piece"}],
+ steps:["Faire revenir les légumes 10 min.","Cuire les œufs au plat jusqu'à ce que le jaune soit entièrement pris.","Servir les œufs sur les légumes."]},
+{id:"gr-d16",meal:"midi",name:"Nouilles sautées au poulet bien cuit",temps:"18 min",photo:"🍜",kcal:430,
+ ingredients:[{n:"Nouilles",q:150,u:"g"},{n:"Blanc de poulet",q:150,u:"g"},{n:"Carotte & poivron",q:150,u:"g"}],
+ steps:["Cuire les nouilles selon les instructions.","Faire sauter le poulet en dés jusqu'à cuisson complète.","Ajouter les légumes puis les nouilles, mélanger et servir."]},
+{id:"gr-d17",meal:"midi",name:"Taboulé & jambon blanc",temps:"20 min",photo:"🥗",kcal:380,
+ ingredients:[{n:"Semoule fine",q:150,u:"g"},{n:"Jambon blanc cuit",q:100,u:"g"},{n:"Tomates & concombre",q:200,u:"g"}],
+ steps:["Faire gonfler la semoule dans l'eau chaude 10 min.","Couper jambon, tomates et concombre en dés.","Mélanger le tout et servir frais."]},
+{id:"gr-d18",meal:"midi",name:"Velouté de courgettes & croûtons",temps:"25 min",photo:"🍲",kcal:260,
+ ingredients:[{n:"Courgettes",q:3,u:"piece"},{n:"Pomme de terre",q:1,u:"piece"},{n:"Croûtons",q:40,u:"g"}],
+ steps:["Cuire courgettes et pomme de terre à l'eau 20 min.","Mixer jusqu'à texture lisse.","Servir chaud avec les croûtons."]},
+
+{id:"gr-s1",meal:"soir",name:"Poulet rôti, pommes de terre & légumes",temps:"1h",photo:"🍗",kcal:520,
+ ingredients:[{n:"Blanc de poulet",q:150,u:"g"},{n:"Pommes de terre",q:300,u:"g"},{n:"Carottes",q:2,u:"piece"},{n:"Huile d'olive",q:1,u:"tbsp"}],
+ steps:["Préchauffer le four à 200°C.","Disposer poulet, pommes de terre et carottes dans un plat avec l'huile.","Enfourner 40 min en vérifiant que le poulet est bien cuit à cœur (jus clair, pas rosé).","Servir chaud."]},
+{id:"gr-s2",meal:"soir",name:"Bœuf bien cuit, riz & haricots verts",temps:"25 min",photo:"🥩",kcal:490,
+ ingredients:[{n:"Steak haché",q:150,u:"g"},{n:"Riz",q:70,u:"g"},{n:"Haricots verts",q:150,u:"g"},{n:"Sel & poivre",q:1,u:"totaste"}],
+ steps:["Cuire le riz selon les instructions.","Cuire les haricots verts à la vapeur 10 min.","Cuire le steak haché à la poêle jusqu'à ce qu'il soit bien cuit à cœur, sans rosé.","Servir l'ensemble ensemble."]},
+{id:"gr-s3",meal:"soir",name:"Gratin de courgettes bien cuit",temps:"40 min",photo:"🥘",kcal:400,
+ ingredients:[{n:"Courgettes",q:3,u:"piece"},{n:"Crème fraîche pasteurisée",q:200,u:"ml"},{n:"Emmental râpé",q:80,u:"g"},{n:"Ail",q:1,u:"clove"}],
+ steps:["Préchauffer le four à 200°C.","Couper les courgettes en rondelles, les faire revenir 8 min avec l'ail.","Disposer dans un plat, napper de crème et couvrir de fromage.","Cuire 25 min jusqu'à ce que ce soit bien doré et chaud à cœur."]},
+{id:"gr-s4",meal:"soir",name:"Filet de poisson bien cuit & purée",temps:"30 min",photo:"🐟",kcal:440,
+ ingredients:[{n:"Filet de poisson blanc",q:150,u:"g"},{n:"Pommes de terre",q:400,u:"g"},{n:"Beurre pasteurisé",q:20,u:"g"},{n:"Lait pasteurisé",q:80,u:"ml"}],
+ steps:["Cuire les pommes de terre à l'eau 20 min, égoutter et écraser avec beurre et lait.","Cuire le poisson à la poêle 4-5 min par face, jusqu'à chair bien opaque à cœur.","Servir le poisson sur la purée bien chaude."]},
+{id:"gr-s5",meal:"soir",name:"Pâtes bolognaise bien cuite",temps:"35 min",photo:"🍝",kcal:520,
+ ingredients:[{n:"Pâtes",q:150,u:"g"},{n:"Bœuf haché",q:200,u:"g"},{n:"Sauce tomate",q:300,u:"ml"},{n:"Oignon",q:1,u:"piece"}],
+ steps:["Émincer l'oignon, le faire revenir 3 min.","Ajouter le bœuf haché, cuire jusqu'à coloration complète, sans rosé.","Ajouter la sauce tomate, laisser mijoter 20 min.","Cuire les pâtes et servir avec la sauce bien chaude."]},
+{id:"gr-s6",meal:"soir",name:"Riz cantonais bien cuit",temps:"20 min",photo:"🍚",kcal:430,
+ ingredients:[{n:"Riz cuit",q:250,u:"g"},{n:"Jambon blanc cuit",q:80,u:"g"},{n:"Petits pois",q:100,u:"g"},{n:"Œuf",q:2,u:"piece"}],
+ steps:["Couper le jambon en petits dés.","Faire cuire les œufs en omelette bien cuite, puis couper en lanières.","Faire sauter le riz avec petits pois et jambon 5 min.","Incorporer l'omelette en lanières et servir chaud."]},
+{id:"gr-s7",meal:"soir",name:"Blanquette de poulet bien cuite & riz",temps:"45 min",photo:"🍲",kcal:480,
+ ingredients:[{n:"Blanc de poulet",q:200,u:"g"},{n:"Carottes",q:2,u:"piece"},{n:"Crème pasteurisée",q:150,u:"ml"},{n:"Riz",q:70,u:"g"}],
+ steps:["Cuire le poulet et les carottes à l'eau frémissante 25 min, jusqu'à cuisson complète.","Retirer, incorporer la crème au bouillon pour lier la sauce.","Remettre poulet et carottes, réchauffer sans bouillir, servir avec le riz."]},
+{id:"gr-s8",meal:"soir",name:"Lasagnes bien cuites",temps:"1h",photo:"🍝",kcal:520,
+ ingredients:[{n:"Feuilles de lasagne",q:9,u:"piece"},{n:"Bœuf haché",q:250,u:"g"},{n:"Sauce tomate",q:300,u:"ml"},{n:"Béchamel pasteurisée",q:250,u:"ml"}],
+ steps:["Faire revenir le bœuf jusqu'à coloration complète, ajouter la sauce tomate, mijoter 10 min.","Alterner feuilles, sauce et béchamel dans un plat.","Cuire 35-40 min à 190°C jusqu'à ce que ce soit bien doré et chaud à cœur."]},
+{id:"gr-s9",meal:"soir",name:"Tajine de poulet bien cuit aux abricots",temps:"45 min",photo:"🍗",kcal:500,
+ ingredients:[{n:"Cuisses de poulet",q:3,u:"piece"},{n:"Abricots secs",q:80,u:"g"},{n:"Oignon",q:1,u:"piece"},{n:"Semoule",q:100,u:"g"}],
+ steps:["Faire dorer le poulet sur toutes les faces.","Ajouter oignon, abricots et un verre d'eau, couvrir.","Mijoter 35 min jusqu'à cuisson complète du poulet, servir avec la semoule."]},
+{id:"gr-s10",meal:"soir",name:"Gratin dauphinois bien cuit & carottes",temps:"1h",photo:"🥘",kcal:460,
+ ingredients:[{n:"Pommes de terre",q:600,u:"g"},{n:"Crème pasteurisée",q:250,u:"ml"},{n:"Ail",q:1,u:"clove"},{n:"Carottes vapeur",q:150,u:"g"}],
+ steps:["Préchauffer le four à 180°C.","Disposer les pommes de terre en rondelles avec la crème et l'ail dans un plat.","Cuire 50 min jusqu'à ce que ce soit bien tendre et doré, servir avec les carottes vapeur."]},
+{id:"gr-s11",meal:"soir",name:"Poêlée de dinde, légumes & riz",temps:"20 min",photo:"🍗",kcal:440,
+ ingredients:[{n:"Émincé de dinde",q:180,u:"g"},{n:"Poivron & courgette",q:150,u:"g"},{n:"Riz",q:70,u:"g"}],
+ steps:["Cuire le riz selon les instructions.","Faire sauter la dinde jusqu'à cuisson complète, sans rosé.","Ajouter les légumes, cuire 5 min de plus et servir."]},
+{id:"gr-s12",meal:"soir",name:"Risotto bien cuit au poulet",temps:"30 min",photo:"🍚",kcal:470,
+ ingredients:[{n:"Riz à risotto",q:150,u:"g"},{n:"Blanc de poulet",q:150,u:"g"},{n:"Bouillon de légumes",q:800,u:"ml"},{n:"Parmesan",q:30,u:"g"}],
+ steps:["Cuire le poulet en dés jusqu'à cuisson complète, réserver.","Nacrer le riz, ajouter le bouillon louche par louche en remuant 18 min.","Incorporer le poulet et le parmesan en fin de cuisson, servir chaud."]},
+{id:"gr-s13",meal:"soir",name:"Couscous poulet-légumes bien cuit",temps:"40 min",photo:"🍛",kcal:500,
+ ingredients:[{n:"Cuisses de poulet",q:3,u:"piece"},{n:"Courgette & carotte",q:200,u:"g"},{n:"Semoule à couscous",q:150,u:"g"}],
+ steps:["Faire dorer le poulet sur toutes les faces.","Ajouter les légumes et couvrir d'eau, mijoter 25 min jusqu'à cuisson complète.","Préparer la semoule et servir avec le poulet et les légumes."]},
+{id:"gr-s14",meal:"soir",name:"Curry de légumes au lait de coco & riz",temps:"30 min",photo:"🍛",kcal:440,
+ ingredients:[{n:"Courgette & aubergine",q:250,u:"g"},{n:"Lait de coco",q:300,u:"ml"},{n:"Pâte de curry douce",q:1,u:"tbsp"},{n:"Riz",q:70,u:"g"}],
+ steps:["Faire revenir les légumes 5 min avec la pâte de curry.","Ajouter le lait de coco, mijoter 20 min jusqu'à ce que les légumes soient bien tendres.","Servir avec le riz cuit."]},
+{id:"gr-s15",meal:"soir",name:"Escalope de poulet panée bien cuite & purée",temps:"30 min",photo:"🍗",kcal:470,
+ ingredients:[{n:"Escalope de poulet",q:180,u:"g"},{n:"Chapelure",q:40,u:"g"},{n:"Œuf",q:1,u:"piece"},{n:"Pommes de terre",q:300,u:"g"}],
+ steps:["Cuire les pommes de terre à l'eau 20 min et les écraser en purée.","Paner l'escalope dans l'œuf battu puis la chapelure.","Cuire à la poêle 4-5 min par face jusqu'à cuisson complète, servir avec la purée."]},
+{id:"gr-s16",meal:"soir",name:"Chili de bœuf bien cuit & riz",temps:"30 min",photo:"🌶️",kcal:480,
+ ingredients:[{n:"Bœuf haché",q:200,u:"g"},{n:"Haricots rouges",q:1,u:"can"},{n:"Tomates concassées",q:300,u:"g"},{n:"Riz",q:70,u:"g"}],
+ steps:["Faire revenir le bœuf haché jusqu'à coloration complète, sans rosé.","Ajouter tomates et haricots rouges, mijoter 20 min.","Cuire le riz et servir avec le chili bien chaud."]},
+{id:"gr-s17",meal:"soir",name:"Saumon bien cuit en papillote & riz",temps:"25 min",photo:"🐟",kcal:450,
+ ingredients:[{n:"Pavé de saumon",q:150,u:"g"},{n:"Citron",q:0.5,u:"piece"},{n:"Riz",q:70,u:"g"}],
+ steps:["Préchauffer le four à 200°C.","Envelopper le saumon avec citron dans du papier cuisson.","Cuire 18-20 min jusqu'à ce que la chair soit bien opaque à cœur, servir avec le riz."]},
+{id:"gr-s18",meal:"soir",name:"Poêlée de crevettes bien cuites, riz & légumes",temps:"20 min",photo:"🍤",kcal:410,
+ ingredients:[{n:"Crevettes",q:200,u:"g"},{n:"Riz",q:70,u:"g"},{n:"Courgette & poivron",q:150,u:"g"}],
+ steps:["Cuire le riz selon les instructions.","Faire sauter les légumes 5 min.","Ajouter les crevettes, cuire jusqu'à ce qu'elles soient bien roses et cuites à cœur, servir avec le riz."]},
+];
+
+/* ---------- Rendu et interactions ---------- */
+const SG_MEAL_LABEL = {matin:{fr:"Matin",en:"Morning"},midi:{fr:"Midi",en:"Lunch"},soir:{fr:"Soir",en:"Dinner"}};
+const SG_TXT = {
+  title:{sport:{fr:"🥗 Sport / Diète",en:"🥗 Sport / Diet"},grossesse:{fr:"🤰 Grossesse",en:"🤰 Pregnancy"}},
+  disclaimerSport:{fr:"Recettes riches en protéines à titre indicatif. Adapte les quantités à ton objectif et à tes besoins.",en:"High-protein recipes, indicative only. Adjust quantities to your goals and needs."},
+  disclaimerGrossesse:{fr:"Recettes conçues en excluant les aliments déconseillés pendant la grossesse (poisson cru, fromages au lait cru, œufs crus, charcuterie crue). Ceci ne remplace pas l'avis de ton médecin ou de ta sage-femme.",en:"Recipes exclude foods generally advised against during pregnancy (raw fish, unpasteurized cheese, raw eggs, raw cured meat). This does not replace advice from your doctor or midwife."},
+  kcalNote:{fr:"valeur estimée, ordre de grandeur",en:"estimated value, approximate"},
+  close:{fr:"Fermer",en:"Close"}
+};
+
+function sgBuildRecipeHTML(r){
+  const ingHTML = r.ingredients.map(i => `<li>• ${i.q} ${i.u!=="piece"&&i.u!=="totaste"?i.u:""} ${i.n}</li>`).join("");
+  const stepsHTML = r.steps.map(s => `<li>${s}</li>`).join("");
+  const proteines = r.proteines ? ` · 💪 ${r.proteines} g prot.` : "";
+  return `
+    <div class="sg-card">
+      <div class="sg-card-head">
+        <span class="sg-photo">${r.photo}</span>
+        <div>
+          <h4>${r.name}</h4>
+          <div class="sg-meta">⏱ ${r.temps} · 🔥 ${r.kcal} kcal${proteines}
+            <span class="sg-note" title="${SG_TXT.kcalNote[SG_LANG]}"> (?)</span>
+          </div>
+        </div>
+      </div>
+      <details>
+        <summary>${SG_LANG==='fr'?'Voir la recette':'See recipe'}</summary>
+        <ul class="sg-ing">${ingHTML}</ul>
+        <ol class="sg-steps">${stepsHTML}</ol>
+      </details>
+    </div>`;
+}
+
+function sgBuildSection(recipes, disclaimer){
+  let html = `<p class="sg-disclaimer">${disclaimer}</p>`;
+  ["matin","midi","soir"].forEach(meal => {
+    html += `<h3 class="sg-meal-title">${SG_MEAL_LABEL[meal][SG_LANG]}</h3>`;
+    html += recipes.filter(r => r.meal === meal).map(sgBuildRecipeHTML).join("");
+  });
+  return html;
+}
+
+function sgOpenModal(mode){
+  const overlay = document.createElement("div");
+  overlay.className = "sg-overlay";
+  const title = SG_TXT.title[mode][SG_LANG];
+  const body = mode === "sport"
+    ? sgBuildSection(SPORT_RECIPES, SG_TXT.disclaimerSport[SG_LANG])
+    : sgBuildSection(GROSSESSE_RECIPES, SG_TXT.disclaimerGrossesse[SG_LANG]);
+  overlay.innerHTML = `
+    <div class="sg-modal">
+      <div class="sg-modal-head">
+        <h2>${title}</h2>
+        <button class="sg-close-btn">${SG_TXT.close[SG_LANG]}</button>
+      </div>
+      <div class="sg-modal-body">${body}</div>
+    </div>`;
+  document.body.appendChild(overlay);
+  overlay.querySelector(".sg-close-btn").addEventListener("click", () => overlay.remove());
+  overlay.addEventListener("click", (e) => { if(e.target === overlay) overlay.remove(); });
+}
+
+function sgInjectStyles(){
+  const style = document.createElement("style");
+  style.textContent = `
+    .sg-trigger{position:fixed;bottom:18px;right:18px;z-index:9998;display:flex;flex-direction:column;gap:8px;}
+    .sg-trigger button{border:none;border-radius:999px;padding:10px 16px;font-family:'Work Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.25);}
+    .sg-btn-sport{background:var(--courgette,#7C8C5A);color:#fff;}
+    .sg-btn-grossesse{background:var(--aubergine,#6B4066);color:#fff;}
+    .sg-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9999;display:flex;align-items:flex-end;justify-content:center;}
+    .sg-modal{background:var(--chalk-bg,#2B2E28);color:var(--chalk-text,#F5F3EE);width:100%;max-width:480px;max-height:88vh;overflow-y:auto;border-radius:18px 18px 0 0;padding:18px 20px 30px;}
+    .sg-modal-head{display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--chalk-bg,#2B2E28);padding-bottom:10px;border-bottom:1px dashed rgba(245,243,238,0.22);margin-bottom:10px;}
+    .sg-modal-head h2{font-size:18px;margin:0;}
+    .sg-close-btn{background:none;border:1px solid rgba(245,243,238,0.4);color:inherit;border-radius:999px;padding:6px 14px;font-size:12px;cursor:pointer;}
+    .sg-disclaimer{font-size:12px;opacity:0.75;line-height:1.4;margin-bottom:14px;}
+    .sg-meal-title{font-family:'IBM Plex Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--miel,#D8A93B);margin:18px 0 8px;}
+    .sg-card{border:1px dashed rgba(245,243,238,0.22);border-radius:14px;padding:12px;margin-bottom:10px;}
+    .sg-card-head{display:flex;gap:10px;align-items:flex-start;}
+    .sg-photo{font-size:26px;}
+    .sg-card h4{margin:0 0 4px;font-size:14px;}
+    .sg-meta{font-size:11.5px;opacity:0.7;}
+    .sg-note{cursor:help;text-decoration:underline dotted;}
+    .sg-card details{margin-top:8px;}
+    .sg-card summary{cursor:pointer;font-size:12.5px;color:var(--miel,#D8A93B);}
+    .sg-ing,.sg-steps{font-size:12.5px;line-height:1.5;padding-left:16px;margin:8px 0;}
+  `;
+  document.head.appendChild(style);
+}
+
+function sgInjectTrigger(){
+  const wrap = document.createElement("div");
+  wrap.className = "sg-trigger";
+  wrap.innerHTML = `
+    <button class="sg-btn-sport">${SG_TXT.title.sport[SG_LANG]}</button>
+    <button class="sg-btn-grossesse">${SG_TXT.title.grossesse[SG_LANG]}</button>
+  `;
+  document.body.appendChild(wrap);
+  wrap.querySelector(".sg-btn-sport").addEventListener("click", () => sgOpenModal("sport"));
+  wrap.querySelector(".sg-btn-grossesse").addEventListener("click", () => sgOpenModal("grossesse"));
+}
+
+sgInjectStyles();
+sgInjectTrigger();
+
+})();
+  </script>
 </html>
